@@ -13,7 +13,9 @@ class HomeController extends Controller {
      * @Template
      */
     public function indexAction() {
-        return array();
+        return array(
+            'locations' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Location')->findAll()
+        );
     }
 
 }
