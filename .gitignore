@@ -3,4 +3,5 @@ vendor
 composer.phar
 web/bundles
 app/bootstrap.php.cache
-
+app/cache/*
+app/logs/*
