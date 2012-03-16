@@ -1,3 +1,6 @@
 vendor
 .idea
 composer.phar
+web/bundles
+app/bootstrap.php.cache
+
