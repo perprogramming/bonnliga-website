@@ -1,0 +1,27 @@
+{
+    "hash": "1aa60eaadd7be0b7e3e41635804e5a0e",
+    "packages": [
+        {
+            "package": "doctrine/common",
+            "version": "2.1.x-dev",
+            "source-reference": "41794945e795e108060eddb3342c9e13524b9b3e"
+        },
+        {
+            "package": "monolog/monolog",
+            "version": "1.0.2"
+        },
+        {
+            "package": "swiftmailer/swiftmailer",
+            "version": "4.1.5"
+        },
+        {
+            "package": "symfony/symfony",
+            "version": "v2.0.11"
+        },
+        {
+            "package": "twig/twig",
+            "version": "1.6.1"
+        }
+    ],
+    "aliases": []
+}

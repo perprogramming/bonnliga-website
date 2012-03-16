@@ -1,0 +1,13 @@
+{
+    "name": "kcb/bonnliga-website",
+    "description": "Website of the foosball tournament series \"Bonnliga\" in Bonn, Germany",
+    "require": {
+        "symfony/symfony": "v2.0.11"
+    },
+    "authors": [
+        {
+            "name": "Per Bernhardt",
+            "email": "plb@webfactory.de"
+        }
+    ]
+}
