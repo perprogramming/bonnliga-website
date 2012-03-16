@@ -16,8 +16,10 @@ class AppKernel extends Kernel {
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new JMS\AopBundle\JMSAopBundle(),
+            new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+            new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
 
-            new \Kcb\Bonnliga\Bundle\WebsiteBundle\KcbBonnligaWebsiteBundle()
+            new Kcb\Bonnliga\Bundle\WebsiteBundle\KcbBonnligaWebsiteBundle()
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

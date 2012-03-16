@@ -1,9 +1,14 @@
 {
-    "hash": "3d5facae5f5c6f093ac9141be9be8351",
+    "hash": "ca5f01bbe116d130c6f27110f24f21c6",
     "packages": [
         {
             "package": "doctrine/common",
             "version": "2.2.1"
+        },
+        {
+            "package": "doctrine/data-fixtures",
+            "version": "dev-master",
+            "source-reference": "aea0b95a554188892f10d8f09ce3ae8150f28f8b"
         },
         {
             "package": "doctrine/dbal",
@@ -13,6 +18,21 @@
             "package": "doctrine/doctrine-bundle",
             "version": "dev-master",
             "source-reference": "90e39fb7ff5b4c13577602dab7e08c90067160b4"
+        },
+        {
+            "package": "doctrine/doctrine-fixtures-bundle",
+            "version": "dev-master",
+            "source-reference": "0e4e56b1da7981bcc7729e0f301a75195d34df18"
+        },
+        {
+            "package": "doctrine/doctrine-migrations-bundle",
+            "version": "dev-master",
+            "source-reference": "9690dfba714fa82f3979fb5fa18750a37ab16e1c"
+        },
+        {
+            "package": "doctrine/migrations",
+            "version": "dev-master",
+            "source-reference": "9e81984b0f126b0830d9ac6acc2d1da81aba2b94"
         },
         {
             "package": "doctrine/orm",
