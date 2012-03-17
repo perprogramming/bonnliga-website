@@ -22,7 +22,7 @@ class Spieler {
     protected $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Stammlokal", inversedBy="stammspieler")
+     * @ORM\ManyToOne(targetEntity="Location", inversedBy="stammspieler")
      */
     protected $stammlokal;
 
@@ -47,7 +47,7 @@ class Spieler {
         return $this->name;
     }
 
-    public function setStammlokal(Stammlokal $stammlokal) {
+    public function setStammlokal(Location $stammlokal) {
         $this->stammlokal = $stammlokal;
     }
 
