@@ -1,5 +1,5 @@
 {
-    "hash": "11a775bfabf057e173950d65b1848cad",
+    "hash": "b1a89dc87a058dcee8148332a98021e1",
     "packages": [
         {
             "package": "doctrine/common",
@@ -37,11 +37,6 @@
         {
             "package": "doctrine/orm",
             "version": "2.2.0"
-        },
-        {
-            "package": "friendsofsymfony/twitter-bundle",
-            "version": "dev-master",
-            "source-reference": "origin/master"
         },
         {
             "package": "friendsofsymfony/user-bundle",
