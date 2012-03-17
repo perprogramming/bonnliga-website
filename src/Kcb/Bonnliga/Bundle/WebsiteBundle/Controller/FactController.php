@@ -27,4 +27,12 @@ class FactController extends Controller {
         return array();
     }
 
+    /**
+     * @Route("/faq")
+     * @Template
+     */
+    public function faqAction() {
+        return array();
+    }
+
 }
