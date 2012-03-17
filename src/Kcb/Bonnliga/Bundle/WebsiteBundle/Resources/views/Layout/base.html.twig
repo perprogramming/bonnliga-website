@@ -75,5 +75,12 @@
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script src="{{ asset("bundles/kcbbonnligawebsite/js/bootstrap.min.js") }}"></script>
+        <script src="{{ asset("bundles/kcbbonnligawebsite/js/jquery.fixedheader.min.js") }}"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('table').fixedtableheader();
+            });
+        </script>
     </body>
 </html>
