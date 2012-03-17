@@ -38,11 +38,11 @@ assetic:
 doctrine:
     dbal:
         driver:   pdo_mysql
-        host:     localhost
-        port:     3306
-        dbname:   bonnliga
-        user:     root
-        password: ~
+        host:     %database_host%
+        port:     %database_port%
+        dbname:   %database_dbname%
+        user:     %database_user%
+        password: %database_pass%
         charset:  UTF8
 
     orm:
