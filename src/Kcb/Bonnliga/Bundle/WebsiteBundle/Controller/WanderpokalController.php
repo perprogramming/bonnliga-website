@@ -19,4 +19,12 @@ class WanderpokalController extends Controller {
         return array();
     }
 
+    /**
+     * @Route("/rangliste")
+     * @Template
+     */
+    public function ranglisteAction() {
+        return array();
+    }
+
 }
