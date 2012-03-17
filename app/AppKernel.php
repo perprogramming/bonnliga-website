@@ -20,6 +20,8 @@ class AppKernel extends Kernel {
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new \Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new \FOS\UserBundle\FOSUserBundle(),
+            new \WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
+            new \Sylius\Bundle\BloggerBundle\SyliusBloggerBundle(),
 
             new Kcb\Bonnliga\Bundle\WebsiteBundle\KcbBonnligaWebsiteBundle()
         );

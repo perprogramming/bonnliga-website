@@ -68,3 +68,12 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Kcb\Bonnliga\Bundle\WebsiteBundle\Entity\User
+
+sylius_blogger:
+    driver: doctrine/orm
+    classes:
+        model:
+            post: Kcb\Bonnliga\Bundle\WebsiteBundle\Entity\Blog\Post
+        form:
+            type:
+                post: Sylius\Bundle\BloggerBundle\Form\Type\PostType
