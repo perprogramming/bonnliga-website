@@ -18,6 +18,7 @@ class AppKernel extends Kernel {
             new JMS\AopBundle\JMSAopBundle(),
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
+            new \Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new \FOS\UserBundle\FOSUserBundle(),
             new \FOS\TwitterBundle\FOSTwitterBundle(),
 
