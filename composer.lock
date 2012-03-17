@@ -130,7 +130,12 @@
         {
             "package": "symfony/symfony",
             "version": "dev-master",
+<<<<<<< HEAD
             "source-reference": "3d84153d687c285b1356683298531421ec108359"
+=======
+            "source-reference": "3d84153d687c285b1356683298531421ec108359",
+            "alias": "2.1.9999999.9999999-dev"
+>>>>>>> f602aa152608bb729dff7975bd93ee3936732841
         },
         {
             "package": "twig/extensions",
