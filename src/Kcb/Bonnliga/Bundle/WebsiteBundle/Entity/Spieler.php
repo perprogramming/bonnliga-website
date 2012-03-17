@@ -55,4 +55,8 @@ class Spieler {
         return $this->stammlokal;
     }
 
+    public function getPlatzierungen() {
+        return $this->platzierungen;
+    }
+
 }

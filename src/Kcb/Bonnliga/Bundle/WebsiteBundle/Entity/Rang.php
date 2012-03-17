@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\DiscriminatorColumn(name="typ", type="string")
  * @ORM\DiscriminatorMap({"gesamt" = "GesamtRang"})
  */
-abstract class Rang {
+class Rang {
 
     /**
      * @ORM\Id
@@ -32,24 +32,24 @@ abstract class Rang {
     /**
      * @ORM\Column(type="integer")
      */
-    protected $punkte;
+    protected $punkte = 0;
 
     /**
      * @ORM\Column(type="integer")
      */
-    protected $teilnahmen;
+    protected $teilnahmen = 0;
 
     /**
      * @ORM\Column(type="text")
      */
-    protected $tendenz;
+    protected $tendenz = 'gleich';
 
     public function getId() {
         return $this->id;
     }
 
-    public function setPunkte($punkte) {
-        $this->punkte = $punkte;
+    public function addPunkte($punkte) {
+        $this->punkte += $punkte;
     }
 
     public function getPunkte() {
@@ -57,6 +57,13 @@ abstract class Rang {
     }
 
     public function setRang($rang) {
+        if ($rang == $this->rang) {
+            $this->tendenz = 'gleich';
+        } elseif ($rang < $this->rang) {
+            $this->tendenz = 'fallend';
+        } else {
+            $this->tendenz = 'steigend';
+        }
         $this->rang = $rang;
     }
 
@@ -72,16 +79,12 @@ abstract class Rang {
         return $this->spieler;
     }
 
-    public function setTeilnahmen($teilnahmen) {
-        $this->teilnahmen = $teilnahmen;
+    public function erhoeheTeilnahmen() {
+        $this->teilnahmen++;
     }
 
     public function getTeilnahmen() {
         return $this->teilnahmen;
-    }
-
-    public function setTendenz($tendenz) {
-        $this->tendenz = $tendenz;
     }
 
     public function getTendenz() {
