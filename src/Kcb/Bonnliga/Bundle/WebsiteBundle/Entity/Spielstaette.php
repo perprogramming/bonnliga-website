@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity
  */
-class Spielstaette extends Stammlokal {
+class Spielstaette extends Location {
 
     /**
      * @ORM\Column(type="text")
