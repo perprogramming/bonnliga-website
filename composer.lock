@@ -1,5 +1,5 @@
 {
-    "hash": "ca5f01bbe116d130c6f27110f24f21c6",
+    "hash": "9c1213466518b62e88b85760cfe6bc54",
     "packages": [
         {
             "package": "doctrine/common",
@@ -54,6 +54,16 @@
             "package": "jms/security-extra-bundle",
             "version": "dev-master",
             "source-reference": "5ce520127ba43d90563775a7935d4980ac227853"
+        },
+        {
+            "package": "knplabs/knp-menu",
+            "version": "dev-master",
+            "source-reference": "f818c58d89885c5eb1e305f5b7360588fd49fbab"
+        },
+        {
+            "package": "knplabs/knp-menu-bundle",
+            "version": "dev-master",
+            "source-reference": "462b7b40e5c17813a6d14929d7bca7d0511c7736"
         },
         {
             "package": "kriswallsmith/assetic",
