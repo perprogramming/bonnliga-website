@@ -21,4 +21,20 @@ class LocationController extends Controller {
         );
     }
 
+    /**
+     * @Route("/spielstaette")
+     * @Template
+     */
+    public function spielstaetteDetailAction() {
+        return array();
+    }
+
+    /**
+     * @Route("/stammlokal")
+     * @Template
+     */
+    public function stammlokalDetailAction() {
+        return array();
+    }
+
 }
