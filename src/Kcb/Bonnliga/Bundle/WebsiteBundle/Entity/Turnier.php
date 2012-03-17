@@ -22,6 +22,11 @@ class Turnier {
     protected $spielstaette;
 
     /**
+     * @ORM\Column(type="datetime")
+     */
+    protected $beginn;
+
+    /**
      * @ORM\OneToMany(targetEntity="Platzierung", mappedBy="turnier", cascade={"ALL"}, orphanRemoval=true)
      */
     protected $platzierungen;
@@ -50,5 +55,16 @@ class Turnier {
     public function getSpielstaette() {
         return $this->spielstaette;
     }
+
+    public function setBeginn($beginn)
+    {
+        $this->beginn = $beginn;
+    }
+
+    public function getBeginn()
+    {
+        return $this->beginn;
+    }
+
 
 }
