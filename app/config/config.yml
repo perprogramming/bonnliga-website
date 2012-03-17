@@ -68,3 +68,9 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: Kcb\Bonnliga\Bundle\WebsiteBundle\Entity\User
+
+services:
+    dateshift.twig.extension:
+        class: Kcb\Bonnliga\Bundle\WebsiteBundle\Extension\TwigDateShiftExtension
+        tags:
+            - { name: twig.extension }
