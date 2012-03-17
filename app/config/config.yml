@@ -60,6 +60,10 @@ swiftmailer:
 jms_security_extra:
     secure_all_services: false
 
+knp_menu:
+    twig:  # use "twig: false" to disable the Twig extension and the TwigRenderer
+        template: "KcbBonnligaWebsiteBundle::knp_menu.html.twig"
+
 fos_user:
     db_driver: orm
     firewall_name: main

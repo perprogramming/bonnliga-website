@@ -50,14 +50,7 @@
                     </a>
                     <a class="brand" href="{{ path('kcb_bonnliga_website_home_index') }}">Bonnliga</a>
                     <div class="nav-collapse">
-                        <ul class="nav">
-                            <li><a href="#"><i class="icon-home icon-large"></i> News</a></li>
-                            <li><a href="{{ path('kcb_bonnliga_website_fact_index') }}"><i class="icon-question-sign icon-large"></i> Facts</a></li>
-                            <li><a href="{{ path('kcb_bonnliga_website_turnier_index') }}"><i class="icon-calendar icon-large"></i> Turniere</a></li>
-                            <li><a href="{{ path('kcb_bonnliga_website_rangliste_index') }}"><i class="icon-trophy icon-large"></i> Rangliste</a></li>
-                            <li><a href="{{ path('kcb_bonnliga_website_location_index') }}"><i class="icon-map-marker icon-large"></i> Locations</a></li>
-                            <li><a href="{{ path('kcb_bonnliga_website_sponsor_index') }}"><i class="icon-gift icon-large"></i> Sponsoren</a></li>
-                        </ul>
+                        {{ knp_menu_render('KcbBonnligaWebsiteBundle:Builder:mainMenu', {'currentClass': 'active'}) }}
                     </div><!--/.nav-collapse -->
                     <div class="pull-right pott">
                         <span>Pott 10,20€</span>
