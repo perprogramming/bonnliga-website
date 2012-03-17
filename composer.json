@@ -1,4 +1,29 @@
 {
+    "repositories": [
+        {
+            "type":"package",
+            "package":{
+                "name":"friendsofsymfony/twitter-bundle",
+                "version":"dev-master",
+                "source":{
+                    "url":"git://github.com/FriendsOfSymfony/FOSTwitterBundle.git",
+                    "type":"git",
+                    "reference":"origin/master"
+                },
+                "autoload": {
+                    "psr-0": { "FOS\\TwitterBundle": "" }
+                },
+                "target-dir": "FOS/TwitterBundle",
+                "require": {
+                    "php": ">=5.3.2",
+                    "kertz/twitteroauth": "dev-master",
+                    "symfony/framework-bundle": "2.1.*",
+                    "symfony/security-bundle": "2.1.*"
+                }
+            }
+        }
+    ],
+
     "name": "kcb/bonnliga-website",
     "description": "Website of the foosball tournament series \"Bonnliga\" in Bonn, Germany",
     "authors": [
@@ -23,7 +48,8 @@
         "doctrine/doctrine-migrations-bundle": "dev-master",
         "doctrine/doctrine-fixtures-bundle": "dev-master",
         "knplabs/knp-menu-bundle": "dev-master",
-        "friendsofsymfony/user-bundle": "1.1.*"
+        "friendsofsymfony/user-bundle": "1.1.*",
+        "friendsofsymfony/twitter-bundle": "dev-master"
     },
     "scripts": {
         "post-install-cmd": [
