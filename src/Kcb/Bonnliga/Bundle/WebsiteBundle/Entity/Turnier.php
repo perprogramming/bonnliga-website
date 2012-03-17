@@ -22,7 +22,7 @@ class Turnier {
     protected $spielstaette;
 
     /**
-     * @ORM\OneToMany(targetEntity="Platzierung")
+     * @ORM\OneToMany(targetEntity="Platzierung", mappedBy="turnier")
      */
     protected $platzierungen;
 

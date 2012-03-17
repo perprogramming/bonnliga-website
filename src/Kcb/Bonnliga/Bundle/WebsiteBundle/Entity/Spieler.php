@@ -26,6 +26,15 @@ class Spieler {
      */
     protected $stammlokal;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Platzierung", mappedBy="spieler")
+     */
+    protected $platzierungen;
+
+    public function __construct() {
+        $this->platzierungen = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
     public function getId() {
         return $this->id;
     }
