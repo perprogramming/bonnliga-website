@@ -27,4 +27,13 @@ class WanderpokalController extends Controller {
         return array();
     }
 
+
+    /**
+     * @Route("/regeln")
+     * @Template
+     */
+    public function regelnAction() {
+        return array();
+    }
+
 }
