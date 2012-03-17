@@ -1,5 +1,5 @@
 {
-    "hash": "b1a89dc87a058dcee8148332a98021e1",
+    "hash": "11a775bfabf057e173950d65b1848cad",
     "packages": [
         {
             "package": "doctrine/common",
@@ -65,14 +65,14 @@
             "source-reference": "5ce520127ba43d90563775a7935d4980ac227853"
         },
         {
-            "package": "knplabs/knp-menu",
-            "version": "dev-master",
-            "source-reference": "f7970583d4da8776c037e2d49878d8160361e373"
-        },
-        {
             "package": "kertz/twitteroauth",
             "version": "dev-master",
             "source-reference": "f05dd67e04ade8d89c3c521a172bf8baebdeaa83"
+        },
+        {
+            "package": "knplabs/knp-menu",
+            "version": "dev-master",
+            "source-reference": "f7970583d4da8776c037e2d49878d8160361e373"
         },
         {
             "package": "knplabs/knp-menu-bundle",
