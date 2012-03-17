@@ -19,4 +19,12 @@ class FactController extends Controller {
         return array();
     }
 
+    /**
+     * @Route("/regeln")
+     * @Template
+     */
+    public function regelnAction() {
+        return array();
+    }
+
 }
