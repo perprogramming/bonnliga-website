@@ -16,7 +16,10 @@ class RanglisteController extends Controller {
      * @Template
      */
     public function indexAction() {
-        return array();
+        $daten = $this->getDoctrine()->getRepository("KcbBonnligaWebsiteBundle:GesamtRang")->findBy(array(), array('rang' => 'asc'));
+
+
+        return array('daten' => $daten);
     }
 
 }
