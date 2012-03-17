@@ -11,4 +11,14 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\DiscriminatorMap({"spielstaette" = "Spielstaette", "stammlokal" = "Stammlokal"})
  */
 class Stammlokal extends Location {
+
+    /**
+     * @ORM\OneToMany(targetEntity="Spieler", mappedBy="stammlokal")
+     */
+    protected $stammspieler;
+
+    public function __construct() {
+        $this->stammspieler = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
 }
