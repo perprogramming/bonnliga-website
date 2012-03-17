@@ -6,4 +6,8 @@ Home
 
 {% block body %}
 
+    {{ spielstaetten | json_encode }}
+
+    {{ stammlokale | json_encode }}
+
 {% endblock %}

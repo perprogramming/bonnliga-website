@@ -17,12 +17,12 @@ class Turnier {
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Spielstaette")
+     * @ORM\ManyToOne(targetEntity="Spielstaette", inversedBy="turniere")
      */
     protected $spielstaette;
 
     /**
-     * @ORM\OneToMany(targetEntity="Platzierung", mappedBy="turnier")
+     * @ORM\OneToMany(targetEntity="Platzierung", mappedBy="turnier", cascade={"ALL"}, orphanRemoval=true)
      */
     protected $platzierungen;
 
@@ -35,6 +35,7 @@ class Turnier {
     }
 
     public function addPlatzierung(Platzierung $platzierung) {
+        $platzierung->setTurnier($this);
         $this->platzierungen->add($platzierung);
     }
 

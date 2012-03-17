@@ -5,7 +5,10 @@ namespace Kcb\Bonnliga\Bundle\WebsiteBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\MappedSuperclass
+ * @ORM\Entity
+ * @ORM\InheritanceType("SINGLE_TABLE")
+ * @ORM\DiscriminatorColumn(name="typ", type="string")
+ * @ORM\DiscriminatorMap({"spielstaette" = "Spielstaette", "stammlokal" = "Stammlokal"})
  */
 abstract class Location {
 
@@ -20,6 +23,15 @@ abstract class Location {
      * @ORM\Column
      */
     protected $name;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Spieler", mappedBy="stammlokal")
+     */
+    protected $stammspieler;
+
+    public function __construct() {
+        $this->stammspieler = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     public function getId() {
         return $this->id;

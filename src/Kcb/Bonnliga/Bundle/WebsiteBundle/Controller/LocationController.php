@@ -17,6 +17,8 @@ class LocationController extends Controller {
      */
     public function indexAction() {
         return array(
+            'spielstaetten' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Spielstaette')->findAll(),
+            'stammlokale' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Stammlokal')->findAll()
         );
     }
 
