@@ -1,5 +1,5 @@
 {
-    "hash": "8d119657b4da0215cbc9b6af47fb7b35",
+    "hash": "b1a89dc87a058dcee8148332a98021e1",
     "packages": [
         {
             "package": "doctrine/common",
@@ -60,6 +60,16 @@
             "source-reference": "5ce520127ba43d90563775a7935d4980ac227853"
         },
         {
+            "package": "knplabs/knp-menu",
+            "version": "dev-master",
+            "source-reference": "f7970583d4da8776c037e2d49878d8160361e373"
+        },
+        {
+            "package": "knplabs/knp-menu-bundle",
+            "version": "dev-master",
+            "source-reference": "462b7b40e5c17813a6d14929d7bca7d0511c7736"
+        },
+        {
             "package": "kriswallsmith/assetic",
             "version": "dev-master",
             "source-reference": "2634d29cc193981761e3daf28e1afc6358bb43b1"
@@ -110,8 +120,7 @@
         {
             "package": "symfony/symfony",
             "version": "dev-master",
-            "source-reference": "91e977d38c2fc59ca7344ff2fbaf47d0a9a2e836",
-            "alias": "2.1.9999999.9999999-dev"
+            "source-reference": "3d84153d687c285b1356683298531421ec108359"
         },
         {
             "package": "twig/extensions",
