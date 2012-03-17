@@ -1,5 +1,5 @@
 {
-    "hash": "11a775bfabf057e173950d65b1848cad",
+    "hash": "61357e531165640fe8ae71108704ae99",
     "packages": [
         {
             "package": "doctrine/common",
@@ -37,11 +37,6 @@
         {
             "package": "doctrine/orm",
             "version": "2.2.0"
-        },
-        {
-            "package": "friendsofsymfony/twitter-bundle",
-            "version": "dev-master",
-            "source-reference": "origin/master"
         },
         {
             "package": "friendsofsymfony/user-bundle",
@@ -89,6 +84,11 @@
             "version": "1.0.2"
         },
         {
+            "package": "pagerfanta/pagerfanta",
+            "version": "dev-master",
+            "source-reference": "c490684def33e992241e7fad33bcbd03d9d18643"
+        },
+        {
             "package": "sensio/distribution-bundle",
             "version": "dev-master",
             "source-reference": "12882a093af81f89ac13078904e81c308784e883"
@@ -106,6 +106,11 @@
         {
             "package": "swiftmailer/swiftmailer",
             "version": "4.1.5"
+        },
+        {
+            "package": "sylius/blogger-bundle",
+            "version": "dev-master",
+            "source-reference": "5bd79256fbb93b672617b1ec1856ea1408946648"
         },
         {
             "package": "symfony/assetic-bundle",
@@ -130,12 +135,8 @@
         {
             "package": "symfony/symfony",
             "version": "dev-master",
-<<<<<<< HEAD
-            "source-reference": "3d84153d687c285b1356683298531421ec108359"
-=======
             "source-reference": "3d84153d687c285b1356683298531421ec108359",
             "alias": "2.1.9999999.9999999-dev"
->>>>>>> f602aa152608bb729dff7975bd93ee3936732841
         },
         {
             "package": "twig/extensions",
@@ -145,6 +146,11 @@
         {
             "package": "twig/twig",
             "version": "1.6.1"
+        },
+        {
+            "package": "white-october/pagerfanta-bundle",
+            "version": "dev-master",
+            "source-reference": "60d98f508010b0fab6a93bf079be39f4c9537f7c"
         }
     ],
     "aliases": []

@@ -69,9 +69,11 @@ fos_user:
     firewall_name: main
     user_class: Kcb\Bonnliga\Bundle\WebsiteBundle\Entity\User
 
-fos_twitter:
-    file: %kernel.root_dir%/../vendor/kertz/twitteroauth/twitteroauth/twitteroauth.php
-    consumer_key: xxxxxx
-    consumer_secret: xxxxxx
-    callback_url: http://www.example.com/login_check
-    callback_url: http://www.example.com/login_check
+sylius_blogger:
+    driver: doctrine/orm
+    classes:
+        model:
+            post: Kcb\Bonnliga\Bundle\WebsiteBundle\Entity\Blog\Post
+        form:
+            type:
+                post: Sylius\Bundle\BloggerBundle\Form\Type\PostType
