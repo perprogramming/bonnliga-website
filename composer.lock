@@ -1,5 +1,5 @@
 {
-    "hash": "b1a89dc87a058dcee8148332a98021e1",
+    "hash": "11a775bfabf057e173950d65b1848cad",
     "packages": [
         {
             "package": "doctrine/common",
@@ -39,6 +39,11 @@
             "version": "2.2.0"
         },
         {
+            "package": "friendsofsymfony/twitter-bundle",
+            "version": "dev-master",
+            "source-reference": "origin/master"
+        },
+        {
             "package": "friendsofsymfony/user-bundle",
             "version": "1.1.0"
         },
@@ -58,6 +63,11 @@
             "package": "jms/security-extra-bundle",
             "version": "dev-master",
             "source-reference": "5ce520127ba43d90563775a7935d4980ac227853"
+        },
+        {
+            "package": "kertz/twitteroauth",
+            "version": "dev-master",
+            "source-reference": "f05dd67e04ade8d89c3c521a172bf8baebdeaa83"
         },
         {
             "package": "knplabs/knp-menu",
