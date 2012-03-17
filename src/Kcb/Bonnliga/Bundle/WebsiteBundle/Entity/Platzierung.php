@@ -17,12 +17,12 @@ class Platzierung {
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Turnier")
+     * @ORM\ManyToOne(targetEntity="Turnier", inversedBy="platzierungen")
      */
     protected $turnier;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Spieler")
+     * @ORM\ManyToOne(targetEntity="Spieler", inversedBy="platzierungen")
      */
     protected $spieler;
 
