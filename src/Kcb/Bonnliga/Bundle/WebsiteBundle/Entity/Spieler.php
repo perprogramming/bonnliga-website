@@ -5,9 +5,9 @@ namespace Kcb\Bonnliga\Bundle\WebsiteBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\MappedSuperclass
+ * @ORM\Entity
  */
-abstract class Location {
+class Spieler {
 
     /**
      * @ORM\Id
@@ -21,6 +21,11 @@ abstract class Location {
      */
     protected $name;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Stammlokal")
+     */
+    protected $stammlokal;
+
     public function getId() {
         return $this->id;
     }
@@ -31,6 +36,14 @@ abstract class Location {
 
     public function getName() {
         return $this->name;
+    }
+
+    public function setStammlokal(Stammlokal $stammlokal) {
+        $this->stammlokal = $stammlokal;
+    }
+
+    public function getStammlokal() {
+        return $this->stammlokal;
     }
 
 }
