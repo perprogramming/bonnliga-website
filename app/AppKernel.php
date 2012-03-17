@@ -19,6 +19,7 @@ class AppKernel extends Kernel {
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new \FOS\UserBundle\FOSUserBundle(),
+            new \FOS\TwitterBundle\FOSTwitterBundle(),
 
             new Kcb\Bonnliga\Bundle\WebsiteBundle\KcbBonnligaWebsiteBundle()
         );
