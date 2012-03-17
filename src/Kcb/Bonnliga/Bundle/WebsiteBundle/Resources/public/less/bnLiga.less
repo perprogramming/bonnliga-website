@@ -1,0 +1,73 @@
+body {
+    //background-image: url("../img/bg.png");
+}
+
+div.navbar {
+    a {
+        font-size: 14px;
+
+        i {
+            font-size: 16px;
+            text-shadow: 0px 1px 1px @white;
+            color: lighten(@grayLight, 20%);
+        }
+    }
+
+    .brand {
+        color: @grayDark;
+    }
+}
+
+.ranking {
+    i.icon-chevron-up {
+        color: @green;
+    }
+    i.icon-chevron-down {
+        color: @red;
+    }
+}
+
+table.ranking tr:nth-child(16) td {
+    border-bottom: 2px solid @grayLight;
+}
+
+.sponsor {
+    .border-radius(3px);
+    padding: 19px;
+
+    h3 {
+        color: @grayLight;
+        text-shadow: 0px -1px 1px @grayLight;
+    }
+}
+
+.sponsor.you {
+    border: 1px dashed @grayLight;
+}
+
+a[href^="mailto"]:after {
+    font-family: FontAwesome;
+    content: "\f003";
+    padding-left: 1px;
+}
+
+a[href^="http://"]:after {
+    font-family: FontAwesome;
+    content: "\f08e";
+    padding-left: 1px;
+}
+
+.pott {
+    .navbarVerticalAlign(16px);
+
+    span {
+        .border-radius(10px);
+
+        padding: 4px 9px;
+        background-color: @gray;
+
+        color: @white;
+
+        font-weight: bold;
+    }
+}
