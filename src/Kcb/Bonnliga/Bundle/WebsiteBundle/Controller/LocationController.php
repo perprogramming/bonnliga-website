@@ -17,7 +17,6 @@ class LocationController extends Controller {
      */
     public function indexAction() {
         return array(
-            'locations' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Location')->findAll()
         );
     }
 

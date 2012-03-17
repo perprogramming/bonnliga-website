@@ -24,6 +24,15 @@ class Spielstaette extends Stammlokal {
      */
     protected $adresse;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Turnier", mappedBy="spielstaette")
+     */
+    protected $turniere;
+
+    public function __construct() {
+        $this->platzierungen = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
     public function setAdresse($adresse) {
         $this->adresse = $adresse;
     }
