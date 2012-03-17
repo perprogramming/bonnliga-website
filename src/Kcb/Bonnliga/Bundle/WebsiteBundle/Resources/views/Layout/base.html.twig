@@ -7,6 +7,14 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+        {% block navigation %}
+            <a href="{{ path('kcb_bonnliga_website_home_index') }}">Home</a>
+            <a href="{{ path('kcb_bonnliga_website_location_index') }}">Locations</a>
+            <a href="{{ path('kcb_bonnliga_website_fact_index') }}">Facts</a>
+            <a href="{{ path('kcb_bonnliga_website_turnier_index') }}">Turniere</a>
+            <a href="{{ path('kcb_bonnliga_website_rangliste_index') }}">Rangliste</a>
+            <a href="{{ path('kcb_bonnliga_website_sponsor_index') }}">Sponsoren</a>
+        {% endblock %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
