@@ -4,7 +4,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: %locale% }
+    #translator:      { fallback: de }
     secret:          %secret%
     charset:         UTF-8
     router:          { resource: "%kernel.root_dir%/config/routing.yml" }
@@ -12,7 +12,7 @@ framework:
     csrf_protection: true
     validation:      { enable_annotations: true }
     templating:      { engines: ['twig'] } #assets_version: SomeVersionScheme
-    default_locale:  %locale%
+    default_locale:  de
     session:
         auto_start:     true
 
@@ -38,11 +38,11 @@ assetic:
 doctrine:
     dbal:
         driver:   pdo_mysql
-        host:     localhost
-        port:     3306
-        dbname:   bonnliga
-        user:     root
-        password: ~
+        host:     %database_host%
+        port:     %database_port%
+        dbname:   %database_dbname%
+        user:     %database_user%
+        password: %database_pass%
         charset:  UTF8
 
     orm:
@@ -74,3 +74,12 @@ services:
         class: Kcb\Bonnliga\Bundle\WebsiteBundle\Extension\TwigDateShiftExtension
         tags:
             - { name: twig.extension }
+
+sylius_blogger:
+    driver: doctrine/orm
+    classes:
+        model:
+            post: Kcb\Bonnliga\Bundle\WebsiteBundle\Entity\Blog\Post
+        form:
+            type:
+                post: Sylius\Bundle\BloggerBundle\Form\Type\PostType
