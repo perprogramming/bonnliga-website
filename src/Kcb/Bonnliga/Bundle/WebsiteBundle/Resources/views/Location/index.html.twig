@@ -6,8 +6,26 @@ Home
 
 {% block body %}
 
-    {{ spielstaetten | json_encode }}
+    <fieldset>
+        <legend>Spielstätten</legend>
 
-    {{ stammlokale | json_encode }}
+        <ul>
+            {% for spielstaette in spielstaetten %}
+                <li>
+                    <a href="{{ path("kcb_bonnliga_website_location_spielstaettedetail", {id: spielstaette.id}) }}">{{spielstaette.name}}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </fieldset>
+
+    <fieldset>
+        <legend>Stammlokale</legend>
+
+        <ul>
+            {% for stammlokal in stammlokale %}
+                <li>{{stammlokal.name}}</li>
+            {% endfor %}
+        </ul>
+    </fieldset>
 
 {% endblock %}
