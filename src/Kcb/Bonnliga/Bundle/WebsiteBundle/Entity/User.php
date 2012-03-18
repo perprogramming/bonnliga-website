@@ -3,11 +3,11 @@
 namespace Kcb\Bonnliga\Bundle\WebsiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use FOS\UserBundle\Model\User as BaseUser;
+use FOS\UserBundle\Entity\User as BaseUser;
 
 /**
  * @ORM\Entity
- * @ORM\Table()
+ * @ORM\Table(name="users")
  */
 class User extends BaseUser {
 
