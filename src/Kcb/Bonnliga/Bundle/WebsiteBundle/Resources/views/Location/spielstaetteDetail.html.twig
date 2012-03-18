@@ -1,0 +1,13 @@
+{% extends "KcbBonnligaWebsiteBundle:Layout:base.html.twig" %}
+
+{% block title %}
+Spielstätte
+{% endblock%}
+
+{% block body %}
+    <div class="span12">
+        <h2>{{spielstaette.name}}</h2>
+        
+        <img src="http://maps.googleapis.com/maps/api/streetview?location={{ spielstaette.adresse | url_encode }}&size=200x200&sensor=false" />
+    </div>
+{% endblock %}
