@@ -7,7 +7,38 @@ Spielstätte
 {% block body %}
     <div class="span12">
         <h2>{{spielstaette.name}}</h2>
-        
-        <img src="http://maps.googleapis.com/maps/api/streetview?location={{ spielstaette.adresse | url_encode }}&size=200x200&sensor=false" />
+
+        <ul class="thumbnails">
+            <li class="span3">
+                <div class="thumbnail">
+
+                    <img src="http://maps.googleapis.com/maps/api/streetview?location={{ spielstaette.adresse | url_encode }}&size=320x240&sensor=false" />
+
+                    <div class="caption">
+                        <h5><i class="icon-info-sign"></i> Wissenswertes</h5>
+                        <p>{{ spielstaette.beschreibung | nl2br }}</p>
+                    </div>
+                </div>
+            </li>
+            <li class="span3">
+                <div class="thumbnail">
+
+                    <img src="http://maps.google.com/maps/api/staticmap?center={{ spielstaette.adresse | url_encode }}&zoom=15&size=320x240&markers=color:blue%7C{{ spielstaette.adresse | url_encode }}&sensor=false" alt="">
+
+                    <div class="caption">
+                        <h5><i class="icon-home"></i> Adresse</h5>
+                        <p>{{ spielstaette.adresse | nl2br }}</p>
+                        <p>
+                            <a href="http://maps.google.de?q={{ spielstaette.adresse | url_encode }}">
+                                Auf google maps finden
+                            </a>
+                        </p>
+
+                        <h5><i class="icon-time"></i> Öffnungszeiten</h5>
+                        <p>{{ spielstaette.oeffnungszeiten | nl2br }}</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
     </div>
 {% endblock %}
