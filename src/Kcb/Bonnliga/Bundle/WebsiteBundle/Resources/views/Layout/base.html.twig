@@ -52,8 +52,8 @@
                     <div class="nav-collapse">
                         {{ knp_menu_render('KcbBonnligaWebsiteBundle:Builder:mainMenu', {'currentClass': 'active'}) }}
                     </div><!--/.nav-collapse -->
-                    <div class="pull-right pott">
-                        <span>Pott 10,20€</span>
+                    <div class="pott">
+                        {% render "KcbBonnligaWebsiteBundle:Pott:details" %}
                     </div>
                 </div>
             </div>
@@ -80,6 +80,12 @@
         <script type="text/javascript">
             $(document).ready(function() {
                 $('table').fixedtableheader();
+
+                $('div.pott').on('mouseenter', function() {
+                    $(this).find('div').slideDown();
+                }).on('mouseleave', function() {
+                    $(this).find('div').slideUp();
+                });
             });
         </script>
 
