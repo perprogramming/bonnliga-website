@@ -44,7 +44,7 @@ class Post extends BasePost {
     protected $content;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="boolean")
      */
     protected $published;
 
@@ -57,5 +57,10 @@ class Post extends BasePost {
      * @ORM\Column(type="date")
      */
     protected $updatedAt;
+
+    public function __construct() {
+        parent::__construct();
+        $this->incrementUpdatedAt();
+    }
 
 }
