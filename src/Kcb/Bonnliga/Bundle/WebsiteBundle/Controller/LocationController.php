@@ -23,15 +23,15 @@ class LocationController extends Controller {
     }
 
     /**
-     * @Route("/spielstaette")
+     * @Route("/spielstaette/{id}")
      * @Template
      */
-    public function spielstaetteDetailAction() {
-        return array();
+    public function spielstaetteDetailAction($id) {
+        return array('spielstaette' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Spielstaette')->find($id));
     }
 
     /**
-     * @Route("/stammlokal")
+     * @Route("/stammlokal/{id}")
      * @Template
      */
     public function stammlokalDetailAction() {
