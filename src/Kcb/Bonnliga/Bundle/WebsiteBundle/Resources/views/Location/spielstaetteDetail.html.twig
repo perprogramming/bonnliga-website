@@ -15,8 +15,25 @@ Spielstätte
                     <img src="http://maps.googleapis.com/maps/api/streetview?location={{ spielstaette.adresse | url_encode }}&size=320x240&sensor=false" />
 
                     <div class="caption">
-                        <h5><i class="icon-info-sign"></i> Wissenswertes</h5>
-                        <p>{{ spielstaette.beschreibung | nl2br }}</p>
+                        <h4><i class="icon-info-sign"></i> Wissenswertes</h4>
+                        <p>
+                            {% if spielstaette.beschreibung | length > 0 %}
+                                {{ spielstaette.beschreibung | nl2br }}
+                            {% else %}
+                                Leider haben wir keine genauen Informationen, aber hier wird zumindest gekickert!
+                            {% endif %}
+                        </p>
+                        <h4><i class="icon-calendar"></i> Nächsten Turniere</h4>
+
+                        {% if turniere|length > 0 %}
+                            <ul>
+                                {% for turnier in turniere %}
+                                    <li>{{ turnier.beginn | date('l, d. F - h:i') }} Uhr</li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p>Keine geplanten Turniere <i class="icon-thumbs-down"></i></p>
+                        {% endif %}
                     </div>
                 </div>
             </li>
@@ -26,7 +43,7 @@ Spielstätte
                     <img src="http://maps.google.com/maps/api/staticmap?center={{ spielstaette.adresse | url_encode }}&zoom=15&size=320x240&markers=color:blue%7C{{ spielstaette.adresse | url_encode }}&sensor=false" alt="">
 
                     <div class="caption">
-                        <h5><i class="icon-home"></i> Adresse</h5>
+                        <h4><i class="icon-home"></i> Adresse</h4>
                         <p>{{ spielstaette.adresse | nl2br }}</p>
                         <p>
                             <a href="http://maps.google.de?q={{ spielstaette.adresse | url_encode }}">
@@ -34,8 +51,10 @@ Spielstätte
                             </a>
                         </p>
 
-                        <h5><i class="icon-time"></i> Öffnungszeiten</h5>
-                        <p>{{ spielstaette.oeffnungszeiten | nl2br }}</p>
+                        {% if spielstaette.oeffnungszeiten | length > 0 %}
+                            <h5><i class="icon-time"></i> Öffnungszeiten</h5>
+                            <p>{{ spielstaette.oeffnungszeiten | nl2br }}</p>
+                        {% endif %}
                     </div>
                 </div>
             </li>
