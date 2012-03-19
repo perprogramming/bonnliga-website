@@ -12,13 +12,13 @@ class Version20120318214729 extends AbstractMigration
 {
     public function up(Schema $schema)
     {
-        $this->addSql("RENAME TABLE `User` TO `users`;");
+        $this->addSql("RENAME TABLE User TO users;");
 
     }
 
     public function down(Schema $schema)
     {
-        $this->addSql("RENAME TABLE `users` TO `User`;");
+        $this->addSql("RENAME TABLE users TO User;");
 
     }
 }
