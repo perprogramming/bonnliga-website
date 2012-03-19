@@ -17,7 +17,7 @@ abstract class Rangliste {
     abstract protected function getEntityRepository();
 
     public function getRaenge() {
-        return $this->getEntityRepository()->findBy(array(), array('rang' => 'asc'));
+        return $this->getEntityRepository()->findAll();
     }
 
     public function getRang(Spieler $spieler) {

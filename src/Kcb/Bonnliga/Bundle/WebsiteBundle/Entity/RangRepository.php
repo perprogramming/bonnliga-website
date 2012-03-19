@@ -6,10 +6,21 @@ use Doctrine\ORM\EntityRepository;
 
 class RangRepository extends EntityRepository {
 
+    public function findAll() {
+        $className = $this->getClassName();
+
+        return $this->getEntityManager()->createQuery("
+            SELECT r, s, l FROM $className r
+            JOIN r.spieler s
+            JOIN s.stammlokal l
+            ORDER BY r.rang ASC
+        ")->getResult();
+    }
+
     public function findOneBySpieler(Spieler $spieler) {
         $className = $this->getClassName();
 
-        $query = $this->_em->createQuery("
+        $query = $this->getEntityManager()->createQuery("
             SELECT r FROM $className r
             JOIN r.spieler s
             WHERE s.id = :id
