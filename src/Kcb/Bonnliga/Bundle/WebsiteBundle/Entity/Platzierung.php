@@ -59,4 +59,10 @@ class Platzierung {
         return $this->turnier;
     }
 
+    public function getPunkte() {
+        $teilnehmerAnzahl = count($this->getTurnier()->getPlatzierungen());
+        $platz = $this->platzierung;
+        return ($teilnehmerAnzahl - $platz) + 1;
+    }
+
 }

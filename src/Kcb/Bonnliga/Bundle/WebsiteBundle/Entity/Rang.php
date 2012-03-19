@@ -5,12 +5,12 @@ namespace Kcb\Bonnliga\Bundle\WebsiteBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="RangRepository")
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\DiscriminatorColumn(name="typ", type="string")
  * @ORM\DiscriminatorMap({"gesamt" = "GesamtRang"})
  */
-class Rang {
+abstract class Rang {
 
     /**
      * @ORM\Id
@@ -20,7 +20,7 @@ class Rang {
     protected $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     protected $rang;
 
@@ -44,16 +44,8 @@ class Rang {
      */
     protected $tendenz = 'gleich';
 
-    public function getId() {
-        return $this->id;
-    }
-
-    public function addPunkte($punkte) {
-        $this->punkte += $punkte;
-    }
-
-    public function getPunkte() {
-        return $this->punkte;
+    public function __construct(Spieler $spieler) {
+        $this->spieler = $spieler;
     }
 
     public function setRang($rang) {
@@ -67,20 +59,34 @@ class Rang {
         $this->rang = $rang;
     }
 
+    public function beruecksichtige(Platzierung $platzierung) {
+        if ($platzierung->getSpieler() != $this->spieler)
+            throw new \RuntimeException();
+        $this->punkte += $platzierung->getPunkte();
+        $this->teilnahmen++;
+    }
+
+    public function zuruecksetzen() {
+        $this->punkte = 0;
+        $this->teilnahmen = 0;
+        $this->tendenz = 'gleich';
+        $this->rang = null;
+    }
+
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getPunkte() {
+        return $this->punkte;
+    }
+
     public function getRang() {
         return $this->rang;
     }
 
-    public function setSpieler(Spieler $spieler) {
-        $this->spieler = $spieler;
-    }
-
     public function getSpieler() {
         return $this->spieler;
-    }
-
-    public function erhoeheTeilnahmen() {
-        $this->teilnahmen++;
     }
 
     public function getTeilnahmen() {
