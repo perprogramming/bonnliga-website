@@ -27,7 +27,12 @@ class LocationController extends Controller {
      * @Template
      */
     public function spielstaetteDetailAction($id) {
-        return array('spielstaette' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Spielstaette')->find($id));
+        $spielstaette = $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Spielstaette')->find($id);
+
+        $turniere = $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Turnier')->findBy(array('spielstaette' => $spielstaette->getId()), array('beginn' => 'asc'), 3);
+
+        return array('spielstaette' => $spielstaette,
+                     'turniere'     => $turniere);
     }
 
     /**
