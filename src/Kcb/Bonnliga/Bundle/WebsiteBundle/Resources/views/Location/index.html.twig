@@ -5,9 +5,28 @@ Home
 {% endblock%}
 
 {% block body %}
+    <h2>Spielstätten</h2>
 
-    {{ spielstaetten | json_encode }}
+        <ul class="thumbnails">
+            {% for spielstaette in spielstaetten %}
+                <li class="span3">
+                    <div class="thumbnail">
+                        <a href="{{ path("kcb_bonnliga_website_location_spielstaettedetail", {id: spielstaette.id}) }}"><h3>{{spielstaette.name}}</h3></a>
 
-    {{ stammlokale | json_encode }}
+                        <img src="http://maps.googleapis.com/maps/api/streetview?location={{ spielstaette.adresse | url_encode }}&size=320x240&sensor=false" />
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 
+    <div class="row-fluid">
+        <h2>Stammlokale</h2>
+
+        <ul>
+            {% for stammlokal in stammlokale %}
+                <li>{{stammlokal.name}}</li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}

@@ -17,21 +17,26 @@ class LocationController extends Controller {
      */
     public function indexAction() {
         return array(
-            'spielstaetten' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Spielstaette')->findAll(),
+            'spielstaetten' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Spielstaette')->findBy(array(), array('name' => 'asc')),
             'stammlokale' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Stammlokal')->findAll()
         );
     }
 
     /**
-     * @Route("/spielstaette")
+     * @Route("/spielstaette/{id}")
      * @Template
      */
-    public function spielstaetteDetailAction() {
-        return array();
+    public function spielstaetteDetailAction($id) {
+        $spielstaette = $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Spielstaette')->find($id);
+
+        $turniere = $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Turnier')->findBy(array('spielstaette' => $spielstaette->getId()), array('beginn' => 'asc'), 3);
+
+        return array('spielstaette' => $spielstaette,
+                     'turniere'     => $turniere);
     }
 
     /**
-     * @Route("/stammlokal")
+     * @Route("/stammlokal/{id}")
      * @Template
      */
     public function stammlokalDetailAction() {

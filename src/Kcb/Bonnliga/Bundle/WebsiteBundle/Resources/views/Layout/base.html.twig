@@ -52,8 +52,8 @@
                     <div class="nav-collapse">
                         {{ knp_menu_render('KcbBonnligaWebsiteBundle:Builder:mainMenu', {'currentClass': 'active'}) }}
                     </div><!--/.nav-collapse -->
-                    <div class="pull-right pott">
-                        <span>Pott 10,20€</span>
+                    <div class="pott">
+                        {% render "KcbBonnligaWebsiteBundle:Pott:details" %}
                     </div>
                 </div>
             </div>
@@ -75,5 +75,31 @@
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script src="{{ asset("bundles/kcbbonnligawebsite/js/bootstrap.min.js") }}"></script>
+        <script src="{{ asset("bundles/kcbbonnligawebsite/js/jquery.fixedheader.min.js") }}"></script>
+
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('table').fixedtableheader();
+
+                $('div.pott').on('mouseenter', function() {
+                    $(this).find('div').slideDown();
+                }).on('mouseleave', function() {
+                    $(this).find('div').slideUp();
+                });
+            });
+        </script>
+
+        <!-- Piwik -->
+        <script type="text/javascript">
+            var pkBaseURL = (("https:" == document.location.protocol) ? "https://stats.3-h.org/" : "http://stats.3-h.org/");
+            document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
+            </script><script type="text/javascript">
+            try {
+            var piwikTracker = Piwik.getTracker(pkBaseURL + "piwik.php", 19);
+            piwikTracker.trackPageView();
+            piwikTracker.enableLinkTracking();
+            } catch( err ) {}
+        </script><noscript><p><img src="http://stats.3-h.org/piwik.php?idsite=19" style="border:0" alt="" /></p></noscript>
+        <!-- End Piwik Tracking Code -->
     </body>
 </html>
