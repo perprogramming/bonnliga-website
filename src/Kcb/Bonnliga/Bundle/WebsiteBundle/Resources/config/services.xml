@@ -12,5 +12,9 @@
         <service id="kcb.bonnliga.rangliste_factory" class="%kcb.bonnliga.rangliste_factory.class%">
             <argument type="service" id="doctrine.orm.entity_manager" />
         </service>
+
+        <service id="dateshift.twig.extension" class="Kcb\Bonnliga\Bundle\WebsiteBundle\Extension\TwigDateShiftExtension">
+            <tag name="twig.extension" />
+        </service>
     </services>
 </container>

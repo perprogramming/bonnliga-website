@@ -16,15 +16,11 @@ class TurnierController extends Controller {
      * @Template
      */
     public function indexAction() {
-        $em = $this->getDoctrine()->getEntityManagerForClass("Kcb\Bonnliga\Bundle\WebsiteBundle\Entity\Turnier");
-
-        $comingUp = $em->createQuery('SELECT t FROM KcbBonnligaWebsiteBundle:Turnier t WHERE t.beginn > :lowerLimit ORDER BY t.beginn ASC')
-                        ->setParameter('lowerLimit', new \DateTime("now"));
-        $past     = $em->createQuery('SELECT t FROM KcbBonnligaWebsiteBundle:Turnier t WHERE t.beginn <= :lowerLimit ORDER BY t.beginn DESC')
-                        ->setParameter('lowerLimit', new \DateTime("now"));
-
-        return array('comingUp' => $comingUp->getResult(),
-                     'past'     => $past->getResult());
+        $repository = $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Turnier');
+        return array(
+            'comingUp' => $repository->getKommendeTurniere(),
+            'past' => $repository->getVergangeneTurniere()
+        );
     }
 
 }
