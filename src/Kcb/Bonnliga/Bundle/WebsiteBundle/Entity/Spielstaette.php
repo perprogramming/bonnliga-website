@@ -57,4 +57,25 @@ class Spielstaette extends Location {
         return $this->oeffnungszeiten;
     }
 
+    public function setTurniere($turniere) {
+        $this->turniere = $turniere;
+    }
+
+    public function getTurniere() {
+        return $this->turniere;
+    }
+
+    public function getKommendeTurniere() {
+        $kommendeTurniere = array();
+        foreach ($this->getTurniere() as $turnier) {
+            if ($turnier->isKommend()) {
+                $kommendeTurniere[] = $turnier;
+            }
+        }
+        usort($kommendeTurniere, function($a, $b) {
+            return $a->getBeginn() > $b->getBeginn();
+        });
+        return $kommendeTurniere;
+    }
+
 }

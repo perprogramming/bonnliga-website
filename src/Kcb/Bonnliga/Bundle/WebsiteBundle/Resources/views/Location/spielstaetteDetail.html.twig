@@ -25,9 +25,9 @@ Spielstätte
                         </p>
                         <h4><i class="icon-calendar"></i> Nächsten Turniere</h4>
 
-                        {% if turniere|length > 0 %}
+                        {% if spielstaette.kommendeTurniere|length > 0 %}
                             <ul>
-                                {% for turnier in turniere %}
+                                {% for turnier in spielstaette.kommendeTurniere %}
                                     <li>{{ turnier.beginn | date('l, d. F - h:i') }} Uhr</li>
                                 {% endfor %}
                             </ul>

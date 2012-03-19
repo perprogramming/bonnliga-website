@@ -30,6 +30,7 @@ class LoadData extends AbstractFixture {
 
             $spielstaette = new Spielstaette();
             $spielstaette->setName($name);
+            $spielstaette->setSlug(str_replace(array(' '), array('-'), strtolower($name)));
             $this->addReference("spielstaette$spielstaetteIndex", $spielstaette);
             $this->addReference("location$locationIndex", $spielstaette);
             $manager->persist($spielstaette);
@@ -44,6 +45,7 @@ class LoadData extends AbstractFixture {
 
             $stammlokal = new Stammlokal();
             $stammlokal->setName($name);
+            $stammlokal->setSlug(str_replace(array('ö', ' '), array('oe', '-'), strtolower($name)));
             $this->addReference("stammlokal$stammlokalIndex", $stammlokal);
             $this->addReference("location$locationIndex", $stammlokal);
             $manager->persist($stammlokal);

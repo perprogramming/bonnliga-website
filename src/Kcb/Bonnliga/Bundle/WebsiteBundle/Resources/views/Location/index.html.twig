@@ -11,7 +11,7 @@ Home
             {% for spielstaette in spielstaetten %}
                 <li class="span3">
                     <div class="thumbnail">
-                        <a href="{{ path("kcb_bonnliga_website_location_spielstaettedetail", {id: spielstaette.id}) }}"><h3>{{spielstaette.name}}</h3></a>
+                        <a href="{{ spielstaettePath(spielstaette) }}"><h3>{{spielstaette.name}}</h3></a>
 
                         <img src="http://maps.googleapis.com/maps/api/streetview?location={{ spielstaette.adresse | url_encode }}&size=320x240&sensor=false" />
                     </div>

@@ -56,15 +56,24 @@ class Turnier {
         return $this->spielstaette;
     }
 
-    public function setBeginn($beginn)
-    {
+    public function setBeginn($beginn) {
         $this->beginn = $beginn;
     }
 
-    public function getBeginn()
-    {
+    public function getBeginn() {
         return $this->beginn;
     }
 
+    public function isKommend() {
+        return $this->beginn > new \DateTime('now');
+    }
+
+    public function isVorbei() {
+        return !$this->isKommend();
+    }
+
+    public function isNichtBald() {
+        return $this->beginn > new \DateTime('next week');
+    }
 
 }

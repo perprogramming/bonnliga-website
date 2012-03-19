@@ -25,6 +25,11 @@ abstract class Location {
     protected $name;
 
     /**
+     * @ORM\Column
+     */
+    protected $slug;
+
+    /**
      * @ORM\OneToMany(targetEntity="Spieler", mappedBy="stammlokal")
      */
     protected $stammspieler;
@@ -43,6 +48,14 @@ abstract class Location {
 
     public function getName() {
         return $this->name;
+    }
+
+    public function setSlug($slug) {
+        $this->slug = $slug;
+    }
+
+    public function getSlug() {
+        return $this->slug;
     }
 
 }

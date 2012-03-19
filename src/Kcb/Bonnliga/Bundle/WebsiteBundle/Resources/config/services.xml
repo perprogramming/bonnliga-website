@@ -6,6 +6,7 @@
 
     <parameters>
         <parameter key="kcb.bonnliga.rangliste_factory.class">Kcb\Bonnliga\Bundle\WebsiteBundle\Rangliste\RanglisteFactory</parameter>
+        <parameter key="kcb.bonnliga.twig_extension.class">Kcb\Bonnliga\Bundle\WebsiteBundle\Twig\Extension</parameter>
     </parameters>
 
     <services>
@@ -13,7 +14,8 @@
             <argument type="service" id="doctrine.orm.entity_manager" />
         </service>
 
-        <service id="dateshift.twig.extension" class="Kcb\Bonnliga\Bundle\WebsiteBundle\Extension\TwigDateShiftExtension">
+        <service id="kcb.bonnliga.twig_extension" class="%kcb.bonnliga.twig_extension.class%">
+            <argument type="service" id="router" />
             <tag name="twig.extension" />
         </service>
     </services>

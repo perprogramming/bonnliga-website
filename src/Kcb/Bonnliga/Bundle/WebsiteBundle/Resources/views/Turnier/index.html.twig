@@ -17,17 +17,7 @@ Turniere
 
                 <div class="row-fluid show-grid">
             {% endif %}
-
-            <div class="span3 {% if turnier.beginn > date_shift('+1 week') %}farAway{% endif %}">
-                <h4>{{ turnier.beginn | date('l, d. F') }}</h4>
-                <ul class="location }">
-                    <li class="icon-home">
-                        <a href="{{ path("kcb_bonnliga_website_location_spielstaettedetail", {id: turnier.spielstaette.id}) }}"><strong>{{ turnier.spielstaette.name }}</strong></a>,
-                        {{ turnier.spielstaette.adresse }}
-                    </li>
-                    <li class="icon-info-sign">{{ turnier.spielstaette.beschreibung | nl2br }}</li>
-                </ul>
-            </div>
+            {{ _self.turnierDetails(turnier) }}
         {% endfor %}
 
     </fieldset>
@@ -43,18 +33,23 @@ Turniere
 
                 <div class="row-fluid show-grid">
             {% endif %}
-
-            <div class="span3 {% if turnier.beginn > date_shift('+1 week') %}farAway{% endif %}">
-                <h4>{{ turnier.beginn | date('l, d. F') }}</h4>
-                <ul class="location }">
-                    <li class="icon-home">
-                        <a href="{{ path("kcb_bonnliga_website_location_spielstaettedetail", {id: turnier.spielstaette.id}) }}"><strong>{{ turnier.spielstaette.name }}</strong></a>,
-                        {{ turnier.spielstaette.adresse }}
-                    </li>
-                    <li class="icon-info-sign">{{ turnier.spielstaette.beschreibung | nl2br }}</li>
-                    <li class="icon-trophy">Ergebnis</li>
-                </ul>
-            </div>
+            {{ _self.turnierDetails(turnier) }}
         {% endfor %}
     </fieldset>
 {% endblock %}
+
+{% macro turnierDetails(turnier) %}
+    <div class="span3 {% if turnier.nichtBald %}farAway{% endif %}">
+        <h4>{{ turnier.beginn | date('l, d. F') }}</h4>
+        <ul class="location }">
+            <li class="icon-home">
+                <a href="{{ spielstaettePath(turnier.spielstaette) }}"><strong>{{ turnier.spielstaette.name }}</strong></a>,
+                {{ turnier.spielstaette.adresse }}
+            </li>
+            <li class="icon-info-sign">{{ turnier.spielstaette.beschreibung | nl2br }}</li>
+            {% if turnier.vorbei %}
+                <li class="icon-trophy">Ergebnis</li>
+            {% endif %}
+        </ul>
+    </div>
+{% endmacro %}

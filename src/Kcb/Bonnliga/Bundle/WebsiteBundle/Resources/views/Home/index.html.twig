@@ -24,7 +24,7 @@ Home
                     {% for turnier in comingUp %}
                         <li>
                             {{ turnier.beginn | date('l, d. F') }} um {{ turnier.beginn | date('h:i') }}Uhr im
-                            <a href="{{ path("kcb_bonnliga_website_location_spielstaettedetail", {id: turnier.spielstaette.id}) }}"><strong>{{ turnier.spielstaette.name }}</strong></a>
+                            <a href="{{ spielstaettePath(turnier.spielstaette) }}"><strong>{{ turnier.spielstaette.name }}</strong></a>
                         </li>
                     {% endfor %}
                 </ul>
