@@ -13,7 +13,14 @@ class HomeController extends Controller {
      * @Template
      */
     public function indexAction() {
+        $em = $this->getDoctrine()->getEntityManagerForClass("Kcb\Bonnliga\Bundle\WebsiteBundle\Entity\Turnier");
+
+        $comingUp = $em->createQuery('SELECT t FROM KcbBonnligaWebsiteBundle:Turnier t WHERE t.beginn > :lowerLimit AND t.beginn < :upperLimit ORDER BY t.beginn ASC')
+                       ->setParameter('lowerLimit', new \DateTime("now"))
+                       ->setParameter('upperLimit', new \DateTime("+7days"));
+
         return array(
+            'comingUp' => $comingUp->getResult()
         );
     }
 

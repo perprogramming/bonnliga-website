@@ -1,8 +1,45 @@
 {% extends "KcbBonnligaWebsiteBundle:Layout:base.html.twig" %}
 
 {% block title %}
-    Home
+Home
 {% endblock%}
 
 {% block body %}
+    <div class="span12">
+        <div class="hero-unit">
+            <h1>Bonnliga <small> since 2008</small></h1>
+            <p>Bonns erste und bisher einzigartige Tischfussballliga. Kickern für jeden, vom Anfänger bis zum Profi.</p>
+            <p><a class="btn btn-primary btn-large" href="{{ path("kcb_bonnliga_website_fact_index") }}">Neu hier?</a></p>
+        </div>
+    </div>
+
+    </div>
+
+    <div class="row-fluid">
+        <div class="span4">
+            <h2><i class="icon-calendar"></i> Die nächsten Turniere</h2>
+
+            <p>
+                <ul>
+                    {% for turnier in comingUp %}
+                        <li>
+                            {{ turnier.beginn | date('l, d. F') }} um {{ turnier.beginn | date('h:i') }}Uhr im
+                            <a href="{{ path("kcb_bonnliga_website_location_spielstaettedetail", {id: turnier.spielstaette.id}) }}"><strong>{{ turnier.spielstaette.name }}</strong></a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </p>
+            <p><a class="btn" href="{{ path("kcb_bonnliga_website_turnier_index") }}">Alle »</a></p>
+        </div><!--/span-->
+        <div class="span4">
+            <h2>Heading</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn" href="#">View details »</a></p>
+        </div><!--/span-->
+        <div class="span4">
+            <h2>Heading</h2>
+            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+            <p><a class="btn" href="#">View details »</a></p>
+        </div><!--/span-->
+    </div>
 {% endblock %}
