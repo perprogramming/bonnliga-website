@@ -58,17 +58,33 @@ a[href^="mailto"]:after {
 }*/
 
 .pott {
+    width: 100px;
     .navbarVerticalAlign(16px);
+    .border-radius(10px);
+    background-color: @gray;
+
+    position: absolute;
+    padding: 4px 9px;
+    margin-top: 6px;
+    right: 20px;
+
+    color: @white;
+
+    ul {
+        margin-left: 0px;
+        list-style-type: none;
+    }
 
     span {
-        .border-radius(10px);
-
-        padding: 4px 9px;
-        background-color: @gray;
-
-        color: @white;
-
         font-weight: bold;
+    }
+
+    hr {
+        margin: 5px 0 5px 0;
+    }
+
+    div {
+        display: none;
     }
 }
 
