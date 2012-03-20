@@ -79,7 +79,14 @@ class Platzierung {
          * ...
          * bis zu den top3 Teams (6 Teilnehmer), die dann jeweils eine Stufe sind
          */
-        return ($s - floor(log(max(1, $p - 1)) / log(2))) + floor((($n - $p) + 6) / $n);
+        $punkte = ($s - floor(log(max(1, $p - 1)) / log(2))) + floor((($n - $p) + 6) / $n);
+
+        // Bei weniger als 8 Spielern reduzieren wir die Punkte
+        if ($n < 8) {
+            $punkte -= 2;
+        }
+        
+        return $punkte;
     }
 
 }
