@@ -12,7 +12,7 @@ Spielstätte
 
         <div class="thumbnail">
             {% if spielstaette.logoUrl %}
-                <img src="{{ spielstaette.logoUrl }}" alt="Logo {{ spielstaette.name }}"/>
+                <img src="{{ spielstaette.logoUrl }}" alt="Logo {{ spielstaette.name }}" class="pull-left"/>
             {% endif %}
 
             <img src="http://maps.googleapis.com/maps/api/streetview?location={{ spielstaette.adresse | url_encode }}&size=320x240&sensor=false" />
