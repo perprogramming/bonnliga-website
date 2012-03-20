@@ -51,6 +51,9 @@ class LoadData extends AbstractFixture {
             $manager->persist($stammlokal);
         }
 
+        $einstufungen = array(Spieler::EINSTUFUNG_HOBBY, Spieler::EINSTUFUNG_PRO);
+        $geschlechter = array(Spieler::GESCHLECHT_MAENNLICH, Spieler::GESCHLECHT_WEIBLICH);
+
         for ($n = 0; $n < 300; $n++) {
             $spielerIndex = ++$this->spielerIndex;
             $locationIndex = rand(1, $this->locationIndex);
@@ -59,6 +62,8 @@ class LoadData extends AbstractFixture {
             $spieler = new Spieler();
             $spieler->setName("Spieler $spielerIndex");
             $spieler->setStammlokal($stammlokal);
+            $spieler->setEinstufung($einstufungen[rand(0, 1)]);
+            $spieler->setGeschlecht($geschlechter[rand(0, 1)]);
             $this->addReference("spieler$spielerIndex", $spieler);
             $manager->persist($spieler);
         }

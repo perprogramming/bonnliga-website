@@ -9,6 +9,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Spieler {
 
+    // Fake enum - Geschlecht
+    const GESCHLECHT_WEIBLICH = "Weiblich";
+    const GESCHLECHT_MAENNLICH = "Männlich";
+
+    // Fake enum - Status
+    const EINSTUFUNG_PRO = "Pro";
+    const EINSTUFUNG_HOBBY = "Hobby";
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
@@ -30,6 +38,16 @@ class Spieler {
      * @ORM\OneToMany(targetEntity="Platzierung", mappedBy="spieler")
      */
     protected $platzierungen;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $geschlecht;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $einstufung;
 
     public function __construct() {
         $this->platzierungen = new \Doctrine\Common\Collections\ArrayCollection();
@@ -59,4 +77,29 @@ class Spieler {
         return $this->platzierungen;
     }
 
+    public function setGeschlecht($geschlecht)
+    {
+        if(!in_array($geschlecht, array(self::GESCHLECHT_MAENNLICH, self::GESCHLECHT_WEIBLICH)))
+            throw new \InvalidArgumentException("Ungültiges Geschlecht");
+
+        $this->geschlecht = $geschlecht;
+    }
+
+    public function getGeschlecht()
+    {
+        return $this->geschlecht;
+    }
+
+    public function setEinstufung($einstufung)
+    {
+        if(!in_array($einstufung, array(self::EINSTUFUNG_HOBBY, self::EINSTUFUNG_PRO)))
+                    throw new \InvalidArgumentException("Ungültige Einstufung");
+
+        $this->einstufung = $einstufung;
+    }
+
+    public function getEinstufung()
+    {
+        return $this->einstufung;
+    }
 }
