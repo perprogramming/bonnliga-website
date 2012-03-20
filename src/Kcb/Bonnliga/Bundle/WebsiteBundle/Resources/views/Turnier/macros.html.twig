@@ -20,6 +20,9 @@
     </div>
     <div>
         <span class="icon-home"></span> {{ turnier.spielstaette.name }}
+        {% if turnier.platzierungen | length > 0 %}
+        <br /><span class="icon-user"></span> {{ turnier.platzierungen | length }}
+        {% endif %}
     </div>
 {% endmacro %}
 
