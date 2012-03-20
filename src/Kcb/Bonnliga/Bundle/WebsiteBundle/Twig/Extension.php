@@ -45,6 +45,7 @@ class Extension extends \Twig_Extension {
     }
 
     public function getFormattedDate(\DateTime $date, $format) {
+        setlocale(LC_ALL, 'de_DE');
         return strftime($format, $date->getTimestamp());
     }
 
