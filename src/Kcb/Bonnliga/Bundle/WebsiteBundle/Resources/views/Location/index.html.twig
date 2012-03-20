@@ -10,10 +10,12 @@ Home
         {% for spielstaette in spielstaetten %}
             <li class="span3">
                 <div class="thumbnail">
-                    <strong><a href="{{ spielstaettePath(spielstaette) }}">{{spielstaette.name}}</a>
+                    <h3><a href="{{ spielstaettePath(spielstaette) }}">{{spielstaette.name}}</a></h3>
 
                     {% if spielstaette.logoUrl %}
                         <img src="{{ spielstaette.logoUrl }}" alt="Logo {{ spielstaette.name }}"/>
+                    {% else %}
+                        <img src="http://maps.googleapis.com/maps/api/streetview?location={{ spielstaette.adresse | url_encode }}&size=260x220&sensor=false" />
                     {% endif %}
                 </div>
             </li>
