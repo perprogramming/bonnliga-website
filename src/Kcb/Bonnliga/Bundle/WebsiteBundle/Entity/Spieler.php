@@ -27,7 +27,12 @@ class Spieler {
     /**
      * @ORM\Column
      */
-    protected $name;
+    protected $vorname;
+
+    /**
+     * @ORM\Column
+     */
+    protected $nachname;
 
     /**
      * @ORM\ManyToOne(targetEntity="Location", inversedBy="stammspieler")
@@ -57,12 +62,8 @@ class Spieler {
         return $this->id;
     }
 
-    public function setName($name) {
-        $this->name = $name;
-    }
-
     public function getName() {
-        return $this->name;
+        return $this->vorname . ' ' . substr($this->nachname, 0, 1) . '.';
     }
 
     public function setStammlokal(Location $stammlokal) {
@@ -101,5 +102,21 @@ class Spieler {
     public function getEinstufung()
     {
         return $this->einstufung;
+    }
+
+    public function setNachname($nachname) {
+        $this->nachname = $nachname;
+    }
+
+    public function getNachname() {
+        return $this->nachname;
+    }
+
+    public function setVorname($vorname) {
+        $this->vorname = $vorname;
+    }
+
+    public function getVorname() {
+        return $this->vorname;
     }
 }
