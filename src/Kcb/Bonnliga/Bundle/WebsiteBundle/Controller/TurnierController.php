@@ -23,4 +23,14 @@ class TurnierController extends Controller {
         );
     }
 
+    /**
+     * @Route("/{id}/", requirements={"id"="\d+"})
+     * @Template
+     */
+    public function detailAction($id) {
+        return array(
+            'turnier' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Turnier')->find($id)
+        );
+    }
+
 }

@@ -1,63 +1,42 @@
 {% extends "KcbBonnligaWebsiteBundle:Layout:base.html.twig" %}
+{% import "KcbBonnligaWebsiteBundle:Turnier:macros.html.twig" as turnierMacros %}
 
 {% block title %}
 Spielstätte
 {% endblock%}
 
 {% block body %}
-    <div class="span12">
-        <h2>{{spielstaette.name}}</h2>
+    <div class="span10">
+        <h1>{{spielstaette.name}}</h1>
 
-        <ul class="thumbnails">
-            <li class="span3">
-                <div class="thumbnail">
+        {% if spielstaette.logoUrl %}
+            <div><img src="{{ spielstaette.logoUrl }}" alt="Logo {{ spielstaette.name }}"/></div>
+        {% endif %}
 
-                    <img src="http://maps.googleapis.com/maps/api/streetview?location={{ spielstaette.adresse | url_encode }}&size=320x240&sensor=false" />
+        {% if spielstaette.beschreibung %}
+            <h2><i class="icon-info-sign"></i> Wissenswertes</h2>
+            <p>{{ spielstaette.beschreibung | nl2br }}</p>
+        {% endif %}
 
-                    <div class="caption">
-                        <h4><i class="icon-info-sign"></i> Wissenswertes</h4>
-                        <p>
-                            {% if spielstaette.beschreibung | length > 0 %}
-                                {{ spielstaette.beschreibung | nl2br }}
-                            {% else %}
-                                Leider haben wir keine genauen Informationen, aber hier wird zumindest gekickert!
-                            {% endif %}
-                        </p>
-                        <h4><i class="icon-calendar"></i> Nächsten Turniere</h4>
+        <h2><i class="icon-calendar"></i> Nächsten Turniere</h2>
+        {% if spielstaette.kommendeTurniere %}
+            {{ turnierMacros.list(spielstaette.kommendeTurniere) }}
+        {% else %}
+            <p>Keine geplanten Turniere <i class="icon-thumbs-down"></i></p>
+        {% endif %}
 
-                        {% if spielstaette.kommendeTurniere|length > 0 %}
-                            <ul>
-                                {% for turnier in spielstaette.kommendeTurniere %}
-                                    <li>{{ turnier.beginn | date('l, d. F - h:i') }} Uhr</li>
-                                {% endfor %}
-                            </ul>
-                        {% else %}
-                            <p>Keine geplanten Turniere <i class="icon-thumbs-down"></i></p>
-                        {% endif %}
-                    </div>
-                </div>
-            </li>
-            <li class="span3">
-                <div class="thumbnail">
+        {% if spielstaette.adresse %}
+            <h2><i class="icon-home"></i> Adresse</h2>
+            <div class="thumbnail span3">
+                    <img src="http://maps.google.com/maps/api/staticmap?center={{ spielstaette.adresse | url_encode }}&zoom=15&size=320x240&markers=color:blue%7C{{ spielstaette.adresse | url_encode }}&sensor=false" alt="Karte {{ spielstaette.name }}" />
+            </div>
+            <p>{{ spielstaette.adresse | nl2br }}</p>
+            <p><a href="http://maps.google.de?q={{ spielstaette.adresse | url_encode }}">Auf google maps finden</a></p>
+        {% endif %}
 
-                    <img src="http://maps.google.com/maps/api/staticmap?center={{ spielstaette.adresse | url_encode }}&zoom=15&size=320x240&markers=color:blue%7C{{ spielstaette.adresse | url_encode }}&sensor=false" alt="">
-
-                    <div class="caption">
-                        <h4><i class="icon-home"></i> Adresse</h4>
-                        <p>{{ spielstaette.adresse | nl2br }}</p>
-                        <p>
-                            <a href="http://maps.google.de?q={{ spielstaette.adresse | url_encode }}">
-                                Auf google maps finden
-                            </a>
-                        </p>
-
-                        {% if spielstaette.oeffnungszeiten | length > 0 %}
-                            <h5><i class="icon-time"></i> Öffnungszeiten</h5>
-                            <p>{{ spielstaette.oeffnungszeiten | nl2br }}</p>
-                        {% endif %}
-                    </div>
-                </div>
-            </li>
-        </ul>
+        {% if spielstaette.oeffnungszeiten %}
+            <h2><i class="icon-time"></i> Öffnungszeiten</h2>
+            <p>{{ spielstaette.oeffnungszeiten | nl2br }}</p>
+        {% endif %}
     </div>
 {% endblock %}

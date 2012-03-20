@@ -16,7 +16,9 @@ class FactController extends Controller {
      * @Template
      */
     public function indexAction() {
-        return array();
+        return array(
+            'spielstaetten' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Spielstaette')->findBy(array(), array('name' => 'asc'))
+        );
     }
 
     /**

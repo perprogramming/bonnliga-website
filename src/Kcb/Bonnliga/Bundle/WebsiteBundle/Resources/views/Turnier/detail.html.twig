@@ -1,0 +1,44 @@
+{% extends "KcbBonnligaWebsiteBundle:Layout:base.html.twig" %}
+{% import "KcbBonnligaWebsiteBundle:Turnier:macros.html.twig" as turnierMacros %}
+
+{% block title %}
+    Turnier
+{% endblock%}
+
+{% block body %}
+    <h1><span class="icon-calendar"></span> {{ turnierMacros.date(turnier) }}</h1>
+    <h2><span class="icon-home"></span> {{ turnier.spielstaette.name }}</h2>
+
+    <div>
+        {{ turnier.beschreibung | nl2br }}
+    </div>
+
+    {% if turnier.vorbei and turnier.platzierungen %}
+        <h2>Ergebnis</h2>
+        <div class="row-fluid">
+            <div class="span12">
+                <table class="table table-striped table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Platz</th>
+                            <th>Name</th>
+                            <th>Stammlokal</th>
+                            <th>Punkte</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for platzierung in turnier.platzierungen %}
+                            <tr>
+                                <td>{{ platzierung.platzierung }}.</td>
+                                <td>{{ platzierung.spieler.name }}</td>
+                                <td>{{ platzierung.spieler.stammlokal.name }}</td>
+                                <td>{{ platzierung.punkte }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endif %}
+
+{% endblock %}
