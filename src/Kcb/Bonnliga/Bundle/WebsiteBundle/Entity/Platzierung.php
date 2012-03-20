@@ -60,9 +60,26 @@ class Platzierung {
     }
 
     public function getPunkte() {
-        $teilnehmerAnzahl = count($this->getTurnier()->getPlatzierungen());
-        $platz = $this->platzierung;
-        return ($teilnehmerAnzahl - $platz) + 1;
+        // Teilnehmeranzahl && Platzierung
+        $n = count($this->getTurnier()->getPlatzierungen());
+        $p = $this->platzierung;
+
+        // Wenn nur ein Spieler, dann gibt's auch keine Punkte
+        if ($n < 2) return 0;
+
+        // Stufen
+        $s = floor(log($n - 1) / log(2)) + 2;
+
+        /*
+         * Kurzbeschreibung:
+         * ln(n-1)/ln(2) ~ wie oft kann ich n durch 2 teilen -> Anzahl Punktstufen
+         *
+         * die untere H√§lfte der Teilnehmer bekommt 2 Punkte
+         * die untere H√§lfte des Rests bekommt 3 Punkte
+         * ...
+         * bis zu den top3 Teams (6 Teilnehmer), die dann jeweils eine Stufe sind
+         */
+        return ($s - floor(log(max(1, $p - 1)) / log(2))) + floor((($n - $p) + 6) / $n);
     }
 
 }
