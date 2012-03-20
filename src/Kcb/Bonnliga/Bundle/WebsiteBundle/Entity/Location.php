@@ -58,4 +58,8 @@ abstract class Location {
         return $this->slug;
     }
 
+    public function getStammspieler() {
+        return $this->stammspieler;
+    }
+
 }

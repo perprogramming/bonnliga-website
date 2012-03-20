@@ -15,6 +15,16 @@ class Spielstaette extends Location {
     protected $beschreibung;
 
     /**
+     * @ORM\Column
+     */
+    protected $website;
+
+    /**
+     * @ORM\Column
+     */
+    protected $logoUrl;
+
+    /**
      * @ORM\Column(type="text")
      */
     protected $oeffnungszeiten;
@@ -30,7 +40,7 @@ class Spielstaette extends Location {
     protected $turniere;
 
     public function __construct() {
-        $this->platzierungen = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->turniere = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function setAdresse($adresse) {
@@ -57,10 +67,6 @@ class Spielstaette extends Location {
         return $this->oeffnungszeiten;
     }
 
-    public function setTurniere($turniere) {
-        $this->turniere = $turniere;
-    }
-
     public function getTurniere() {
         return $this->turniere;
     }
@@ -76,6 +82,22 @@ class Spielstaette extends Location {
             return $a->getBeginn() > $b->getBeginn();
         });
         return $kommendeTurniere;
+    }
+
+    public function setLogoUrl($logoUrl) {
+        $this->logoUrl = $logoUrl;
+    }
+
+    public function getLogoUrl() {
+        return $this->logoUrl;
+    }
+
+    public function setWebsite($website) {
+        $this->website = $website;
+    }
+
+    public function getWebsite() {
+        return $this->website;
     }
 
 }
