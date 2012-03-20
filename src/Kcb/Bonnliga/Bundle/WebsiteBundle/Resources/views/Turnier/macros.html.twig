@@ -1,0 +1,24 @@
+{% macro compact(turnier) %}
+    {{ _self.datum(turnier) }} um {{ turnier.beginn | date('H:m') }} Uhr im
+    <a href="{{ spielstaettePath(turnier.spielstaette) }}"><strong>{{ turnier.spielstaette.name }}</strong></a>
+{% endmacro %}
+
+{% macro medium(turnier) %}
+    <div class="span3 {% if turnier.nichtBald %}farAway{% endif %}">
+        <h4>{{ _self.datum(turnier) }}</h4>
+        <ul class="location }">
+            <li class="icon-home">
+                <a href="{{ spielstaettePath(turnier.spielstaette) }}"><strong>{{ turnier.spielstaette.name }}</strong></a>,
+                {{ turnier.spielstaette.adresse }}
+            </li>
+            <li class="icon-info-sign">{{ turnier.spielstaette.beschreibung | nl2br }}</li>
+            {% if turnier.vorbei %}
+                <li class="icon-trophy">Ergebnis</li>
+            {% endif %}
+        </ul>
+    </div>
+{% endmacro %}
+
+{% macro datum(turnier) %}
+    {{ turnier.beginn | date('EEEE, d. MMMM') }}
+{% endmacro %}

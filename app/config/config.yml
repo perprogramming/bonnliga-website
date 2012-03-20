@@ -4,7 +4,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: de }
+    translator:      { fallback: de }
     secret:          %secret%
     charset:         UTF-8
     router:          { resource: "%kernel.root_dir%/config/routing.yml" }
@@ -61,8 +61,8 @@ jms_security_extra:
     secure_all_services: false
 
 knp_menu:
-    twig:  # use "twig: false" to disable the Twig extension and the TwigRenderer
-        template: "KcbBonnligaWebsiteBundle::knp_menu.html.twig"
+    twig:
+        template: "KcbBonnligaWebsiteBundle:Layout:menu.html.twig"
 
 fos_user:
     db_driver: orm

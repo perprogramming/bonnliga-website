@@ -6,13 +6,16 @@ use Kcb\Bonnliga\Bundle\WebsiteBundle\Entity\Spielstaette;
 use Kcb\Bonnliga\Bundle\WebsiteBundle\Entity\Stammlokal;
 use Kcb\Bonnliga\Bundle\WebsiteBundle\Entity\Turnier;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\DependencyInjection\Container;
 
 class Extension extends \Twig_Extension {
 
     protected $urlGenerator;
+    protected $container;
 
-    public function __construct(UrlGeneratorInterface $urlGenerator) {
+    public function __construct(UrlGeneratorInterface $urlGenerator, Container $container) {
         $this->urlGenerator = $urlGenerator;
+        $this->container = $container;
     }
 
     public function getFunctions() {
@@ -24,12 +27,30 @@ class Extension extends \Twig_Extension {
         );
     }
 
+    public function getFilters() {
+        return array(
+            'date' => new \Twig_Filter_Method($this, 'getFormattedDate')
+        );
+    }
+
     public function getSpielstaettePath(Spielstaette $spielstaette) {
         return $this->urlGenerator->generate('kcb_bonnliga_website_location_spielstaettedetail', array('slug' => $spielstaette->getSlug()));
     }
 
     public function getStammlokalPath(Stammlokal $stammlokal) {
         return $this->urlGenerator->generate('kcb_bonnliga_website_location_stammlokaldetail', array('slug' => $stammlokal->getSlug()));
+    }
+
+    public function getFormattedDate(\DateTime $date, $format) {
+        $formatter = new \IntlDateFormatter(
+            $this->container->get('request')->getLocale(),
+            \IntlDateFormatter::FULL,
+            \IntlDateFormatter::FULL,
+            date_default_timezone_get(),
+            \IntlDateFormatter::GREGORIAN,
+            $format
+        );
+        return $formatter->format($date);
     }
 
     public function getName() {

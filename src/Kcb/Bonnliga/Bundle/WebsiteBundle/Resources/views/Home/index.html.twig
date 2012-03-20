@@ -1,4 +1,5 @@
 {% extends "KcbBonnligaWebsiteBundle:Layout:base.html.twig" %}
+{% import "KcbBonnligaWebsiteBundle:Turnier:macros.html.twig" as turnierMacros %}
 
 {% block title %}
 Home
@@ -23,8 +24,7 @@ Home
                 <ul>
                     {% for turnier in comingUp %}
                         <li>
-                            {{ turnier.beginn | date('l, d. F') }} um {{ turnier.beginn | date('h:i') }}Uhr im
-                            <a href="{{ spielstaettePath(turnier.spielstaette) }}"><strong>{{ turnier.spielstaette.name }}</strong></a>
+                            {{ turnierMacros.compact(turnier) }}
                         </li>
                     {% endfor %}
                 </ul>

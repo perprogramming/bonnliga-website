@@ -1,4 +1,5 @@
 {% extends "KcbBonnligaWebsiteBundle:Layout:base.html.twig" %}
+{% import "KcbBonnligaWebsiteBundle:Turnier:macros.html.twig" as turnierMacros %}
 
 {% block title %}
 Turniere
@@ -17,7 +18,7 @@ Turniere
 
                 <div class="row-fluid show-grid">
             {% endif %}
-            {{ _self.turnierDetails(turnier) }}
+            {{ turnierMacros.medium(turnier) }}
         {% endfor %}
 
     </fieldset>
@@ -33,23 +34,7 @@ Turniere
 
                 <div class="row-fluid show-grid">
             {% endif %}
-            {{ _self.turnierDetails(turnier) }}
+            {{ turnierMacros.medium(turnier) }}
         {% endfor %}
     </fieldset>
 {% endblock %}
-
-{% macro turnierDetails(turnier) %}
-    <div class="span3 {% if turnier.nichtBald %}farAway{% endif %}">
-        <h4>{{ turnier.beginn | date('l, d. F') }}</h4>
-        <ul class="location }">
-            <li class="icon-home">
-                <a href="{{ spielstaettePath(turnier.spielstaette) }}"><strong>{{ turnier.spielstaette.name }}</strong></a>,
-                {{ turnier.spielstaette.adresse }}
-            </li>
-            <li class="icon-info-sign">{{ turnier.spielstaette.beschreibung | nl2br }}</li>
-            {% if turnier.vorbei %}
-                <li class="icon-trophy">Ergebnis</li>
-            {% endif %}
-        </ul>
-    </div>
-{% endmacro %}
