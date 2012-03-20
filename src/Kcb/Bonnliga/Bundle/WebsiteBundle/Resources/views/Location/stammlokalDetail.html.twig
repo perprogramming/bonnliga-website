@@ -1,9 +1,12 @@
 {% extends "KcbBonnligaWebsiteBundle:Layout:base.html.twig" %}
+{% import "KcbBonnligaWebsiteBundle:Location:macros.html.twig" as locationMacros %}
 
 {% block title %}
-Stammlokal
+    {{ stammlokal.name }}
 {% endblock%}
 
 {% block body %}
-Stammlokal-Detail
+    <h1>{{ stammlokal.name }}</h1>
+
+    {{ locationMacros.stammspieler(stammlokal) }}
 {% endblock %}

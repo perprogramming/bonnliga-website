@@ -1,5 +1,6 @@
 {% extends "KcbBonnligaWebsiteBundle:Layout:base.html.twig" %}
 {% import "KcbBonnligaWebsiteBundle:Turnier:macros.html.twig" as turnierMacros %}
+{% import "KcbBonnligaWebsiteBundle:Location:macros.html.twig" as locationMacros %}
 
 {% block title %}
 Spielstätte
@@ -38,5 +39,7 @@ Spielstätte
             <h2><i class="icon-time"></i> Öffnungszeiten</h2>
             <p>{{ spielstaette.oeffnungszeiten | nl2br }}</p>
         {% endif %}
+
+        {{ locationMacros.stammspieler(spielstaette) }}
     </div>
 {% endblock %}

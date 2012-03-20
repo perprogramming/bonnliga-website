@@ -1,0 +1,10 @@
+{% macro stammspieler(location) %}
+    <h2>Stammspieler</h2>
+    <ul>
+        {% for spieler in location.stammspieler %}
+            <li>
+                {{ spieler.name }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endmacro %}
