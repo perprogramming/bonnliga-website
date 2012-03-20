@@ -28,20 +28,22 @@ Spielstätte
     <div class="span6">
         <h2><i class="icon-home"></i> Adresse</h2>
 
-        {% if spielstaette.adresse %}
-            <div class="thumbnail">
-                    <img src="http://maps.google.com/maps/api/staticmap?center={{ spielstaette.adresse | url_encode }}&zoom=15&size=320x240&markers=color:blue%7C{{ spielstaette.adresse | url_encode }}&sensor=false" alt="Karte {{ spielstaette.name }}" />
-            </div>
-            <p>{{ spielstaette.adresse | nl2br }}</p>
-            <p><a href="http://maps.google.de?q={{ spielstaette.adresse | url_encode }}">Auf google maps finden</a></p>
-        {% endif %}
+        <div class="thumbnail">
+            {% if spielstaette.adresse %}
+                <img src="http://maps.google.com/maps/api/staticmap?center={{ spielstaette.adresse | url_encode }}&zoom=15&size=320x240&markers=color:blue%7C{{ spielstaette.adresse | url_encode }}&sensor=false" alt="Karte {{ spielstaette.name }}" />
 
-        {% if spielstaette.oeffnungszeiten %}
-            <h2><i class="icon-time"></i> Öffnungszeiten</h2>
-            <p>{{ spielstaette.oeffnungszeiten | nl2br }}</p>
-        {% endif %}
+                <p>{{ spielstaette.adresse | nl2br }}</p>
+                <p><a href="http://maps.google.de?q={{ spielstaette.adresse | url_encode }}">Auf google maps finden</a></p>
+            {% endif %}
+
+            {% if spielstaette.oeffnungszeiten %}
+                <h2><i class="icon-time"></i> Öffnungszeiten</h2>
+                <p>{{ spielstaette.oeffnungszeiten | nl2br }}</p>
+            {% endif %}
+        </div>
     </div>
-
+</div>
+<div class="row-fluid">
     <div class="span6">
         <h2><i class="icon-calendar"></i> Nächsten Turniere</h2>
         {% if spielstaette.kommendeTurniere %}
@@ -55,4 +57,5 @@ Spielstätte
     <div class="span6">
         {{ locationMacros.stammspieler(spielstaette) }}
     </div>
+</div>
 {% endblock %}
