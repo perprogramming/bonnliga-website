@@ -69,6 +69,7 @@ class LoadData extends AbstractFixture {
             $spielstaette = $this->getReference("spielstaette$spielstaetteIndex");
 
             $turnier = new Turnier();
+            $turnier->setBeschreibung('');
 
             $beliebigerZeitpunkt = time() - (rand(-20, 20) * 60 * 60 * 24);
 
