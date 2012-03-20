@@ -45,15 +45,7 @@ class Extension extends \Twig_Extension {
     }
 
     public function getFormattedDate(\DateTime $date, $format) {
-        $formatter = new \IntlDateFormatter(
-            $this->container->get('request')->getLocale(),
-            \IntlDateFormatter::FULL,
-            \IntlDateFormatter::FULL,
-            date_default_timezone_get(),
-            \IntlDateFormatter::GREGORIAN,
-            $format
-        );
-        return $formatter->format($date);
+        return strftime($format, $date->getTimestamp());
     }
 
     public function getName() {

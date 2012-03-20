@@ -24,7 +24,7 @@
 {% endmacro %}
 
 {% macro date(turnier) %}
-    {{ turnier.beginn | date('EEEE') }},
-    {{ turnier.beginn | date('d. MMMM') }}
-    um {{ turnier.beginn | date('H:m') }} Uhr
+    {{ turnier.beginn | date('%A') }},
+    {{ turnier.beginn | date('%d. %B') }}
+    um {{ turnier.beginn | date('%R') }} Uhr
 {% endmacro %}
