@@ -13,7 +13,7 @@
         {{ turnier.beschreibung | nl2br }}
     </div>
 
-    {% if turnier.vorbei and turnier.platzierungen %}
+    {% if turnier.vorbei and turnier.platzierungen | length > 0 %}
         <h2>Ergebnis</h2>
         <div class="row-fluid">
             <div class="span12">
