@@ -22,8 +22,7 @@ class Extension extends \Twig_Extension {
         return array(
             'spielstaettePath' => new \Twig_Function_Method($this, 'getSpielstaettePath'),
             'stammlokalPath' => new \Twig_Function_Method($this, 'getStammlokalPath'),
-            'turnierVorbei'   => new \Twig_Function_Method($this, 'getTurnierVorbei'),
-            'turnierNichtBald'   => new \Twig_Function_Method($this, 'getTurnierNichtBald')
+            'turnierPath' => new \Twig_Function_Method($this, 'getTurnierPath')
         );
     }
 
@@ -39,6 +38,10 @@ class Extension extends \Twig_Extension {
 
     public function getStammlokalPath(Stammlokal $stammlokal) {
         return $this->urlGenerator->generate('kcb_bonnliga_website_location_stammlokaldetail', array('slug' => $stammlokal->getSlug()));
+    }
+
+    public function getTurnierPath(Turnier $turnier) {
+        return $this->urlGenerator->generate('kcb_bonnliga_website_turnier_detail', array('id' => $turnier->getId()));
     }
 
     public function getFormattedDate(\DateTime $date, $format) {

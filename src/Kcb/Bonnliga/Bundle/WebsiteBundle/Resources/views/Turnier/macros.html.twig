@@ -1,24 +1,30 @@
-{% macro compact(turnier) %}
-    {{ _self.datum(turnier) }} um {{ turnier.beginn | date('H:m') }} Uhr im
-    <a href="{{ spielstaettePath(turnier.spielstaette) }}"><strong>{{ turnier.spielstaette.name }}</strong></a>
-{% endmacro %}
-
-{% macro medium(turnier) %}
-    <div class="span3 {% if turnier.nichtBald %}farAway{% endif %}">
-        <h4>{{ _self.datum(turnier) }}</h4>
-        <ul class="location }">
-            <li class="icon-home">
-                <a href="{{ spielstaettePath(turnier.spielstaette) }}"><strong>{{ turnier.spielstaette.name }}</strong></a>,
-                {{ turnier.spielstaette.adresse }}
-            </li>
-            <li class="icon-info-sign">{{ turnier.spielstaette.beschreibung | nl2br }}</li>
-            {% if turnier.vorbei %}
-                <li class="icon-trophy">Ergebnis</li>
-            {% endif %}
-        </ul>
+{% macro list(turniere) %}
+    <div class="row-fluid">
+        <div class="span12">
+            <ul class="thumbnails">
+                {% for turnier in turniere %}
+                    <li class="span2 {% if turnier.nichtBald %}farAway{% endif %} thumbnail">
+                        {{ _self.compact(turnier) }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 {% endmacro %}
 
-{% macro datum(turnier) %}
-    {{ turnier.beginn | date('EEEE, d. MMMM') }}
+{% macro compact(turnier) %}
+    <div>
+        <strong><a href="{{ turnierPath(turnier) }}">
+            <i class="icon-calendar"></i> {{ _self.date(turnier) }}
+        </a></strong>
+    </div>
+    <div>
+        <span class="icon-home"></span> {{ turnier.spielstaette.name }}
+    </div>
+{% endmacro %}
+
+{% macro date(turnier) %}
+    {{ turnier.beginn | date('EEEE') }},
+    {{ turnier.beginn | date('d. MMMM') }}
+    um {{ turnier.beginn | date('H:m') }} Uhr
 {% endmacro %}

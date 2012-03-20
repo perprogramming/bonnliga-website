@@ -7,34 +7,10 @@ Turniere
 
 {% block body %}
 
-    <fieldset>
-        <legend>Nächste Turniere</legend>
+    <h2>Nächste Turniere</h2>
+    {{ turnierMacros.list(comingUp) }}
 
-        {% for i, turnier in comingUp  %}
-            {% if i % 4 == 0 %}
-                {% if i > 0 %}
-                    </div>
-                {% endif %}
+    <h2>Vergangene Turniere</h2>
+    {{ turnierMacros.list(past) }}
 
-                <div class="row-fluid show-grid">
-            {% endif %}
-            {{ turnierMacros.medium(turnier) }}
-        {% endfor %}
-
-    </fieldset>
-
-    <fieldset>
-        <legend>Vergangene Turniere</legend>
-
-        {% for i, turnier in past %}
-            {% if i % 4 == 0 %}
-                {% if i > 0 %}
-                    </div>
-                {% endif %}
-
-                <div class="row-fluid show-grid">
-            {% endif %}
-            {{ turnierMacros.medium(turnier) }}
-        {% endfor %}
-    </fieldset>
 {% endblock %}

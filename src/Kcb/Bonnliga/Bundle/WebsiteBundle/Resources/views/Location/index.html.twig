@@ -6,26 +6,25 @@ Home
 
 {% block body %}
     <h2>Spielstätten</h2>
+    <ul class="thumbnails">
+        {% for spielstaette in spielstaetten %}
+            <li class="span3">
+                <div class="thumbnail">
+                    <strong><a href="{{ spielstaettePath(spielstaette) }}">{{spielstaette.name}}</a>
 
-        <ul class="thumbnails">
-            {% for spielstaette in spielstaetten %}
-                <li class="span3">
-                    <div class="thumbnail">
-                        <a href="{{ spielstaettePath(spielstaette) }}"><h3>{{spielstaette.name}}</h3></a>
-
-                        <img src="http://maps.googleapis.com/maps/api/streetview?location={{ spielstaette.adresse | url_encode }}&size=320x240&sensor=false" />
-                    </div>
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
+                    {% if spielstaette.logoUrl %}
+                        <img src="{{ spielstaette.logoUrl }}" alt="Logo {{ spielstaette.name }}"/>
+                    {% endif %}
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
 
     <div class="row-fluid">
         <h2>Stammlokale</h2>
-
         <ul>
             {% for stammlokal in stammlokale %}
-                <li>{{stammlokal.name}}</li>
+                <li><a href="{{ stammlokalPath(stammlokal) }}">{{stammlokal.name}}</a></li>
             {% endfor %}
         </ul>
     </div>

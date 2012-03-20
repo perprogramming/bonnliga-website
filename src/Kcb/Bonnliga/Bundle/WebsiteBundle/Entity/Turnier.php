@@ -27,9 +27,14 @@ class Turnier {
     protected $beginn;
 
     /**
-     * @ORM\OneToMany(targetEntity="Platzierung", mappedBy="turnier", cascade={"ALL"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="Platzierung", mappedBy="turnier", cascade={"ALL"}, orphanRemoval=true, indexBy="platz")
      */
     protected $platzierungen;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $beschreibung;
 
     public function __construct() {
         $this->platzierungen = new \Doctrine\Common\Collections\ArrayCollection();
@@ -74,6 +79,14 @@ class Turnier {
 
     public function isNichtBald() {
         return $this->beginn > new \DateTime('next week');
+    }
+
+    public function setBeschreibung($beschreibung) {
+        $this->beschreibung = $beschreibung;
+    }
+
+    public function getBeschreibung() {
+        return $this->beschreibung;
     }
 
 }
