@@ -4,58 +4,133 @@
 Facts
 {% endblock%}
 
+{% block javascripts %}
+jQuery('.info').popover();
+{% endblock %}
+
 {% block body %}
-<div class="span8">
-    <h2><i class="icon-calendar"></i> Zeitlicher Rahmen</h2>
-    <p>
-        Start: 15.03.2012<br />
-        Ende: 15.02.2013
-    </p>
 
-    <h2><i class="icon-map-marker"></i> Locations bisher</h2>
-    <ul>
-        {% for spielstaette in spielstaetten %}
-            <li>
-                <a href="{{ spielstaettePath(spielstaette) }}">{{ spielstaette.name }}</a>
-            </li>
-        {% endfor %}
-    </ul>
+    <div class="span12">
+        <h2>Bonnliga 2012</h2>
 
-    <h2><i class="icon-thumbs-up"></i> Fakten</h2>
+        <p>
+            Seit 2009 veranstaltet die Kicker Crew Bonn (KCB) regelmäßig unter dem Namen "Bonnliga" Turniere, erfasst und veröffentlicht die Ergebnisse und kürt am Ende der Saison die jeweiligen Jahresmeister in einem Finalturnier unter den besten Bonnern.
+        </p>
+        <p>
+            Die besten Bonner? Vielleicht auch nicht!
+        </p>
+        <p>
+            Wir haben das große unerschlossene Potential Bonns erkannt und wollen dieses 2012 fördern. Dies soll mehr Tischfussball und bekanntere Spielstätten hervorbringen.<br />
+            Zu diesem Zweck möchten wir die Bonnliga erstmals für alle Tischfussballspielstätten, unabhängig von Tischart, Regeln, Modus und Spielerstärken, öffnen. Eine Saison lang (bis zum 15.02.2013) kann jedes Lokal Tischfussballturniere veranstalten, deren Ergebnisse in die Bonnliga Rangliste 2012 einfließen. Pro Teilnehmer eines Turniers werden 0,50€ in einen Preisgeldpott eingezahlt, aus dem am Ende der Saison aus den 3 Kategorien Hobby, Ladies und Pro die jeweils 3 Besten Tischfussballspieler ausgezeichnet und belohnt werden. Eine Zusammenfassung dieser dieser Informationen kann unter <a href="http://bonnliga.de/info.pdf">www.bonnliga.de/info.pdf</a> heruntergeladen werden.
+        </p>
 
-    <h3>Allgemeines</h3>
-    <ul>
-        <li>Für jeden Turnierteilnehmer gehen 50Cent in den Bonnligapott</li>
-    </ul>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Platzierung</td>
+                    <td>
+                        <span class="info icon-question-sign" rel="popover" data-content="Alle Spieler, die nicht zur Kategorie Pro gehören." data-original-title="Hobby">
+                            Hobby
+                        </span>
+                    </td>
+                    <td>Ladies</td>
+                    <td>
+                        <span class="info icon-question-sign" rel="popover" data-content="Spieler, die zum Zeitpunkt ihres ersten Turnieres der laufenden Bonnligasaison, bei den gängigen Verbänden (P4P, Landesverbände, DTFB, ITSF) gelistet sind." data-original-title="Pro">
+                            Pro
+                        </span>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1.</td>
+                    <td>5% + Medaille</td>
+                    <td>5% + Medaille</td>
+                    <td>5% + Medaille</td>
+                </tr>
+            <tr>
+                <td>2.</td>
+                <td>3% + Medaille</td>
+                <td>3% + Medaille</td>
+                <td>3% + Medaille</td>
+            </tr>
+            <tr>
+                <td>3.</td>
+                <td>2% + Medaille</td>
+                <td>2% + Medaille</td>
+                <td>2% + Medaille</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="row-fluid">
+    <div class="span6">
+        <h3>Wanderpokal</h3>
+        <p class="well">
+            Um das Lokal zu belohnen, welches die besten Spieler hervor bringt, wird die Lokalauszeichnung "Bonnliga 2012 - Best Location" ausgeschrieben.<br />
+            Die Punkte eines Lokals in dieser Kategorie werden aus dem Durchschnitt der 5 besten Spieler, die das jeweilige Lokal als ihr Stammlokal angegeben haben, berechnet. Das Lokal mit den 5 besten Spielern erhält am Anfang eines Monats einen Wanderpokal, der im darauffolgenden Monat an das dann beste Lokal weiter gegeben werden muss.<br />
+            Das Lokal, welches den Pokal nach dem 16.02.2013 bekommt, darf ihn behalten.
+        </p>
+    </div>
 
-    <h3>Preise</h3>
-    <ul>
-        <li>Der Ranglistenpott wird zu 100% ausgeschüttet!</li>
-        <li>Die bonnligaweit
-            <ul>
-                <li>besten 3 Hobbyspieler</li>
-                <li>besten 3 Damen</li>
-                <li>besten 3 Pros (Liga und/oder Turnierspieler)</li>
-            </ul>
-            erhalten jeweils 10% des Ranglistenpotts (jeweils aufgeteilt in 5% für den 1. Platz, 3% für den 2. Platz und 2% für den 3. Platz) und jeweils eine Medaille
-        </li>
-        <li>Die restlichen 70% des Pottes und Medaillen für die Top 3 werden im großen Ranglistenfinale ausgespielt</li>
-        <li>Ein Wanderpokal wird immer am 1. des Monats in der Location aufgestellt, deren besten 5 Spieler die meisten aufaddierten Punkte haben (hier zählt die Stammlocation nicht der Ausrichter der Turniere)</li>
-    </ul>
+    <div class="span6">
+        <h3>Ranglistenfinale</h3>
+        <div class="well">
+            <p>
+                Voraussichtlich wird am 28.02.2013 unter den besten 16 Spielern der Rangliste der Bonnliga Meister 2012 ausgespielt.
+                <ul>
+                    <li>Das Ranglistenfinale findet im Babel statt.</li>
+                    <li>Die Spieler werden zufällig zusammen gelost und spielen dann das komplette Turnier zusammen.</li>
+                    <li>In Vorrunden nach dem Schweizer System werden die Endrundenpartien ermittelt (Erstplatzierter der Vorrunde kann erst im Finale auf den Zweitplatzierten treffen usw.)</li>
+                    <li>Die Endplatzierungen werden in spannenden Single-KO Spielen ausgespielt.</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+</div>
 
-    <h3>Ranglistenfinale</h3>
-    <ul>
-        <li>Top 16 der Jahres</li>
-        <li>Ort: Vereinsstätte KCB (Babel)</li>
-        <li>Termin: 2. Donnerstag nach dem 15.02.2013 (falls keine wichtigen Vorkommnisse dazwischen kommen)</li>
-        <li>Modus
-            <ul>
-                <li>fest zugeloster Partner für den kompletten Abend</li>
-                <li>Schweizer Vorrunden</li>
-                <li>Single-KO Endrunde für alle, mit Setzung beeinflusst durch die Vorrunden (1. Platz bekommt "schwächsten" Gegner und trifft erst im Finale auf 2. Platz usw.)</li>
-            </ul>
-        </li>
-    </ul>
+<div class="row-fluid">
+    <div class="span12">
+        <h2>Mitmachen! Aber wie?</h2>
+        
+        <h3>Für Spieler</h3>
+        
+        <p>
+            Unter <a href="{{ path('kcb_bonnliga_website_turnier_index') }}">Turniere</a> sind alle angekündigten Turniere mit Informationen zur Spielstätte und Turnierverlauf zu finden. Einfach bis spätestens zum angegebenen Anmeldeschluss in der Spielstätte erscheinen. Mit Namen und Stammlokal (die sich bei folgenden Turnieranmeldungen nicht unterscheiden sollten) anmelden und Punkte sammeln. Die jeweiligen Turnierergebnisse sowie die Rangliste sind danach online einsehbar. Dabei werden angegebene Nachnamen  mit maximal 2 Buchstaben abgekürzt.
+        </p>
+        
+        <h3>Für Spielstätten</h3>
+        <p>
+            Jede Tischfussballspielstätte (öffentlich zugängliche Location mit mindestens einem Kickertisch) kann Turniere veranstalten. Diese müssen lediglich mindestens 24 Stunden vor Anmeldeschluss bei uns bekannt gegeben werden, damit es bei uns auf der Webseite veröffentlicht und beworben werden kann.
+            Organisation und Ausführung der Turniere liegt ohne Einschränkungen in den Händen der Spielstätte.
+        </p>
+        <p>
+            Logo, Name,  Beschreibung, Fotos, Öffnungszeiten, Adresse/Anfahrt und Turniere sind dann online für Tischfussballbegeisterte übersichtlich einsehbar und bieten für die Spielstätte eine gute Werbefläche.
+        </p>
+        <p>
+            Nach Abschluss des Turniers muss uns nur eine Turnierergebnisliste und für jeden Teilnehmer 0,50€ übergeben werden. Das Geld geht in den Jahrespott und wird zu 100% wieder an die Spieler ausgeschüttet. Auf welchen Tischen, nach welchen Regeln, in welchem Modus (Doppel-KO, Single-KO, Monster-DYP, Gruppenphase, Offenes Doppel, …) gespielt wird, ob Startgeld genommen wird und ob ein Tagespreisgeld ausgeschüttet wird, entscheidet die Spielstätte. Die Übermittlung der Ergebnisse muss auf den üblichen Wegen stattfinden (Zettel oder Mail an bonnliga@kickercrewbonn.de) und folgender Form entsprechen:
+        </p>
 
+        <blockquote>
+            <pre>
+                Spielstätte: XY
+                Datum: TT.MM.YYYY
+
+                Spieler1 Stammlokal1
+                Spieler2 Stammlokal2
+                Spieler3 Stammlokal3
+                …
+                SpielerN StammlokalN
+            </pre>
+        </blockquote>
+        <p>
+            Danach werden die Ergebnisse eingepflegt und die Rangliste aktualisiert. Sowohl Rangliste als auch Einzelturnierergebnisse sind dann für Spieler und Spielstätten umgehend online einsehbar.                        
+        </p>
+        <p>
+            Da es allen Beteiligten so einfach wie möglich gemacht werden soll und demnach kaum Einschränkungen festgelegt wurden, wird an die Fairness der Spielstätten und Teilnehmer appelliert. Sollten wir Missbrauch feststellen, behalten wir uns vor Spielstätten, Turniere oder einzelne Teilnehmer zu entfernen.
+        </p>
+
+    </div>
 </div>
 {% endblock %}
