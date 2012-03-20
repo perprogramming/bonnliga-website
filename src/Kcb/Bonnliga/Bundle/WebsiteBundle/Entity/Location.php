@@ -30,7 +30,7 @@ abstract class Location {
     protected $slug;
 
     /**
-     * @ORM\OneToMany(targetEntity="Spieler", mappedBy="stammlokal", indexBy="vorname")
+     * @ORM\OneToMany(targetEntity="Spieler", mappedBy="stammlokal")
      */
     protected $stammspieler;
 
