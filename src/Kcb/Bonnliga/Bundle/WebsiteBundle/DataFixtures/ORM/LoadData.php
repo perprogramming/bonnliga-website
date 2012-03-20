@@ -60,7 +60,8 @@ class LoadData extends AbstractFixture {
             $stammlokal = $this->getReference("location$locationIndex");
 
             $spieler = new Spieler();
-            $spieler->setName("Spieler $spielerIndex");
+            $spieler->setVorname("Spieler$spielerIndex");
+            $spieler->setNachname("Nachname");
             $spieler->setStammlokal($stammlokal);
             $spieler->setEinstufung($einstufungen[rand(0, 1)]);
             $spieler->setGeschlecht($geschlechter[rand(0, 1)]);
