@@ -8,13 +8,13 @@ div.navbar {
 
         i {
             font-size: 16px;
-            text-shadow: 0px 1px 1px @white;
-            color: lighten(@grayLight, 20%);
+            text-shadow: 0px 1px 1px @gray;
+            color: lighten(@white, 20%);
         }
     }
 
     .brand {
-        color: @grayDark;
+        color: @white;
     }
 }
 
@@ -61,14 +61,15 @@ a[href^="mailto"]:after {
     width: 100px;
     .navbarVerticalAlign(16px);
     .border-radius(10px);
-    background-color: @gray;
+    background-color: white;
 
+    border: 1px solid @grayLight;
     position: absolute;
     padding: 4px 9px;
     margin-top: 6px;
     right: 20px;
 
-    color: @white;
+    color: @grayDark;
 
     ul {
         margin-left: 0px;
