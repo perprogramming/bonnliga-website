@@ -11,7 +11,7 @@
 
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 
-        {% if app.environment == 'dev' %}
+        {% if app.environment != 'dev' %}
             <script> /* Provisory for dev environment: */ localStorage.clear(); </script>
 
             <link type="text/css"  rel="stylesheet/less" href="{{ asset("bundles/kcbbonnligawebsite/less/bootstrap.less") }}">
