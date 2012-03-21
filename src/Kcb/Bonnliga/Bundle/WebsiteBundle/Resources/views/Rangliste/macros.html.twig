@@ -1,7 +1,7 @@
 {% macro rangliste(rangliste, columns, limit) %}
     {% set mapping={'gleich': 'minus', 'steigend': 'chevron-up', 'fallend': 'chevron-down'} %}
 
-    <table class="table table-striped table-condensed ranking">
+    <table class="table table-bordered table-striped table-condensed ranking">
         <thead>
             <tr>
                 {% if 'rang' in columns %}<th>Rang</th>{% endif %}
@@ -15,7 +15,7 @@
         </thead>
         <tbody>
         {% for rang in rangliste.raenge(limit | default(false)) %}
-            <tr>
+            <tr class="{{rang.spieler.einstufung}} {{rang.spieler.geschlecht}}">
                 {% if 'rang' in columns %}<td>{{rang.rang}}</td>{% endif %}
                 {% if 'tendenz' in columns %}<td><i class="icon-large icon-{{mapping[rang.tendenz]}}"></i></td>{% endif %}
                 {% if 'name' in columns %}<td>{{rang.spieler.name}}</td>{% endif %}
