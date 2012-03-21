@@ -11,7 +11,7 @@ jQuery('.info').popover();
 {% block body %}
 
     <div class="span12">
-        <h2>Bonnliga 2012</h2>
+        <h2>Was ist die Bonnliga?</h2>
 
         <p>
             Seit 2009 veranstaltet die Kicker Crew Bonn (KCB) regelmäßig unter dem Namen "Bonnliga" Turniere, erfasst und veröffentlicht die Ergebnisse und kürt am Ende der Saison die jeweiligen Jahresmeister in einem Finalturnier unter den besten Bonnern.
@@ -21,7 +21,12 @@ jQuery('.info').popover();
         </p>
         <p>
             Wir haben das große unerschlossene Potential Bonns erkannt und wollen dieses 2012 fördern. Dies soll mehr Tischfussball und bekanntere Spielstätten hervorbringen.<br />
-            Zu diesem Zweck möchten wir die Bonnliga erstmals für alle Tischfussballspielstätten, unabhängig von Tischart, Regeln, Modus und Spielerstärken, öffnen. Eine Saison lang (bis zum 15.02.2013) kann jedes Lokal Tischfussballturniere veranstalten, deren Ergebnisse in die Bonnliga Rangliste 2012 einfließen. Pro Teilnehmer eines Turniers werden 0,50€ in einen Preisgeldpott eingezahlt, aus dem am Ende der Saison aus den 3 Kategorien Hobby, Ladies und Pro die jeweils 3 Besten Tischfussballspieler ausgezeichnet und belohnt werden. Eine Zusammenfassung dieser dieser Informationen kann unter <a href="http://bonnliga.de/info.pdf">www.bonnliga.de/info.pdf</a> heruntergeladen werden.
+            Zu diesem Zweck möchten wir die Bonnliga erstmals für alle Tischfussballspielstätten, unabhängig von Tischart, Regeln, Modus und Spielerstärken, öffnen. Eine Saison lang (vom 15.03.2012 bis zum 15.02.2013) kann jedes Lokal Tischfussballturniere veranstalten, deren Ergebnisse in die Bonnliga Rangliste 2012 einfließen.                        
+        </p>
+        
+        <h2>Preise</h2>
+        <p>
+            Pro Teilnehmer eines Turniers werden 0,50€ in einen Preisgeldpott eingezahlt, aus dem am Ende der Saison 70% im Saisonfinale und 30% an die Besten der Rangliste ausgeschüttet werden. Dabei werden aus den 3 Kategorien Hobby, Ladies und Pro die jeweils 3 besten Tischfussballspieler ausgezeichnet und belohnt werden (<a href="http://bonnliga.de/info.pdf">Infoblatt</a>):
         </p>
 
         <table class="table table-striped">
@@ -66,27 +71,29 @@ jQuery('.info').popover();
 </div>
 <div class="row-fluid">
     <div class="span6">
-        <h3>Wanderpokal</h3>
-        <p class="well">
-            Um das Lokal zu belohnen, welches die besten Spieler hervor bringt, wird die Lokalauszeichnung "Bonnliga 2012 - Best Location" ausgeschrieben.<br />
-            Die Punkte eines Lokals in dieser Kategorie werden aus dem Durchschnitt der 5 besten Spieler, die das jeweilige Lokal als ihr Stammlokal angegeben haben, berechnet. Das Lokal mit den 5 besten Spielern erhält am Anfang eines Monats einen Wanderpokal, der im darauffolgenden Monat an das dann beste Lokal weiter gegeben werden muss.<br />
-            Das Lokal, welches den Pokal nach dem 16.02.2013 bekommt, darf ihn behalten.
-        </p>
-    </div>
-
-    <div class="span6">
-        <h3>Ranglistenfinale</h3>
+        <h3>Saisonfinale</h3>
         <div class="well">
             <p>
-                Voraussichtlich wird am 28.02.2013 unter den besten 16 Spielern der Rangliste der Bonnliga Meister 2012 ausgespielt.
+                Zum krönenden Abschluss der Bonnliga 2012 werden vorraussichtlich am 28.02.2013 alle Kategorien gekührt, Preise verliehen und unter den besten 16 Tischfussballspielern der Rangliste die Bonnliga Meister 2012 ausgespielt.
                 <ul>
                     <li>Das Ranglistenfinale findet im Babel statt.</li>
                     <li>Die Spieler werden zufällig zusammen gelost und spielen dann das komplette Turnier zusammen.</li>
                     <li>In Vorrunden nach dem Schweizer System werden die Endrundenpartien ermittelt (Erstplatzierter der Vorrunde kann erst im Finale auf den Zweitplatzierten treffen usw.)</li>
                     <li>Die Endplatzierungen werden in spannenden Single-KO Spielen ausgespielt.</li>
                 </ul>
+
+                <strong>Preise:</strong> 40% + Trophäen, 30% + Trophäen, 20% + Trophäen, 10% <small>(des Masterpotts)</small>
             </p>
         </div>
+    </div>
+
+    <div class="span6">
+        <h3>Auszeichnung für die beste Location</h3>
+        <p class="well">
+            Um das Lokal zu belohnen, welches die besten Spieler hervor bringt, wird die Lokalauszeichnung "Bonnliga 2012 - Best Location" ausgeschrieben.<br />
+            Die Punkte eines Lokals in dieser Kategorie werden aus dem Durchschnitt der 5 besten Spieler, die das jeweilige Lokal als ihr Stammlokal angegeben haben, berechnet. Das Lokal mit den 5 besten Spielern erhält am Anfang eines Monats einen Wanderpokal, der im darauffolgenden Monat an das dann beste Lokal weiter gegeben werden muss.<br />
+            Das Lokal, welches den Pokal nach dem 16.02.2013 bekommt, darf ihn behalten.
+        </p>
     </div>
 </div>
 
@@ -98,6 +105,9 @@ jQuery('.info').popover();
         
         <p>
             Unter <a href="{{ path('kcb_bonnliga_website_turnier_index') }}">Turniere</a> sind alle angekündigten Turniere mit Informationen zur Spielstätte und Turnierverlauf zu finden. Einfach bis spätestens zum angegebenen Anmeldeschluss in der Spielstätte erscheinen. Mit Namen und Stammlokal (die sich bei folgenden Turnieranmeldungen nicht unterscheiden sollten) anmelden und Punkte sammeln. Die jeweiligen Turnierergebnisse sowie die Rangliste sind danach online einsehbar. Dabei werden angegebene Nachnamen  mit maximal 2 Buchstaben abgekürzt.
+        </p>
+        <p>
+            Wir haben versucht eine möglichst faire Vergabe der Punkte zu gewährleisten. Die Punktevergabe ist für jedes Turnier unabhängig vom Modus immer gleich und orientiert sich am Single-KO Modus. Die maximal mögliche Punktzahl für ein Turnier hängt dabei von der Teilnehmerzahl ab. Dabei sind die Punktestufen an die Plätze gebunden, die auch in einem Single-KO System ermittelt werden können.
         </p>
         
         <h3>Für Spielstätten</h3>
