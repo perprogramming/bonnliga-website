@@ -3,6 +3,8 @@
 namespace Kcb\Bonnliga\Bundle\WebsiteBundle\Rangliste;
 
 use Doctrine\ORM\EntityManager;
+use Kcb\Bonnliga\Bundle\WebsiteBundle\Entity\Spielstaette;
+use Kcb\Bonnliga\Bundle\WebsiteBundle\Entity\Location;
 
 class RanglisteFactory {
 
@@ -26,6 +28,14 @@ class RanglisteFactory {
 
     public function getProRangliste() {
         return new ProRangliste($this->entityManager);
+    }
+
+    public function getSpielstaetteRangliste(Spielstaette $spielstaette) {
+        return new SpielstaetteRangliste($this->entityManager, $spielstaette);
+    }
+
+    public function getStammlokalRangliste(Location $stammlokal) {
+        return new StammlokalRangliste($this->entityManager, $stammlokal);
     }
 
 }

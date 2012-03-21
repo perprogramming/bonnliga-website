@@ -27,6 +27,12 @@ class RanglistenAktualisierenCommand extends ContainerAwareCommand {
         $ranglisten['lady'] = $ranglisteFactory->getLadyRangliste();
         $ranglisten['hobby'] = $ranglisteFactory->getHobbyRangliste();
         $ranglisten['pro'] = $ranglisteFactory->getProRangliste();
+        foreach ($em->getRepository('KcbBonnligaWebsiteBundle:Spielstaette')->findAll() as $spielstaette) {
+            $ranglisten['spielstaette' . $spielstaette->getId()] = $ranglisteFactory->getSpielstaetteRangliste($spielstaette);
+        }
+        foreach ($em->getRepository('KcbBonnligaWebsiteBundle:Location')->findAll() as $stammlokal) {
+            $ranglisten['stammlokal' . $stammlokal->getId()] = $ranglisteFactory->getStammlokalRangliste($stammlokal);
+        }
 
         foreach ($ranglisten as $rangliste)
             $rangliste->zuruecksetzen();
@@ -46,6 +52,9 @@ class RanglistenAktualisierenCommand extends ContainerAwareCommand {
                 if ($platzierung->getSpieler()->isPro()) {
                     $ranglisten['pro']->beruecksichtige($platzierung);
                 }
+
+                $ranglisten['spielstaette' . $turnier->getSpielstaette()->getId()]->beruecksichtige($platzierung);
+                $ranglisten['stammlokal' . $platzierung->getSpieler()->getStammlokal()->getId()]->beruecksichtige($platzierung);
             }
 
             foreach ($ranglisten as $rangliste)

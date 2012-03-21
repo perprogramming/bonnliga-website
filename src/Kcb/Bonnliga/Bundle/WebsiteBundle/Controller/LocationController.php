@@ -27,8 +27,11 @@ class LocationController extends Controller {
      * @Template
      */
     public function spielstaetteDetailAction($slug) {
+        $spielstaette = $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Spielstaette')->findOneBy(array('slug' => $slug));
         return array(
-            'spielstaette' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Spielstaette')->findOneBy(array('slug' => $slug))
+            'spielstaette' => $spielstaette,
+            'spielstaetteRangliste' => $this->get('kcb.bonnliga.rangliste_factory')->getSpielstaetteRangliste($spielstaette),
+            'stammlokalRangliste' => $this->get('kcb.bonnliga.rangliste_factory')->getStammlokalRangliste($spielstaette)
         );
     }
 

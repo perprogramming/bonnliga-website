@@ -53,9 +53,17 @@ Spielstätte
         {% endif %}
     </div>
 
-
     <div class="span6">
         {{ locationMacros.stammspieler(spielstaette) }}
     </div>
+</div>
+<div class="span12">
+    <h2>Rangliste über alle Turniere, die in dieser Spielstätte stattgefunden haben</h2>
+    {% set rangliste = spielstaetteRangliste %}
+    {% include "KcbBonnligaWebsiteBundle:Rangliste:Include/rangliste.html.twig" %}
+
+    <h2>Rangliste der Stammspieler dieser Spielstätte</h2>
+    {% set rangliste = stammlokalRangliste %}
+    {% include "KcbBonnligaWebsiteBundle:Rangliste:Include/ranglisteOhneStammlokal.html.twig" %}
 </div>
 {% endblock %}
