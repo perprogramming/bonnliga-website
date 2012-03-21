@@ -85,7 +85,7 @@ class Platzierung {
         if ($n < 8) {
             $punkte -= 2;
         }
-        
+
         return $punkte;
     }
 

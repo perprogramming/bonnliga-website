@@ -91,6 +91,18 @@ class Spieler {
         return $this->geschlecht;
     }
 
+    public function isWeiblich() {
+        return $this->geschlecht == Spieler::GESCHLECHT_WEIBLICH;
+    }
+
+    public function isHobby() {
+        return $this->einstufung == Spieler::EINSTUFUNG_HOBBY;
+    }
+
+    public function isPro() {
+        return $this->einstufung == Spieler::EINSTUFUNG_PRO;
+    }
+
     public function setEinstufung($einstufung)
     {
         if(!in_array($einstufung, array(self::EINSTUFUNG_HOBBY, self::EINSTUFUNG_PRO)))

@@ -1,0 +1,13 @@
+{% extends "KcbBonnligaWebsiteBundle:Layout:base.html.twig" %}
+{% import "KcbBonnligaWebsiteBundle:Rangliste:macros.html.twig" as ranglisteMacros %}
+
+{% block title %}
+    Gesamtrangliste
+{% endblock%}
+
+{% block body %}
+    <div class="span12">
+        {{ ranglisteMacros.ranglisteSwitch }}
+        {{ ranglisteMacros.rangliste(rangliste) }}
+    </div>
+{% endblock %}

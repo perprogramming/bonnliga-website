@@ -21,17 +21,35 @@ class RanglistenAktualisierenCommand extends ContainerAwareCommand {
         $em = $this->getContainer()->get('doctrine.orm.entity_manager');
         $ranglisteFactory = $this->getContainer()->get('kcb.bonnliga.rangliste_factory');
 
-        // Gesamtrangliste
-        $gesamtRangliste = $ranglisteFactory->getGesamtRangliste();
-        $gesamtRangliste->zuruecksetzen();
+        // Ranglisten
+        $ranglisten = array();
+        $ranglisten['gesamt'] = $ranglisteFactory->getGesamtRangliste();
+        $ranglisten['lady'] = $ranglisteFactory->getLadyRangliste();
+        $ranglisten['hobby'] = $ranglisteFactory->getHobbyRangliste();
+        $ranglisten['pro'] = $ranglisteFactory->getProRangliste();
+
+        foreach ($ranglisten as $rangliste)
+            $rangliste->zuruecksetzen();
 
         $em->flush();
 
         foreach ($em->getRepository('KcbBonnligaWebsiteBundle:Turnier')->findBy(array(), array('id' => 'asc')) as $turnier) {
             foreach ($turnier->getPlatzierungen() as $platzierung) {
-                $gesamtRangliste->beruecksichtige($platzierung);
+                $ranglisten['gesamt']->beruecksichtige($platzierung);
+
+                if ($platzierung->getSpieler()->isWeiblich()) {
+                    $ranglisten['lady']->beruecksichtige($platzierung);
+                }
+                if ($platzierung->getSpieler()->isHobby()) {
+                    $ranglisten['hobby']->beruecksichtige($platzierung);
+                }
+                if ($platzierung->getSpieler()->isPro()) {
+                    $ranglisten['pro']->beruecksichtige($platzierung);
+                }
             }
-            $gesamtRangliste->aktualisieren();
+
+            foreach ($ranglisten as $rangliste)
+                $rangliste->aktualisieren();
         }
 
         $em->flush();

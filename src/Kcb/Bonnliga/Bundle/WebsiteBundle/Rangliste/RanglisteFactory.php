@@ -16,4 +16,16 @@ class RanglisteFactory {
         return new GesamtRangliste($this->entityManager);
     }
 
+    public function getLadyRangliste() {
+        return new LadyRangliste($this->entityManager);
+    }
+
+    public function getHobbyRangliste() {
+        return new HobbyRangliste($this->entityManager);
+    }
+
+    public function getProRangliste() {
+        return new ProRangliste($this->entityManager);
+    }
+
 }

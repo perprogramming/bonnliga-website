@@ -9,6 +9,7 @@ use Kcb\Bonnliga\Bundle\WebsiteBundle\Entity\Spieler;
 abstract class Rangliste {
 
     protected $entityManager;
+    protected $geaendert = false;
 
     public function __construct(EntityManager $entityManager) {
         $this->entityManager = $entityManager;
@@ -32,25 +33,38 @@ abstract class Rangliste {
 
     public function beruecksichtige(Platzierung $platzierung) {
         $this->getRang($platzierung->getSpieler())->beruecksichtige($platzierung);
+        $this->geaendert = true;
     }
 
     public function aktualisieren() {
+        if (!$this->geaendert)
+            return;
+
         $raenge = $this->getRaenge();
 
         usort($raenge, function($a, $b) {
-            return $b->getPunkte() - $a->getPunkte();
+            $aPunkte = $a->getPunkte();
+            $bPunkte = $b->getPunkte();
+            if ($aPunkte != $bPunkte)
+                return $b->getPunkte() - $a->getPunkte();
+
+            return strcmp($a->getSpieler()->getName(), $b->getSpieler()->getName());
         });
 
         $aktuellePunktzahl = PHP_INT_MAX;
         $naechsterRang = 0;
         $aktuellerRang = 0;
         foreach ($raenge as $rang) {
+            $punkte = $rang->getPunkte();
             $naechsterRang++;
-            if ($rang->getPunkte() < $aktuellePunktzahl) {
+            if ($punkte <= $aktuellePunktzahl) {
                 $aktuellerRang = $naechsterRang;
             }
             $rang->setRang($aktuellerRang);
+            $aktuellePunktzahl = $punkte;
         }
+
+        $this->geaendert = false;
     }
 
 }

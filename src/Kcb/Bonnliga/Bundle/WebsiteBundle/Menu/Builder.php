@@ -16,7 +16,7 @@ class Builder extends ContainerAware
                                            'label' => '<i class="icon-question-sign icon-large"></i> Facts'));
         $menu->addChild('Turniere' , array('route' => 'kcb_bonnliga_website_turnier_index',
                                            'label' => '<i class="icon-calendar icon-large"></i> Turniere'));
-        $menu->addChild('Rangliste', array('route' => 'kcb_bonnliga_website_rangliste_index',
+        $menu->addChild('Rangliste', array('route' => 'kcb_bonnliga_website_rangliste_gesamt',
                                            'label' => '<i class="icon-trophy icon-large"></i> Rangliste'));
         $menu->addChild('Locations', array('route' => 'kcb_bonnliga_website_location_index',
                                            'label' => '<i class="icon-map-marker icon-large"></i> Locations'));

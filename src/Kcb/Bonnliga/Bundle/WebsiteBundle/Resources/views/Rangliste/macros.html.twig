@@ -1,0 +1,51 @@
+{% macro ranglisteSwitch() %}
+    {% set buttons = {
+        'Gesamt': 'kcb_bonnliga_website_rangliste_gesamt',
+        'Hobby': 'kcb_bonnliga_website_rangliste_hobby',
+        'Ladies': 'kcb_bonnliga_website_rangliste_ladies',
+        'Pro': 'kcb_bonnliga_website_rangliste_pro'
+    } %}
+    <div class="btn-group">
+        {% for label, route in buttons %}
+            {% set path = path(route) %}
+            {% set active = (path == app.request.requestUri) %}
+            {% if active %}
+                <span class="btn active">{{ label }}</span>
+            {% else %}
+                <a href="{{ path }}" class="btn">{{ label }}</a>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endmacro %}
+
+{% macro rangliste(rangliste) %}
+    {% set mapping={'gleich': 'minus', 'steigend': 'chevron-up', 'fallend': 'chevron-down'} %}
+    <table class="table table-striped table-condensed ranking">
+        <thead>
+            <tr>
+                <th>Rang</th>
+                <th></th>
+                <th>Name</th>
+                <th>Einstufung</th>
+                <th>Stammlokal</th>
+                <th>Punkte</th>
+                <th>Teilnahmen</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rang in rangliste.raenge %}
+            <tr>
+                <td>{{rang.rang}}</td>
+                <td>
+                    <i class="icon-large icon-{{mapping[rang.tendenz]}}"></i>
+                </td>
+                <td>{{rang.spieler.name}}</td>
+                <td>{{rang.spieler.einstufung}}</td>
+                <td>{{rang.spieler.stammlokal.name}}</td>
+                <td>{{rang.punkte}}</td>
+                <td>{{rang.teilnahmen}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endmacro %}

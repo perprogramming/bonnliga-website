@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="RangRepository")
  * @ORM\InheritanceType("SINGLE_TABLE")
  * @ORM\DiscriminatorColumn(name="typ", type="string")
- * @ORM\DiscriminatorMap({"gesamt" = "GesamtRang"})
+ * @ORM\DiscriminatorMap({"gesamt" = "GesamtRang", "lady" = "LadyRang", "hobby" = "HobbyRang", "pro" = "ProRang"})
  */
 abstract class Rang {
 
