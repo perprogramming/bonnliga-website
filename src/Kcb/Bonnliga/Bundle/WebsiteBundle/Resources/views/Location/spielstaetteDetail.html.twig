@@ -1,6 +1,7 @@
 {% extends "KcbBonnligaWebsiteBundle:Layout:base.html.twig" %}
 {% import "KcbBonnligaWebsiteBundle:Turnier:macros.html.twig" as turnierMacros %}
 {% import "KcbBonnligaWebsiteBundle:Location:macros.html.twig" as locationMacros %}
+{% import "KcbBonnligaWebsiteBundle:Rangliste:macros.html.twig" as ranglisteMacros %}
 
 {% block title %}
 Spielstätte
@@ -59,15 +60,21 @@ Spielstätte
 </div>
 <div class="span12">
     {% set rangliste = spielstaetteRangliste %}
-    {% if rangliste.raenge %}
+    {% if rangliste.raenge(false) %}
         <h2>Rangliste über alle Turniere, die in dieser Spielstätte stattgefunden haben</h2>
-        {% include "KcbBonnligaWebsiteBundle:Rangliste:Include/rangliste.html.twig" %}
+        {{ ranglisteMacros.rangliste(
+            rangliste,
+            ['rang', 'tendenz', 'name', 'einstufung', 'stammlokal', 'punkte', 'teilnahmen']
+        ) }}
     {% endif %}
 
     {% set rangliste = stammlokalRangliste %}
-    {% if rangliste.raenge %}
+    {% if rangliste.raenge(false) %}
         <h2>Rangliste der Stammspieler dieser Spielstätte</h2>
-        {% include "KcbBonnligaWebsiteBundle:Rangliste:Include/ranglisteOhneStammlokal.html.twig" %}
+        {{ ranglisteMacros.rangliste(
+            rangliste,
+            ['rang', 'tendenz', 'name', 'einstufung', 'punkte', 'teilnahmen']
+        ) }}
     {% endif %}
 </div>
 {% endblock %}

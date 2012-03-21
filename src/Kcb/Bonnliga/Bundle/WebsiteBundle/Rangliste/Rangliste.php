@@ -17,8 +17,8 @@ abstract class Rangliste {
 
     abstract protected function getEntityRepository();
 
-    public function getRaenge() {
-        return $this->getEntityRepository()->findAll();
+    public function getRaenge($limit) {
+        return $this->getEntityRepository()->findRaenge($limit);
     }
 
     public function getRang(Spieler $spieler) {
@@ -26,7 +26,7 @@ abstract class Rangliste {
     }
 
     public function zuruecksetzen() {
-        foreach ($this->getRaenge() as $rang) {
+        foreach ($this->getRaenge(false) as $rang) {
             $rang->zuruecksetzen();
         }
     }
@@ -40,7 +40,7 @@ abstract class Rangliste {
         if (!$this->geaendert)
             return;
 
-        $raenge = $this->getRaenge();
+        $raenge = $this->getRaenge(false);
 
         usort($raenge, function($a, $b) {
             $aPunkte = $a->getPunkte();

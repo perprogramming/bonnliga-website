@@ -1,4 +1,5 @@
 {% extends "KcbBonnligaWebsiteBundle:Layout:base.html.twig" %}
+{% import "KcbBonnligaWebsiteBundle:Rangliste:macros.html.twig" as ranglisteMacros %}
 
 {% block title %}
     Ladies-Rangliste
@@ -7,6 +8,9 @@
 {% block body %}
     <div class="span12">
         {% include "KcbBonnligaWebsiteBundle:Rangliste:Include/switch.html.twig"%}
-        {% include "KcbBonnligaWebsiteBundle:Rangliste:Include/rangliste.html.twig"%}
+        {{ ranglisteMacros.rangliste(
+            rangliste,
+            ['rang', 'tendenz', 'name', 'einstufung', 'stammlokal', 'punkte', 'teilnahmen']
+        ) }}
     </div>
 {% endblock %}

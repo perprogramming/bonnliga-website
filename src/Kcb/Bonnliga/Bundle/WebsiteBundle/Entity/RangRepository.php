@@ -6,15 +6,20 @@ use Doctrine\ORM\EntityRepository;
 
 class RangRepository extends EntityRepository {
 
-    public function findAll() {
+    public function findRaenge($limit) {
         $className = $this->getClassName();
 
-        return $this->getEntityManager()->createQuery("
+        $query = $this->getEntityManager()->createQuery("
             SELECT r, s, l FROM $className r
             JOIN r.spieler s
             JOIN s.stammlokal l
             ORDER BY r.rang ASC
-        ")->getResult();
+        ");
+
+        if ($limit)
+            $query->setMaxResults($limit);
+
+        return $query->getResult();
     }
 
     public function findOneBySpieler(Spieler $spieler) {
