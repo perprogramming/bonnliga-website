@@ -5,29 +5,33 @@ Locations
 {% endblock%}
 
 {% block body %}
-    <h2>Spielstätten</h2>
-    <ul class="thumbnails">
-        {% for spielstaette in spielstaetten %}
-            <li class="span3">
-                <div class="thumbnail">
-                    <h3><a href="{{ spielstaettePath(spielstaette) }}">{{spielstaette.name}}</a></h3>
+    {% if spielstaetten %}
+        <h2>Spielstätten</h2>
+        <ul class="thumbnails">
+            {% for spielstaette in spielstaetten %}
+                <li class="span3">
+                    <div class="thumbnail">
+                        <h3><a href="{{ spielstaettePath(spielstaette) }}">{{spielstaette.name}}</a></h3>
 
-                    {% if spielstaette.logoUrl %}
-                        <img src="{{ spielstaette.logoUrl }}" alt="Logo {{ spielstaette.name }}"/>
-                    {% else %}
-                        <img src="http://maps.googleapis.com/maps/api/streetview?location={{ spielstaette.adresse | url_encode }}&size=260x220&sensor=false" />
-                    {% endif %}
-                </div>
-            </li>
-        {% endfor %}
-    </ul>
-
-    <div class="row-fluid">
-        <h2>Stammlokale</h2>
-        <ul>
-            {% for stammlokal in stammlokale %}
-                <li><a href="{{ stammlokalPath(stammlokal) }}">{{stammlokal.name}}</a></li>
+                        {% if spielstaette.logoUrl %}
+                            <img src="{{ spielstaette.logoUrl }}" alt="Logo {{ spielstaette.name }}"/>
+                        {% else %}
+                            <img src="http://maps.googleapis.com/maps/api/streetview?location={{ spielstaette.adresse | url_encode }}&size=260x220&sensor=false" />
+                        {% endif %}
+                    </div>
+                </li>
             {% endfor %}
         </ul>
-    </div>
+    {% endif %}
+
+    {% if stammlokale %}
+        <div class="row-fluid">
+            <h2>Stammlokale</h2>
+            <ul>
+                {% for stammlokal in stammlokale %}
+                    <li><a href="{{ stammlokalPath(stammlokal) }}">{{stammlokal.name}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
 {% endblock %}

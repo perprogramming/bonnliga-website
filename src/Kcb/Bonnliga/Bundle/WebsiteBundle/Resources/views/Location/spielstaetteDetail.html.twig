@@ -58,23 +58,25 @@ Spielstätte
         {{ locationMacros.stammspieler(spielstaette) }}
     </div>
 </div>
-<div class="span12">
-    {% set rangliste = spielstaetteRangliste %}
-    {% if rangliste.raenge(false) %}
-        <h2>Rangliste über alle Turniere, die in dieser Spielstätte stattgefunden haben</h2>
-        {{ ranglisteMacros.rangliste(
-            rangliste,
-            ['rang', 'tendenz', 'name', 'einstufung', 'stammlokal', 'punkte', 'teilnahmen']
-        ) }}
-    {% endif %}
+<div class="row-fluid">
+    <div class="span12">
+        {% set rangliste = spielstaetteRangliste %}
+        {% if rangliste.raenge(false) %}
+            <h2>Rangliste über alle Turniere, die in dieser Spielstätte stattgefunden haben</h2>
+            {{ ranglisteMacros.rangliste(
+                rangliste,
+                ['rang', 'tendenz', 'name', 'einstufung', 'stammlokal', 'punkte', 'teilnahmen']
+            ) }}
+        {% endif %}
 
-    {% set rangliste = stammlokalRangliste %}
-    {% if rangliste.raenge(false) %}
-        <h2>Rangliste der Stammspieler dieser Spielstätte</h2>
-        {{ ranglisteMacros.rangliste(
-            rangliste,
-            ['rang', 'tendenz', 'name', 'einstufung', 'punkte', 'teilnahmen']
-        ) }}
-    {% endif %}
+        {% set rangliste = stammlokalRangliste %}
+        {% if rangliste.raenge(false) %}
+            <h2>Rangliste der Stammspieler dieser Spielstätte</h2>
+            {{ ranglisteMacros.rangliste(
+                rangliste,
+                ['rang', 'tendenz', 'name', 'einstufung', 'punkte', 'teilnahmen']
+            ) }}
+        {% endif %}
+    </div>
 </div>
 {% endblock %}

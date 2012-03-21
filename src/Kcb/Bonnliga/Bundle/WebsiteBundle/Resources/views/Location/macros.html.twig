@@ -1,10 +1,4 @@
 {% macro stammspieler(location) %}
     <h2>Stammspieler</h2>
-    <ul>
-        {% for spieler in spielerAlphabetischSortiert(location.stammspieler) %}
-            <li>
-                {{ spieler.name }}
-            </li>
-        {% endfor %}
-    </ul>
+    <p>{% for spieler in spielerAlphabetischSortiert(location.stammspieler) %}{{ spieler.name }}{% if not loop.last %}, {% endif %}{% endfor%}</p>
 {% endmacro %}
