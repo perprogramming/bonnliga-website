@@ -7,10 +7,15 @@
 
 {% block body %}
     <div class="span12">
-        {% include "KcbBonnligaWebsiteBundle:Rangliste:Include/switch.html.twig"%}
+        <p>
+            {% include "KcbBonnligaWebsiteBundle:Rangliste:Include/switch.html.twig"%}
+        </p>
+        
         {{ ranglisteMacros.rangliste(
             rangliste,
-            ['rang', 'tendenz', 'name', 'einstufung', 'stammlokal', 'punkte', 'teilnahmen']
+            ['rang', 'tendenz', 'name', 'einstufung', 'stammlokal', 'punkte', 'teilnahmen'],
+            null,
+            true
         ) }}
     </div>
 {% endblock %}
