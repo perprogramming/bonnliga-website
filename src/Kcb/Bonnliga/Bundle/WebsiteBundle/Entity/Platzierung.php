@@ -81,8 +81,8 @@ class Platzierung {
          */
         $punkte = ($s - floor(log(max(1, $p - 1)) / log(2))) + floor((($n - $p) + 6) / $n);
 
-        // Bei weniger als 8 Spielern reduzieren wir die Punkte
-        if ($n < 8) {
+        // Bei weniger als 7 Spielern reduzieren wir die Punkte
+        if ($n < 7) {
             $punkte -= 2;
         }
 
