@@ -17,7 +17,7 @@
         {% endfor %}
     </div>
     <div class="btn-group">
-        <button class="btn">
+        <button class="btn{% if spielstaette is defined %} active{% endif %}">
             {% if spielstaette is defined %}
                 {{ spielstaette.name }}
             {% else %}
