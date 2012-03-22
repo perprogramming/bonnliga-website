@@ -4,14 +4,33 @@
     'Ladies': 'kcb_bonnliga_website_rangliste_ladies',
     'Pro': 'kcb_bonnliga_website_rangliste_pro'
 } %}
-<div class="btn-group">
-    {% for label, route in buttons %}
-        {% set path = path(route) %}
-        {% set active = (path == app.request.requestUri) %}
-        {% if active %}
-            <span class="btn active">{{ label }}</span>
-        {% else %}
-            <a href="{{ path }}" class="btn">{{ label }}</a>
-        {% endif %}
-    {% endfor %}
+<div class="btn-toolbar">
+    <div class="btn-group">
+        {% for label, route in buttons %}
+            {% set path = path(route) %}
+            {% set active = (path == app.request.requestUri) %}
+            {% if active %}
+                <span class="btn active">{{ label }}</span>
+            {% else %}
+                <a href="{{ path }}" class="btn">{{ label }}</a>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="btn-group">
+        <button class="btn">
+            {% if spielstaette is defined %}
+                {{ spielstaette.name }}
+            {% else %}
+                Spielstätte
+            {% endif %}
+        </button>
+        <button class="btn dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            {% for s in spielstaetten %}
+                <li><a href="{{ path('kcb_bonnliga_website_rangliste_spielstaette', {slug: s.slug }) }}">{{ s.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
 </div>

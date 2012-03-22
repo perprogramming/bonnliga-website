@@ -1,0 +1,21 @@
+{% extends "KcbBonnligaWebsiteBundle:Layout:base.html.twig" %}
+{% import "KcbBonnligaWebsiteBundle:Rangliste:macros.html.twig" as ranglisteMacros %}
+
+{% block title %}
+    Rangliste "{{ spielstaette.name }}"
+{% endblock%}
+
+{% block body %}
+    <div class="span12">
+        <p>
+            {% include "KcbBonnligaWebsiteBundle:Rangliste:Include/switch.html.twig"%}
+        </p>
+
+        {{ ranglisteMacros.rangliste(
+            rangliste,
+            ['rang', 'tendenz', 'name', 'einstufung', 'stammlokal', 'punkte', 'teilnahmen'],
+            null,
+            true
+        ) }}
+    </div>
+{% endblock %}
