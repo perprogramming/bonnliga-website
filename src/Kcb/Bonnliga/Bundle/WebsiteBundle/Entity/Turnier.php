@@ -79,7 +79,7 @@ class Turnier {
     }
 
     public function isNichtBald() {
-        return $this->beginn > new \DateTime('next week');
+        return $this->beginn > new \DateTime('next month');
     }
 
     public function setBeschreibung($beschreibung) {

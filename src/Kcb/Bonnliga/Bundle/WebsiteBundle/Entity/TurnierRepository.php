@@ -19,11 +19,11 @@ class TurnierRepository extends EntityRepository {
         return $this->getEntityManager()->createQuery("
             SELECT t, s FROM KcbBonnligaWebsiteBundle:Turnier t
             JOIN t.spielstaette s
-            WHERE t.beginn > :jetzt AND t.beginn <= :naechsteWoche
+            WHERE t.beginn > :jetzt
             ORDER BY t.beginn ASC
         ")
+        ->setMaxResults(10)
         ->setParameter('jetzt', new \DateTime('now'))
-        ->setParameter('naechsteWoche', new \DateTime('next week'))
         ->getResult();
     }
 
