@@ -27,7 +27,8 @@ class Turnier {
     protected $beginn;
 
     /**
-     * @ORM\OneToMany(targetEntity="Platzierung", mappedBy="turnier", cascade={"ALL"}, orphanRemoval=true, indexBy="platz")
+     * @ORM\OneToMany(targetEntity="Platzierung", mappedBy="turnier", cascade={"ALL"}, orphanRemoval=true)
+     * @ORM\OrderBy({"platzierung" = "ASC"})
      */
     protected $platzierungen;
 

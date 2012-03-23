@@ -31,6 +31,7 @@ abstract class Location {
 
     /**
      * @ORM\OneToMany(targetEntity="Spieler", mappedBy="stammlokal")
+     * @ORM\OrderBy({"vorname" = "ASC", "nachname" = "ASC"})
      */
     protected $stammspieler;
 

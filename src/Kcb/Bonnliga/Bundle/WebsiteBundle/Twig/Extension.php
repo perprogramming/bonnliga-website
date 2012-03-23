@@ -23,8 +23,7 @@ class Extension extends \Twig_Extension {
         return array(
             'spielstaettePath' => new \Twig_Function_Method($this, 'getSpielstaettePath'),
             'stammlokalPath' => new \Twig_Function_Method($this, 'getStammlokalPath'),
-            'turnierPath' => new \Twig_Function_Method($this, 'getTurnierPath'),
-            'spielerAlphabetischSortiert' => new \Twig_Function_Method($this, 'getSpielerAlphabetischSortiert')
+            'turnierPath' => new \Twig_Function_Method($this, 'getTurnierPath')
         );
     }
 
@@ -48,14 +47,6 @@ class Extension extends \Twig_Extension {
 
     public function getFormattedDate(\DateTime $date, $format) {
         return strftime($format, $date->getTimestamp());
-    }
-
-    public function getSpielerAlphabetischSortiert(Collection $spieler) {
-        $spieler = $spieler->getValues();
-        usort($spieler, function($a, $b) {
-            return strcmp($a->getName(), $b->getName());
-        });
-        return $spieler;
     }
 
     public function getName() {
