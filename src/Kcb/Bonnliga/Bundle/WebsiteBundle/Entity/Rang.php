@@ -78,7 +78,7 @@ abstract class Rang {
     public function zuruecksetzen() {
         $this->punkte = 0;
         $this->teilnahmen = 0;
-        $this->tendenz = 'gleich';
+        $this->tendenz = 'steigend';
         $this->rang = null;
     }
 
