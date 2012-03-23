@@ -39,7 +39,7 @@ class RanglistenAktualisierenCommand extends ContainerAwareCommand {
 
         $em->flush();
 
-        foreach ($em->getRepository('KcbBonnligaWebsiteBundle:Turnier')->findBy(array(), array('id' => 'asc')) as $turnier) {
+        foreach ($em->getRepository('KcbBonnligaWebsiteBundle:Turnier')->findBy(array(), array('beginn' => 'asc')) as $turnier) {
             foreach ($turnier->getPlatzierungen() as $platzierung) {
                 $ranglisten['gesamt']->beruecksichtige($platzierung);
 

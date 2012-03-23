@@ -60,7 +60,11 @@ abstract class Rangliste {
             if ($punkte <= $aktuellePunktzahl) {
                 $aktuellerRang = $naechsterRang;
             }
-            $rang->setRang($aktuellerRang);
+            if ($punkte == 0) {
+                $rang->setRang(null);
+            } else {
+                $rang->setRang($aktuellerRang);
+            }
             $aktuellePunktzahl = $punkte;
         }
 
