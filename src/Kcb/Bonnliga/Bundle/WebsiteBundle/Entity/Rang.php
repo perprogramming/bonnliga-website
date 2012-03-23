@@ -56,9 +56,12 @@ abstract class Rang {
     }
 
     public function setRang($rang) {
+        if ($this->rang == null)
+            return $this->tendenz = 'steigend';
+
         if ($rang == $this->rang) {
             $this->tendenz = 'gleich';
-        } elseif ($rang < $this->rang) {
+        } elseif ($rang > $this->rang) {
             $this->tendenz = 'fallend';
         } else {
             $this->tendenz = 'steigend';
