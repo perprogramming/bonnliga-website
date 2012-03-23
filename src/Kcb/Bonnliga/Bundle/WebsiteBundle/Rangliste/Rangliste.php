@@ -57,7 +57,7 @@ abstract class Rangliste {
         foreach ($raenge as $rang) {
             $punkte = $rang->getPunkte();
             $naechsterRang++;
-            if ($punkte <= $aktuellePunktzahl) {
+            if ($punkte < $aktuellePunktzahl) {
                 $aktuellerRang = $naechsterRang;
             }
             if ($punkte == 0) {
