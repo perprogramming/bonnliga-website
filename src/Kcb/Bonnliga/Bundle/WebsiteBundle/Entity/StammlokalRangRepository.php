@@ -12,7 +12,7 @@ class StammlokalRangRepository extends RangRepository {
             JOIN r.spieler s
             JOIN s.stammlokal l
             JOIN r.stammlokal rl
-            WHERE rl.id = :id
+            WHERE rl.id = :id AND r.rang IS NOT NULL
             ORDER BY r.rang ASC
         ")->setParameter('id', $stammlokal->getId());
         if ($limit)
