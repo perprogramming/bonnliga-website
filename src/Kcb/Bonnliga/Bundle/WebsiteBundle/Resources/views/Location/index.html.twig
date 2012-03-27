@@ -10,7 +10,7 @@ Locations
         <ul class="thumbnails">
             {% for spielstaette in spielstaetten %}
                 <li class="span3">
-                    <div class="thumbnail">
+                    <div class="thumbnail location">
                         <h3><a href="{{ spielstaettePath(spielstaette) }}">{{spielstaette.name}}</a></h3>
 
                         {% if spielstaette.logoUrl %}

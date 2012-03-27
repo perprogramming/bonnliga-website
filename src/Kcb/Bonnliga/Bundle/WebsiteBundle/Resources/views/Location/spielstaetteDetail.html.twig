@@ -8,18 +8,23 @@ Spielstätte
 {% endblock%}
 
 {% block body %}
+    <div class="span12" style="margin-bottom: 20px;">
+        {% if spielstaette.logoUrl %}
+            <img src="{{ spielstaette.logoUrl }}" alt="Logo {{ spielstaette.name }}"/>
+        {% else %}
+            <h1>{{spielstaette.name}}</h1>
+        {% endif %}
+    </div>
+</div>
+
+<div class="row-fluid">
     <div class="span6">
-        <h1>{{spielstaette.name}}</h1>
+        <h2><i class="icon-info-sign"></i> Wissenswertes</h2>
 
         <div class="thumbnail">
-            {% if spielstaette.logoUrl %}
-                <img src="{{ spielstaette.logoUrl }}" alt="Logo {{ spielstaette.name }}" class="pull-left"/>
-            {% endif %}
-
-            <img src="http://maps.googleapis.com/maps/api/streetview?location={{ spielstaette.adresse | url_encode }}&size=320x240&sensor=false" />
+            <img src="http://maps.googleapis.com/maps/api/streetview?location={{ spielstaette.adresse | url_encode }}&size=320x240&sensor=false" class="pull-right" />
 
             {% if spielstaette.beschreibung %}
-                <h2><i class="icon-info-sign"></i> Wissenswertes</h2>
                 <p>{{ spielstaette.beschreibung | nl2br }}</p>
             {% endif %}
         </div>
