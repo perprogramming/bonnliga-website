@@ -13,6 +13,7 @@ class RangRepository extends EntityRepository {
             SELECT r, s, l FROM $className r
             JOIN r.spieler s
             JOIN s.stammlokal l
+            WHERE r.rang IS NOT NULL
             ORDER BY r.rang ASC
         ");
 
