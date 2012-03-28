@@ -622,7 +622,7 @@ div.navbar a{font-size:14px;}div.navbar a i{font-size:16px;text-shadow:0px 1px 1
 div.navbar .brand{color:#ffffff;}
 .ranking i.icon-chevron-up{color:#46a546;}
 .ranking i.icon-chevron-down{color:#9d261d;}
-table.ranking tr:nth-child(16) td{border-bottom:2px solid #999999;}
+.gesamt table.ranking tr:nth-child(16) td{border-bottom:2px solid #999999;}
 .sponsor{-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;-webkit-border-radius:10px;-moz-border-radius:10px;border-radius:10px;padding:10px;margin-left:-11px;}.sponsor h3{color:#999999;}
 .sponsor.you{border:1px dashed #999999;}
 a[href^="mailto"]:after{font-family:FontAwesome;content:"\f003";padding-left:1px;}
