@@ -17,36 +17,37 @@ Spielstätte
 </div>
 
 <div class="row-fluid">
-    <div class="span6">
-        <h2><i class="icon-info-sign"></i> Wissenswertes</h2>
-
-        <div class="thumbnail">
-            <img src="http://maps.googleapis.com/maps/api/streetview?location={{ spielstaette.adresse | url_encode }}&size=320x240&sensor=false" class="pull-right" />
-
-            {% if spielstaette.beschreibung %}
-                <p>{{ spielstaette.beschreibung | nl2br }}</p>
-            {% endif %}
+    {% if spielstaette.adresse or spielstaette.beschreibung %}
+        <div class="span6">
+            <h2><i class="icon-info-sign"></i> Wissenswertes</h2>
+            <div class="thumbnail">
+                {% if spielstaette.adresse %}
+                    <img src="http://maps.googleapis.com/maps/api/streetview?location={{ spielstaette.adresse | url_encode }}&size=320x240&sensor=false" />
+                {% endif %}
+                {% if spielstaette.beschreibung %}
+                    <p>{{ spielstaette.beschreibung | nl2br }}</p>
+                {% endif %}
+            </div>
         </div>
-    </div>
+    {% endif %}
 
+    {% if spielstaette.adresse or spielstaette.oeffnungszeiten %}
+        <div class="span6">
+            <h2><i class="icon-home"></i> Adresse</h2>
+            <div class="thumbnail">
+                {% if spielstaette.adresse %}
+                    <img src="http://maps.google.com/maps/api/staticmap?center={{ spielstaette.adresse | url_encode }}&zoom=15&size=320x240&markers=color:blue%7C{{ spielstaette.adresse | url_encode }}&sensor=false" alt="Karte {{ spielstaette.name }}" />
 
-    <div class="span6">
-        <h2><i class="icon-home"></i> Adresse</h2>
-
-        <div class="thumbnail">
-            {% if spielstaette.adresse %}
-                <img src="http://maps.google.com/maps/api/staticmap?center={{ spielstaette.adresse | url_encode }}&zoom=15&size=320x240&markers=color:blue%7C{{ spielstaette.adresse | url_encode }}&sensor=false" alt="Karte {{ spielstaette.name }}" />
-
-                <p>{{ spielstaette.adresse | nl2br }}</p>
-                <p><a href="http://maps.google.de?q={{ spielstaette.adresse | url_encode }}">Auf google maps finden</a></p>
-            {% endif %}
-
-            {% if spielstaette.oeffnungszeiten %}
-                <h2><i class="icon-time"></i> Öffnungszeiten</h2>
-                <p>{{ spielstaette.oeffnungszeiten | nl2br }}</p>
-            {% endif %}
+                    <p>{{ spielstaette.adresse | nl2br }}</p>
+                    <p><a href="http://maps.google.de?q={{ spielstaette.adresse | url_encode }}">Auf google maps finden</a></p>
+                {% endif %}
+                {% if spielstaette.oeffnungszeiten %}
+                    <h2><i class="icon-time"></i> Öffnungszeiten</h2>
+                    <p>{{ spielstaette.oeffnungszeiten | nl2br }}</p>
+                {% endif %}
+            </div>
         </div>
-    </div>
+    {% endif %}
 </div>
 <div class="row-fluid">
     <div class="span6">

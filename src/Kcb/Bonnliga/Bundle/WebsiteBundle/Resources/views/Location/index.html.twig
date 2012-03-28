@@ -10,15 +10,17 @@ Locations
         <ul class="thumbnails">
             {% for spielstaette in spielstaetten %}
                 <li class="span3">
-                    <div class="thumbnail location">
-                        <h3><a href="{{ spielstaettePath(spielstaette) }}">{{spielstaette.name}}</a></h3>
+                    <a href="{{ spielstaettePath(spielstaette) }}">
+                        <div class="thumbnail location">
+                            <h3>{{spielstaette.name}}</h3>
 
-                        {% if spielstaette.logoUrl %}
-                            <img src="{{ spielstaette.logoUrl }}" alt="Logo {{ spielstaette.name }}"/>
-                        {% else %}
-                            <img src="http://maps.googleapis.com/maps/api/streetview?location={{ spielstaette.adresse | url_encode }}&size=260x220&sensor=false" />
-                        {% endif %}
-                    </div>
+                            {% if spielstaette.logoUrl %}
+                                <img src="{{ spielstaette.logoUrl }}" alt="Logo {{ spielstaette.name }}"/>
+                            {% else %}
+                                <img src="http://maps.googleapis.com/maps/api/streetview?location={{ spielstaette.adresse | url_encode }}&size=260x220&sensor=false" />
+                            {% endif %}
+                        </div>
+                    </a>
                 </li>
             {% endfor %}
         </ul>
