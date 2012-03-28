@@ -8,13 +8,12 @@ Spielstätte
 {% endblock%}
 
 {% block body %}
-    <div class="span12" style="margin-bottom: 20px;">
-        {% if spielstaette.logoUrl %}
-            <img src="{{ spielstaette.logoUrl }}" alt="Logo {{ spielstaette.name }}"/>
-        {% else %}
-            <h1>{{spielstaette.name}}</h1>
-        {% endif %}
-    </div>
+<div class="span12" style="margin-bottom: 20px;">
+    {% if spielstaette.logoUrl %}
+        <img src="{{ spielstaette.logoUrl }}" alt="Logo {{ spielstaette.name }}"/>
+    {% else %}
+        <h1>{{spielstaette.name}}</h1>
+    {% endif %}
 </div>
 
 <div class="row-fluid">
