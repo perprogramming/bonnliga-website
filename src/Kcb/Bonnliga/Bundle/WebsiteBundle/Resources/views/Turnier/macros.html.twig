@@ -3,7 +3,7 @@
         <div class="span12">
             <ul class="thumbnails">
                 {% for turnier in turniere %}
-                    <li class="span2 {% if turnier.nichtBald %}farAway{% endif %} thumbnail">
+                    <li class="span2 thumbnail">
                         {{ _self.compact(turnier) }}
                     </li>
                 {% endfor %}
@@ -13,16 +13,18 @@
 {% endmacro %}
 
 {% macro compact(turnier) %}
-    <div>
-        <strong><a href="{{ turnierPath(turnier) }}">
-            <i class="icon-calendar"></i> {{ _self.date(turnier) }}
-        </a></strong>
-    </div>
-    <div>
-        <span class="icon-home"></span> {{ turnier.spielstaette.name }}
-        {% if turnier.platzierungen | length > 0 %}
-        <br /><span class="icon-user"></span> {{ turnier.platzierungen | length }}
-        {% endif %}
+    <div class="turnier{% if turnier.nichtBald %} farAway{% endif %}">
+        <div>
+            <strong><a href="{{ turnierPath(turnier) }}">
+                <i class="icon-calendar"></i> {{ _self.date(turnier) }}
+            </a></strong>
+        </div>
+        <div>
+            <span class="icon-home"></span> {{ turnier.spielstaette.name }}
+            {% if turnier.platzierungen | length > 0 %}
+            <br /><span class="icon-user"></span> {{ turnier.platzierungen | length }}
+            {% endif %}
+        </div>
     </div>
 {% endmacro %}
 
