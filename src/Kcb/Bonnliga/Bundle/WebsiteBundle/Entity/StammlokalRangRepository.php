@@ -4,7 +4,21 @@ namespace Kcb\Bonnliga\Bundle\WebsiteBundle\Entity;
 
 class StammlokalRangRepository extends RangRepository {
 
-    public function findByStammlokal(Location $stammlokal, $limit) {
+    public function findByStammlokal(Location $stammlokal) {
+        $className = $this->getClassName();
+
+        $query = $this->getEntityManager()->createQuery("
+            SELECT r, s, l FROM $className r
+            JOIN r.spieler s
+            JOIN s.stammlokal l
+            JOIN r.stammlokal rl
+            WHERE rl.id = :id
+            ORDER BY r.rang ASC
+        ")->setParameter('id', $stammlokal->getId());
+        return $query->getResult();
+    }
+
+    public function findByStammlokalForRangliste(Location $stammlokal, $limit) {
         $className = $this->getClassName();
 
         $query = $this->getEntityManager()->createQuery("
