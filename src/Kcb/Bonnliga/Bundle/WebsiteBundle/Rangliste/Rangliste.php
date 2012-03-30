@@ -52,16 +52,23 @@ abstract class Rangliste {
             if ($aPunkte != $bPunkte)
                 return $b->getPunkte() - $a->getPunkte();
 
+            $teilnahmenA = count($a->getSpieler()->getPlatzierungen());
+            $teilnahmenB = count($b->getSpieler()->getPlatzierungen());
+            if ($teilnahmenA != $teilnahmenB)
+                return $teilnahmenA - $teilnahmenB;
+
             return strcmp($a->getSpieler()->getName(), $b->getSpieler()->getName());
         });
 
         $aktuellePunktzahl = PHP_INT_MAX;
+        $aktuelleTeilnahmen = 0;
         $naechsterRang = 0;
         $aktuellerRang = 0;
         foreach ($raenge as $rang) {
             $punkte = $rang->getPunkte();
+            $teilnahmen = count($rang->getSpieler()->getPlatzierungen());
             $naechsterRang++;
-            if ($punkte < $aktuellePunktzahl) {
+            if (($punkte < $aktuellePunktzahl) || ($teilnahmen > $aktuelleTeilnahmen)) {
                 $aktuellerRang = $naechsterRang;
             }
             if ($punkte == 0) {
@@ -70,6 +77,7 @@ abstract class Rangliste {
                 $rang->setRang($aktuellerRang);
             }
             $aktuellePunktzahl = $punkte;
+            $aktuelleTeilnahmen = $teilnahmen;
         }
 
         $this->geaendert = false;
