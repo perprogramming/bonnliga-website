@@ -13,7 +13,7 @@ class StammlokalRangRepository extends RangRepository {
             JOIN s.stammlokal l
             JOIN r.stammlokal rl
             WHERE rl.id = :id
-            ORDER BY r.rang ASC
+            ORDER BY r.rang ASC, s.vorname ASC, s.nachname ASC
         ")->setParameter('id', $stammlokal->getId());
         return $query->getResult();
     }
@@ -27,7 +27,7 @@ class StammlokalRangRepository extends RangRepository {
             JOIN s.stammlokal l
             JOIN r.stammlokal rl
             WHERE rl.id = :id AND r.rang IS NOT NULL
-            ORDER BY r.rang ASC
+            ORDER BY r.rang ASC, s.vorname ASC, s.nachname ASC
         ")->setParameter('id', $stammlokal->getId());
         if ($limit)
             $limit->setMaxResults($limit);
