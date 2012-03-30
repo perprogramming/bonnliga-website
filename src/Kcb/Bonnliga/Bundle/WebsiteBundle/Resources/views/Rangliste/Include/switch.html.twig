@@ -33,4 +33,21 @@
             {% endfor %}
         </ul>
     </div>
+    <div class="btn-group">
+        <button class="btn{% if stammlokal is defined %} active{% endif %}">
+            {% if stammlokal is defined %}
+                {{ stammlokal.name }}
+            {% else %}
+                Stammlokal
+            {% endif %}
+        </button>
+        <button class="btn dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            {% for s in stammlokale %}
+                <li><a href="{{ path('kcb_bonnliga_website_rangliste_stammlokal', {slug: s.slug }) }}">{{ s.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
 </div>

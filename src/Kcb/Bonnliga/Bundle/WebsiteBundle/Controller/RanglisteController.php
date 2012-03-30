@@ -18,7 +18,8 @@ class RanglisteController extends Controller {
     public function gesamtAction() {
         return array(
             'rangliste' => $this->get('kcb.bonnliga.rangliste_factory')->getGesamtRangliste(),
-            'spielstaetten' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Spielstaette')->findBy(array(), array('name' => 'asc'))
+            'spielstaetten' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Spielstaette')->findBy(array(), array('name' => 'asc')),
+            'stammlokale' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Location')->findBy(array(), array('name' => 'asc'))
         );
     }
 
@@ -29,7 +30,8 @@ class RanglisteController extends Controller {
     public function ladiesAction() {
         return array(
             'rangliste' => $this->get('kcb.bonnliga.rangliste_factory')->getLadyRangliste(),
-            'spielstaetten' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Spielstaette')->findBy(array(), array('name' => 'asc'))
+            'spielstaetten' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Spielstaette')->findBy(array(), array('name' => 'asc')),
+            'stammlokale' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Location')->findBy(array(), array('name' => 'asc'))
         );
     }
 
@@ -40,7 +42,8 @@ class RanglisteController extends Controller {
     public function hobbyAction() {
         return array(
             'rangliste' => $this->get('kcb.bonnliga.rangliste_factory')->getHobbyRangliste(),
-            'spielstaetten' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Spielstaette')->findBy(array(), array('name' => 'asc'))
+            'spielstaetten' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Spielstaette')->findBy(array(), array('name' => 'asc')),
+            'stammlokale' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Location')->findBy(array(), array('name' => 'asc'))
         );
     }
 
@@ -51,7 +54,8 @@ class RanglisteController extends Controller {
     public function proAction() {
         return array(
             'rangliste' => $this->get('kcb.bonnliga.rangliste_factory')->getProRangliste(),
-            'spielstaetten' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Spielstaette')->findBy(array(), array('name' => 'asc'))
+            'spielstaetten' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Spielstaette')->findBy(array(), array('name' => 'asc')),
+            'stammlokale' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Location')->findBy(array(), array('name' => 'asc'))
         );
     }
 
@@ -64,7 +68,22 @@ class RanglisteController extends Controller {
         return array(
             'rangliste' => $this->get('kcb.bonnliga.rangliste_factory')->getSpielstaetteRangliste($spielstaette),
             'spielstaette' => $spielstaette,
-            'spielstaetten' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Spielstaette')->findBy(array(), array('name' => 'asc'))
+            'spielstaetten' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Spielstaette')->findBy(array(), array('name' => 'asc')),
+            'stammlokale' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Location')->findBy(array(), array('name' => 'asc'))
+        );
+    }
+
+    /**
+     * @Route("/stammlokal/{slug}/")
+     * @Template
+     */
+    public function stammlokalAction($slug) {
+        $spielstaette = $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Location')->findOneBy(array('slug' => $slug));
+        return array(
+            'rangliste' => $this->get('kcb.bonnliga.rangliste_factory')->getStammlokalRangliste($spielstaette),
+            'stammlokal' => $spielstaette,
+            'spielstaetten' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Spielstaette')->findBy(array(), array('name' => 'asc')),
+            'stammlokale' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Location')->findBy(array(), array('name' => 'asc'))
         );
     }
 
