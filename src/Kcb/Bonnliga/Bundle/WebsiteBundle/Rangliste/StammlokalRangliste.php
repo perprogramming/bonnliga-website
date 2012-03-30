@@ -24,7 +24,7 @@ class StammlokalRangliste extends Rangliste {
     }
 
     public function getRaengeForRangliste($limit) {
-        return $this->getEntityRepository()->findByStammlokalForRangliste($this->spielstaette, $limit);
+        return $this->getEntityRepository()->findByStammlokalForRangliste($this->stammlokal, $limit);
     }
 
     public function getRang(Spieler $spieler) {
