@@ -19,8 +19,12 @@ class StammlokalRangliste extends Rangliste {
         return $this->entityManager->getRepository('KcbBonnligaWebsiteBundle:StammlokalRang');
     }
 
-    public function getRaenge($limit) {
-        return $this->getEntityRepository()->findByStammlokal($this->stammlokal, $limit);
+    public function getRaenge() {
+        return $this->getEntityRepository()->findByStammlokal($this->stammlokal);
+    }
+
+    public function getRaengeForRangliste($limit) {
+        return $this->getEntityRepository()->findByStammlokalForRangliste($this->spielstaette, $limit);
     }
 
     public function getRang(Spieler $spieler) {

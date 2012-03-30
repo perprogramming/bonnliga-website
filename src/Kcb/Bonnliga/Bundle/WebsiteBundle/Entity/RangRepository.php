@@ -6,7 +6,20 @@ use Doctrine\ORM\EntityRepository;
 
 class RangRepository extends EntityRepository {
 
-    public function findRaenge($limit) {
+    public function findRaenge() {
+        $className = $this->getClassName();
+
+        $query = $this->getEntityManager()->createQuery("
+            SELECT r, s, l FROM $className r
+            JOIN r.spieler s
+            JOIN s.stammlokal l
+            ORDER BY r.rang ASC
+        ");
+
+        return $query->getResult();
+    }
+
+    public function findRaengeForRangliste($limit) {
         $className = $this->getClassName();
 
         $query = $this->getEntityManager()->createQuery("

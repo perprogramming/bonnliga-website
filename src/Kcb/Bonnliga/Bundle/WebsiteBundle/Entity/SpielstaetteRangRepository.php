@@ -4,7 +4,22 @@ namespace Kcb\Bonnliga\Bundle\WebsiteBundle\Entity;
 
 class SpielstaetteRangRepository extends RangRepository {
 
-    public function findBySpielstaette(Spielstaette $spielstaette, $limit) {
+    public function findBySpielstaette(Spielstaette $spielstaette) {
+        $className = $this->getClassName();
+
+        $query = $this->getEntityManager()->createQuery("
+            SELECT r, s, l FROM $className r
+            JOIN r.spieler s
+            JOIN s.stammlokal l
+            JOIN r.spielstaette rs
+            WHERE rs.id = :id
+            ORDER BY r.rang ASC
+        ")->setParameter('id', $spielstaette->getId());
+
+        return $query->getResult();
+    }
+
+    public function findBySpielstaetteForRangliste(Spielstaette $spielstaette, $limit) {
         $className = $this->getClassName();
 
         $query = $this->getEntityManager()->createQuery("

@@ -14,7 +14,7 @@
             </tr>
         </thead>
         <tbody>
-        {% for rang in rangliste.raenge(limit | default(false)) %}
+        {% for rang in rangliste.raengeForRangliste(limit | default(false)) %}
             <tr class="{{rang.spieler.einstufung}} {{rang.spieler.geschlecht}}">
                 {% if 'rang' in columns %}
                     <td>
