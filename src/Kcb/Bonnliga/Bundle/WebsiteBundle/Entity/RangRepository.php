@@ -13,7 +13,7 @@ class RangRepository extends EntityRepository {
             SELECT r, s, l FROM $className r
             JOIN r.spieler s
             JOIN s.stammlokal l
-            ORDER BY r.rang ASC
+            ORDER BY r.rang ASC, s.vorname ASC, s.nachname ASC
         ");
 
         return $query->getResult();
@@ -27,7 +27,7 @@ class RangRepository extends EntityRepository {
             JOIN r.spieler s
             JOIN s.stammlokal l
             WHERE r.rang IS NOT NULL
-            ORDER BY r.rang ASC
+            ORDER BY r.rang ASC, s.vorname ASC, s.nachname ASC
         ");
 
         if ($limit)

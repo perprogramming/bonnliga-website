@@ -13,7 +13,7 @@ class SpielstaetteRangRepository extends RangRepository {
             JOIN s.stammlokal l
             JOIN r.spielstaette rs
             WHERE rs.id = :id
-            ORDER BY r.rang ASC
+            ORDER BY r.rang ASC, s.vorname ASC, s.nachname ASC
         ")->setParameter('id', $spielstaette->getId());
 
         return $query->getResult();
@@ -28,7 +28,7 @@ class SpielstaetteRangRepository extends RangRepository {
             JOIN s.stammlokal l
             JOIN r.spielstaette rs
             WHERE rs.id = :id AND r.rang IS NOT NULL
-            ORDER BY r.rang ASC
+            ORDER BY r.rang ASC, s.vorname ASC, s.nachname ASC
         ")->setParameter('id', $spielstaette->getId());
 
         if ($limit)
