@@ -54,7 +54,8 @@ class RanglistenAktualisierenCommand extends ContainerAwareCommand {
                 }
 
                 $ranglisten['spielstaette' . $turnier->getSpielstaette()->getId()]->beruecksichtige($platzierung);
-                $ranglisten['stammlokal' . $platzierung->getSpieler()->getStammlokal()->getId()]->beruecksichtige($platzierung);
+                if ($stammlokal = $platzierung->getSpieler()->getStammlokal())
+                    $ranglisten['stammlokal' . $stammlokal->getId()]->beruecksichtige($platzierung);
             }
 
             foreach ($ranglisten as $rangliste)
