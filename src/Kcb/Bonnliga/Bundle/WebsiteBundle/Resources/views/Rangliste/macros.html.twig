@@ -37,7 +37,7 @@
                 {% if 'tendenz' in columns %}<td><i class="icon-large icon-{{mapping[rang.tendenz]}}"></i></td>{% endif %}
                 {% if 'name' in columns %}<td>{{rang.spieler.name}}</td>{% endif %}
                 {% if 'einstufung' in columns %}<td>{{rang.spieler.einstufung}}</td>{% endif %}
-                {% if 'stammlokal' in columns %}<td>{{rang.spieler.stammlokal.name}}</td>{% endif %}
+                {% if 'stammlokal' in columns %}<td>{% if rang.spieler.stammlokal %}{{rang.spieler.stammlokal.name}}{% endif %}</td>{% endif %}
                 {% if 'punkte' in columns %}<td>{{rang.punkte}}</td>{% endif %}
                 {% if 'teilnahmen' in columns %}<td>{{rang.teilnahmen}}</td>{% endif %}
             </tr>
