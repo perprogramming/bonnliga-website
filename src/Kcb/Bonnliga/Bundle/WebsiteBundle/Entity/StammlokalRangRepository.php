@@ -10,7 +10,7 @@ class StammlokalRangRepository extends RangRepository {
         $query = $this->getEntityManager()->createQuery("
             SELECT r, s, l FROM $className r
             JOIN r.spieler s
-            JOIN s.stammlokal l
+            LEFT JOIN s.stammlokal l
             JOIN r.stammlokal rl
             WHERE rl.id = :id
             ORDER BY r.rang ASC, s.vorname ASC, s.nachname ASC
@@ -24,7 +24,7 @@ class StammlokalRangRepository extends RangRepository {
         $query = $this->getEntityManager()->createQuery("
             SELECT r, s, l FROM $className r
             JOIN r.spieler s
-            JOIN s.stammlokal l
+            LEFT JOIN s.stammlokal l
             JOIN r.stammlokal rl
             WHERE rl.id = :id AND r.rang IS NOT NULL
             ORDER BY r.rang ASC, s.vorname ASC, s.nachname ASC
