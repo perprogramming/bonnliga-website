@@ -63,7 +63,13 @@ class Spieler {
     }
 
     public function getName() {
-        return $this->vorname . ' ' . mb_substr($this->nachname, 0, 1, 'utf-8') . '.';
+        if (!$this->nachname) {
+            return $this->vorname;
+        } elseif (!$this->vorname) {
+            return $this->nachname;
+        } else {
+            return $this->vorname . ' ' . mb_substr($this->nachname, 0, 1, 'utf-8') . '.';
+        }
     }
 
     public function setStammlokal(Location $stammlokal) {
