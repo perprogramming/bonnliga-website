@@ -16,11 +16,14 @@ class PottController extends Controller {
      * @Template
      */
     public function detailsAction() {
+        // Sponsorengelder etc.
+        $sponsorenGelder = 100;
+
         $em = $this->getDoctrine()->getEntityManagerForClass("Kcb\Bonnliga\Bundle\WebsiteBundle\Entity\Platzierung");
 
         $res = $em->createQuery('SELECT COUNT(p) spieler FROM KcbBonnligaWebsiteBundle:Platzierung p')->getResult();
 
-        $total = $res[0]['spieler']/2;
+        $total = $sponsorenGelder + $res[0]['spieler']/2;
         // Hobby, Ladies, Pro
         $part  = $total * .1;
 
