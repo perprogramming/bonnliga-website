@@ -16,24 +16,9 @@ class WanderpokalController extends Controller {
      * @Template
      */
     public function indexAction() {
-        return array();
-    }
-
-    /**
-     * @Route("/rangliste")
-     * @Template
-     */
-    public function ranglisteAction() {
-        return array();
-    }
-
-
-    /**
-     * @Route("/regeln")
-     * @Template
-     */
-    public function regelnAction() {
-        return array();
+        return array(
+            'monate' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Wanderpokal\Monat')->findAll()
+        );
     }
 
 }

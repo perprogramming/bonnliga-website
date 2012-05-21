@@ -4,6 +4,7 @@ namespace Kcb\Bonnliga\Bundle\WebsiteBundle\Twig;
 
 use Kcb\Bonnliga\Bundle\WebsiteBundle\Entity\Spielstaette;
 use Kcb\Bonnliga\Bundle\WebsiteBundle\Entity\Stammlokal;
+use Kcb\Bonnliga\Bundle\WebsiteBundle\Entity\Location;
 use Kcb\Bonnliga\Bundle\WebsiteBundle\Entity\Turnier;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\DependencyInjection\Container;
@@ -23,13 +24,14 @@ class Extension extends \Twig_Extension {
         return array(
             'spielstaettePath' => new \Twig_Function_Method($this, 'getSpielstaettePath'),
             'stammlokalPath' => new \Twig_Function_Method($this, 'getStammlokalPath'),
-            'turnierPath' => new \Twig_Function_Method($this, 'getTurnierPath')
+            'turnierPath' => new \Twig_Function_Method($this, 'getTurnierPath'),
+            'locationPath' => new \Twig_Function_Method($this, 'getLocationPath')
         );
     }
 
     public function getFilters() {
         return array(
-            'date' => new \Twig_Filter_Method($this, 'getFormattedDate')
+            'strftimeDate' => new \Twig_Filter_Method($this, 'getStrftimeDate')
         );
     }
 
@@ -45,7 +47,15 @@ class Extension extends \Twig_Extension {
         return $this->urlGenerator->generate('kcb_bonnliga_website_turnier_detail', array('id' => $turnier->getId()));
     }
 
-    public function getFormattedDate(\DateTime $date, $format) {
+    public function getLocationPath(Location $location) {
+        if ($location instanceof Spielstaette) {
+            return $this->getSpielstaettePath($location);
+        } else {
+            return $this->getStammlokalPath($location);
+        }
+    }
+
+    public function getStrftimeDate(\DateTime $date, $format) {
         return strftime($format, $date->getTimestamp());
     }
 

@@ -31,6 +31,7 @@ class Rang {
 
     /**
      * @ORM\OneToMany(targetEntity="Bester", mappedBy="rang", cascade={"all"}, orphanRemoval=true)
+     * @ORM\OrderBy({"punkte" = "DESC"})
      */
     protected $beste;
 
@@ -44,10 +45,13 @@ class Rang {
         $this->stammlokal = $stammlokalRangliste->getStammlokal();
         $this->beste = new \Doctrine\Common\Collections\ArrayCollection();
 
+        $punkte = 0;
         foreach ($stammlokalRangliste->getRaengeForRangliste(5) as $rang) {
             $this->beste->add(new Bester($this, $rang->getSpieler(), $rang->getPunkte()));
-            $this->punkte += $rang->getPunkte();
+            $punkte += $rang->getPunkte();
         }
+
+        $this->punkte = ceil($punkte / 5);
     }
 
     public function getId() {
@@ -60,6 +64,10 @@ class Rang {
 
     public function getBeste() {
         return $this->beste;
+    }
+
+    public function getStammlokal() {
+        return $this->stammlokal;
     }
 
 }

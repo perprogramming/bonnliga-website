@@ -35,7 +35,9 @@ class Monat {
     }
 
     public function beruecksichtige(StammlokalRangliste $stammlokalRangliste) {
-        $this->raenge->add(new Rang($this, $stammlokalRangliste));
+        if (count($stammlokalRangliste->getRaengeForRangliste(5)) == 5) {
+            $this->raenge->add(new Rang($this, $stammlokalRangliste));
+        }
     }
 
     public function getRaenge() {

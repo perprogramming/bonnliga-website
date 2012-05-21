@@ -29,7 +29,7 @@
 {% endmacro %}
 
 {% macro date(turnier) %}
-    {{ turnier.beginn | date('%A') }},
-    {{ turnier.beginn | date('%d. %B') }}
-    um {{ turnier.beginn | date('%R') }} Uhr
+    {{ turnier.beginn | strftimeDate('%A') }},
+    {{ turnier.beginn | strftimeDate('%d. %B') }}
+    um {{ turnier.beginn | strftimeDate('%R') }} Uhr
 {% endmacro %}
