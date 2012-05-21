@@ -8,6 +8,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Kcb\Bonnliga\Bundle\WebsiteBundle\Entity\Spieler;
 use Kcb\Bonnliga\Bundle\WebsiteBundle\Entity\Platzierung;
 use Kcb\Bonnliga\Bundle\WebsiteBundle\Entity\GesamtRang;
+use Kcb\Bonnliga\Bundle\WebsiteBundle\Entity\Wanderpokal\Monat;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -30,16 +31,36 @@ class RanglistenAktualisierenCommand extends ContainerAwareCommand {
         foreach ($em->getRepository('KcbBonnligaWebsiteBundle:Spielstaette')->findAll() as $spielstaette) {
             $ranglisten['spielstaette' . $spielstaette->getId()] = $ranglisteFactory->getSpielstaetteRangliste($spielstaette);
         }
-        foreach ($em->getRepository('KcbBonnligaWebsiteBundle:Location')->findAll() as $stammlokal) {
+        $stammlokale = $em->getRepository('KcbBonnligaWebsiteBundle:Location')->findAll();
+        foreach ($stammlokale as $stammlokal) {
             $ranglisten['stammlokal' . $stammlokal->getId()] = $ranglisteFactory->getStammlokalRangliste($stammlokal);
         }
 
         foreach ($ranglisten as $rangliste)
             $rangliste->zuruecksetzen();
 
+        $wanderpokalMonatRepository = $em->getRepository('KcbBonnligaWebsiteBundle:Wanderpokal\Monat');
+        foreach ($wanderpokalMonatRepository->findAll() as $monat) {
+            $em->remove($monat);
+        }
+
         $em->flush();
 
+        $letzterMonat = false;
+        $wanderpokalMonat = false;
+
         foreach ($em->getRepository('KcbBonnligaWebsiteBundle:Turnier')->findBy(array(), array('beginn' => 'asc')) as $turnier) {
+            if (!$turnier->isVorbei() || !$turnier->getPlatzierungen())
+                continue;
+
+            $monat = $turnier->getBeginn()->format('Y-m-01');
+            if ($monat != $letzterMonat) {
+                if ($letzterMonat) {
+                    $this->persistWanderpokalMonat($em, $letzterMonat, $stammlokale, $ranglisten);
+                }
+            }
+            $letzterMonat = $monat;
+
             foreach ($turnier->getPlatzierungen() as $platzierung) {
                 $ranglisten['gesamt']->beruecksichtige($platzierung);
 
@@ -62,7 +83,18 @@ class RanglistenAktualisierenCommand extends ContainerAwareCommand {
                 $rangliste->aktualisieren();
         }
 
+        $this->persistWanderpokalMonat($em, $letzterMonat, $stammlokale, $ranglisten);
+
         $em->flush();
+    }
+
+    protected function persistWanderpokalMonat($em, $monat, $stammlokale, $ranglisten) {
+        $em->flush();
+        $wanderpokalMonat = new Monat(new \DateTime($monat));
+        foreach ($stammlokale as $stammlokal) {
+            $wanderpokalMonat->beruecksichtige($ranglisten['stammlokal' . $stammlokal->getId()]);
+        }
+        $em->persist($wanderpokalMonat);
     }
 
 }

@@ -31,4 +31,8 @@ class StammlokalRangliste extends Rangliste {
         return $this->getEntityRepository()->findOneBySpielerAndStammlokal($spieler, $this->stammlokal);
     }
 
+    public function getStammlokal() {
+        return $this->stammlokal;
+    }
+
 }

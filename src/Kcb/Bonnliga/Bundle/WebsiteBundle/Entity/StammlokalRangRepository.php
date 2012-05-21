@@ -30,7 +30,7 @@ class StammlokalRangRepository extends RangRepository {
             ORDER BY r.rang ASC, s.vorname ASC, s.nachname ASC
         ")->setParameter('id', $stammlokal->getId());
         if ($limit)
-            $limit->setMaxResults($limit);
+            $query->setMaxResults($limit);
         return $query->getResult();
     }
 
