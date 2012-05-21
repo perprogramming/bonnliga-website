@@ -11,7 +11,7 @@ class MonatRepository extends EntityRepository {
             SELECT m, r, b FROM KcbBonnligaWebsiteBundle:Wanderpokal\Monat m
             JOIN m.raenge r
             JOIN r.beste b
-            ORDER BY m.monat ASC
+            ORDER BY m.monat DESC
         ")->getResult();
     }
 

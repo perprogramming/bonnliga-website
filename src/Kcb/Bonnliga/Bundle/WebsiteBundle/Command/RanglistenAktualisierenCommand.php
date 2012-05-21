@@ -47,7 +47,6 @@ class RanglistenAktualisierenCommand extends ContainerAwareCommand {
         $em->flush();
 
         $letzterMonat = false;
-        $wanderpokalMonat = false;
 
         foreach ($em->getRepository('KcbBonnligaWebsiteBundle:Turnier')->findBy(array(), array('beginn' => 'asc')) as $turnier) {
             if (!$turnier->isVorbei() || !$turnier->getPlatzierungen())

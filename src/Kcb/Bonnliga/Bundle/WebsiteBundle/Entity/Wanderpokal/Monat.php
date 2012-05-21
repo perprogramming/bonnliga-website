@@ -24,7 +24,7 @@ class Monat {
     protected $monat;
 
     /**
-     * @ORM\OneToMany(targetEntity="Rang", mappedBy="monat", cascade={"ALL"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="Rang", mappedBy="monat", cascade={"all"}, orphanRemoval=true)
      * @ORM\OrderBy({"punkte" = "DESC"})
      */
     protected $raenge;

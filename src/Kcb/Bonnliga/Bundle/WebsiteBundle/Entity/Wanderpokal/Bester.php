@@ -20,6 +20,7 @@ class Bester {
 
     /**
      * @ORM\ManyToOne(targetEntity="Rang", inversedBy="beste")
+     * @ORM\JoinColumn(name="rang_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $rang;
 

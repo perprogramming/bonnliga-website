@@ -20,6 +20,7 @@ class Rang {
 
     /**
      * @ORM\ManyToOne(targetEntity="Monat", inversedBy="raenge")
+     * @ORM\JoinColumn(name="monat_id", referencedColumnName="id", onDelete="CASCADE")
      */
     protected $monat;
 
@@ -29,7 +30,7 @@ class Rang {
     protected $stammlokal;
 
     /**
-     * @ORM\OneToMany(targetEntity="Bester", mappedBy="rang", cascade={"ALL"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="Bester", mappedBy="rang", cascade={"all"}, orphanRemoval=true)
      */
     protected $beste;
 
