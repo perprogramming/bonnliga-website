@@ -18,7 +18,8 @@ class HomeController extends Controller {
             'gesamtRangliste' => $this->get('kcb.bonnliga.rangliste_factory')->getGesamtRangliste(),
             'ladyRangliste' => $this->get('kcb.bonnliga.rangliste_factory')->getLadyRangliste(),
             'hobbyRangliste' => $this->get('kcb.bonnliga.rangliste_factory')->getHobbyRangliste(),
-            'proRangliste' => $this->get('kcb.bonnliga.rangliste_factory')->getProRangliste()
+            'proRangliste' => $this->get('kcb.bonnliga.rangliste_factory')->getProRangliste(),
+            'wanderpokalMonat' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Wanderpokal\Monat')->findCurrent()
         );
     }
 

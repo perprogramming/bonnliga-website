@@ -11,15 +11,16 @@ Wanderpokal
         <ul>
             {% for monat in monate %}
                 <li>
-                    <h2>{{ monat.monat | strftimeDate('%B') }} {{ monat.monat | strftimeDate('%Y') }}</h2>
+                    <h2>{{ monat.monat | strftimeDate('%B') }} {{ monat.monat | strftimeDate('%Y') }}{% if loop.first %} (die Auswertung für diesen Monat läuft noch){% endif %}</h2>
                     <ul>
                         {% for rang in monat.raenge %}
                             <li>
                                 {{ loop.index }}. <a href="{{ locationPath(rang.stammlokal) }}">{{ rang.stammlokal.name }}</a> mit durchschnittlich {{ rang.punkte }} Punkten
+                                <p>{% for bester in rang.beste %}
+                                    {{ bester.spieler.name }} mit {{ bester.punkte }} Punkten{% if not loop.last %}, {% endif %}
+                                {% endfor %}</p>
                                 <ul>
-                                    {% for bester in rang.beste %}
-                                        <li>{{ bester.spieler.name }} mit {{ bester.punkte }} Punkten</li>
-                                    {% endfor %}
+
                                 </ul>
                             </li>
                         {% endfor %}

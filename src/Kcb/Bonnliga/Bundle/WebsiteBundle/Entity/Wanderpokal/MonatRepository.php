@@ -15,4 +15,15 @@ class MonatRepository extends EntityRepository {
         ")->getResult();
     }
 
+    public function findCurrent() {
+        return $this->getEntityManager()->createQuery("
+            SELECT m, r, b FROM KcbBonnligaWebsiteBundle:Wanderpokal\Monat m
+            JOIN m.raenge r
+            JOIN r.beste b
+            WHERE
+              m.monat < :aktuellerMonat
+            ORDER BY m.monat DESC
+        ")->setMaxResults(1)->setParameter('aktuellerMonat', date('Y-m-01'))->getSingleResult();
+    }
+
 }
