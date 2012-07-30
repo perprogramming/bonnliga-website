@@ -4,9 +4,6 @@
     'Ladies': 'kcb_bonnliga_website_rangliste_ladies',
     'Pro': 'kcb_bonnliga_website_rangliste_pro'
 } %}
-{% if is_granted('ROLE_ADMIN') %}
-<div><a href="{{ path('kcb_bonnliga_website_rangliste_aktualisieren') }}">Rangliste aktualisieren</a></div>
-{% endif %}
 <div class="btn-toolbar">
     <div class="btn-group">
         {% for label, route in buttons %}

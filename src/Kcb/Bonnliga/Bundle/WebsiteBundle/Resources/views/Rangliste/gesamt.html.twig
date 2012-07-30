@@ -7,6 +7,9 @@
 
 {% block body %}
     <div class="span12">
+        {% if is_granted('ROLE_ADMIN') %}
+            <div><a href="{{ path('kcb_bonnliga_website_rangliste_aktualisieren') }}">Rangliste aktualisieren</a></div>
+        {% endif %}
         <p>
             {% include "KcbBonnligaWebsiteBundle:Rangliste:Include/switch.html.twig"%}
         </p>
