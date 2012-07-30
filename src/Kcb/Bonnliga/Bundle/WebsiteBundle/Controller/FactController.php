@@ -21,20 +21,4 @@ class FactController extends Controller {
         );
     }
 
-    /**
-     * @Route("/regeln")
-     * @Template
-     */
-    public function regelnAction() {
-        return array();
-    }
-
-    /**
-     * @Route("/faq")
-     * @Template
-     */
-    public function faqAction() {
-        return array();
-    }
-
 }

@@ -25,7 +25,7 @@ class Monat {
 
     /**
      * @ORM\OneToMany(targetEntity="Rang", mappedBy="monat", cascade={"all"}, orphanRemoval=true)
-     * @ORM\OrderBy({"punkte" = "DESC"})
+     * @ORM\OrderBy({"punkte" = "DESC", "vormonatsBester" = "DESC", "teilnahmen" = "DESC"})
      */
     protected $raenge;
 
@@ -34,9 +34,9 @@ class Monat {
         $this->raenge = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    public function beruecksichtige(StammlokalRangliste $stammlokalRangliste) {
+    public function beruecksichtige(StammlokalRangliste $stammlokalRangliste, Monat $vormonat = null) {
         if (count($stammlokalRangliste->getRaengeForRangliste(5)) == 5) {
-            $this->raenge->add(new Rang($this, $stammlokalRangliste));
+            $this->raenge->add(new Rang($this, $stammlokalRangliste, $vormonat));
         }
     }
 

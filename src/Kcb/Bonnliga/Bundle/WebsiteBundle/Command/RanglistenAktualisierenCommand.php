@@ -47,6 +47,7 @@ class RanglistenAktualisierenCommand extends ContainerAwareCommand {
         $em->flush();
 
         $letzterMonat = false;
+        $vormonat = null;
 
         foreach ($em->getRepository('KcbBonnligaWebsiteBundle:Turnier')->findBy(array(), array('beginn' => 'asc')) as $turnier) {
             if (!$turnier->isVorbei() || !$turnier->getPlatzierungen())
@@ -55,7 +56,7 @@ class RanglistenAktualisierenCommand extends ContainerAwareCommand {
             $monat = $turnier->getBeginn()->format('Y-m-01');
             if ($monat != $letzterMonat) {
                 if ($letzterMonat) {
-                    $this->persistWanderpokalMonat($em, $letzterMonat, $stammlokale, $ranglisten);
+                    $vormonat = $this->persistWanderpokalMonat($em, $letzterMonat, $stammlokale, $ranglisten, $vormonat);
                 }
             }
             $letzterMonat = $monat;
@@ -82,18 +83,19 @@ class RanglistenAktualisierenCommand extends ContainerAwareCommand {
                 $rangliste->aktualisieren();
         }
 
-        $this->persistWanderpokalMonat($em, $letzterMonat, $stammlokale, $ranglisten);
+        $vormonat = $this->persistWanderpokalMonat($em, $letzterMonat, $stammlokale, $ranglisten, $vormonat);
 
         $em->flush();
     }
 
-    protected function persistWanderpokalMonat($em, $monat, $stammlokale, $ranglisten) {
+    protected function persistWanderpokalMonat($em, $monat, $stammlokale, $ranglisten, Monat $vormonat = null) {
         $em->flush();
         $wanderpokalMonat = new Monat(new \DateTime($monat));
         foreach ($stammlokale as $stammlokal) {
-            $wanderpokalMonat->beruecksichtige($ranglisten['stammlokal' . $stammlokal->getId()]);
+            $wanderpokalMonat->beruecksichtige($ranglisten['stammlokal' . $stammlokal->getId()], $vormonat);
         }
         $em->persist($wanderpokalMonat);
+        return $wanderpokalMonat;
     }
 
 }

@@ -40,18 +40,36 @@ class Rang {
      */
     protected $punkte = 0;
 
-    public function __construct(Monat $monat, StammlokalRangliste $stammlokalRangliste) {
+    /**
+     * @ORM\Column(type="integer")
+     */
+    protected $teilnahmen = 0;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $vormonatsBester = false;
+
+
+    public function __construct(Monat $monat, StammlokalRangliste $stammlokalRangliste, Monat $vormonat = null) {
         $this->monat = $monat;
         $this->stammlokal = $stammlokalRangliste->getStammlokal();
         $this->beste = new \Doctrine\Common\Collections\ArrayCollection();
 
+        if ($vormonat && ($vormonat->getRaenge()->first()->getStammlokal() == $this->stammlokal)) {
+            $this->vormonatsBester = true;
+        }
+
         $punkte = 0;
+        $teilnahmen = 0;
         foreach ($stammlokalRangliste->getRaengeForRangliste(5) as $rang) {
             $this->beste->add(new Bester($this, $rang->getSpieler(), $rang->getPunkte()));
             $punkte += $rang->getPunkte();
+            $teilnahmen += count($rang->getSpieler()->getPlatzierungen());
         }
 
         $this->punkte = ceil($punkte / 5);
+        $this->teilnahmen = $teilnahmen;
     }
 
     public function getId() {
@@ -68,6 +86,10 @@ class Rang {
 
     public function getStammlokal() {
         return $this->stammlokal;
+    }
+
+    public function getTeilnahmen() {
+        return $this->teilnahmen;
     }
 
 }
