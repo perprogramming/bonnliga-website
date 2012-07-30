@@ -5,6 +5,7 @@ namespace Kcb\Bonnliga\Bundle\WebsiteBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Kcb\Bonnliga\Bundle\WebsiteBundle\Rangliste\Calculation;
 
 /**
  * @Route("/rangliste")
@@ -65,6 +66,16 @@ class RanglisteController extends Controller {
             'rangliste' => $this->get('kcb.bonnliga.rangliste_factory')->getSpielstaetteRangliste($spielstaette),
             'spielstaette' => $spielstaette,
             'spielstaetten' => $this->getDoctrine()->getRepository('KcbBonnligaWebsiteBundle:Spielstaette')->findBy(array(), array('name' => 'asc'))
+        );
+    }
+
+    /**
+     * @Route("/aktualisieren/")
+     */
+    public function aktualisierenAction() {
+        Calculation::run($this->container);
+        return $this->redirect(
+            $this->get('router')->route('kcb_bonnliga_website_rangliste_gesamt')
         );
     }
 
