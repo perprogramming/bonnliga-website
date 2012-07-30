@@ -75,7 +75,7 @@ class RanglisteController extends Controller {
     public function aktualisierenAction() {
         Calculation::run($this->container);
         return $this->redirect(
-            $this->get('router')->route('kcb_bonnliga_website_rangliste_gesamt')
+            $this->get('router')->generate('kcb_bonnliga_website_rangliste_gesamt')
         );
     }
 
