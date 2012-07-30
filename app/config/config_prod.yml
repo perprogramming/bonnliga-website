@@ -9,12 +9,6 @@ doctrine:
         password: b0nnl1g4
         charset:  UTF8
 
-#doctrine:
-#    orm:
-#        metadata_cache_driver: apc
-#        result_cache_driver: apc
-#        query_cache_driver: apc
-
 monolog:
     handlers:
         main:
