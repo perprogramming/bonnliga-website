@@ -21,13 +21,17 @@ security:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        secured_area:
-            pattern:    ^/verwaltung
+        main:
+            pattern:    ^/
             form_login:
-                check_path: /login-check
                 login_path: /login
+                check_path: /check
             logout:
                 path:   /logout
-                target: /
+            anonymous: ~
 
     access_control:
+        - { path: ^/rangliste/aktualisieren/$, roles: ROLE_ADMIN }
+        - { path: ^/turniere/(\d+)/.+$, roles: ROLE_ADMIN }
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+

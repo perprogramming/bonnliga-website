@@ -1,0 +1,25 @@
+{% extends "KcbBonnligaWebsiteBundle:Layout:base.html.twig" %}
+
+{% block title %}
+Login
+{% endblock%}
+
+{% block body %}
+    {% if error %}
+        <div>{{ error.message | trans }}</div>
+    {% endif %}
+
+    <form action="{{ path('kcb_bonnliga_website_authentication_check') }}" method="post">
+        <div>
+            <label for="username">Benutzername:</label>
+            <input type="text" id="username" name="_username" value="{{ lastUsername }}" />
+        </div>
+        <div>
+            <label for="password">Passwort:</label>
+            <input type="password" id="password" name="_password" />
+        </div>
+        <div>
+            <button type="submit">Einloggen</button>
+        </div>
+    </form>
+{% endblock %}
