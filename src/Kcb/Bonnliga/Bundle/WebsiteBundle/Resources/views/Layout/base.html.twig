@@ -53,8 +53,12 @@
         <div class="container-fluid main">
             <div class="row-fluid">
                 {% if app.user %}
-                    <div class="span12">Eingeloggt als {{ app.user.username }}. <a class="link" href="{{ path('kcb_bonnliga_website_authentication_logout') }}">Ausloggen</a></div>
+                    <div class="span12">
+                        <p>Eingeloggt als {{ app.user.username }}. <a class="link" href="{{ path('kcb_bonnliga_website_authentication_logout') }}">Ausloggen</a></p>
+                    </div>
                 {% endif %}
+            </div>
+            <div class="row-fluid">
                 {% block body %}{% endblock %}
             </div>
             <div>
