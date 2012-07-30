@@ -3,6 +3,12 @@
 namespace Kcb\Bonnliga\Bundle\WebsiteBundle\Rangliste;
 
 use Symfony\Component\DependencyInjection\Container;
+use Kcb\Bonnliga\Bundle\WebsiteBundle\Entity\Spieler;
+use Kcb\Bonnliga\Bundle\WebsiteBundle\Entity\Platzierung;
+use Kcb\Bonnliga\Bundle\WebsiteBundle\Entity\GesamtRang;
+use Kcb\Bonnliga\Bundle\WebsiteBundle\Entity\Wanderpokal\Monat;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class Calculation {
 
