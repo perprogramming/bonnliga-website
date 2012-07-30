@@ -14,7 +14,7 @@ Home
                 <p>Bonns erste und bisher einzigartige Tischfussballliga. <a href="{{ path("kcb_bonnliga_website_fact_index") }}">Kickern für jeden, vom Anfänger bis zum Profi.</a></p>
             </div>
         </div>
-        <div class="span4">
+        {% if wanderpokalMonat %}<div class="span4">
             <h2>Der Wanderpokal</h2>
             <div class="row-fluid">
                 <div class="span6">
@@ -30,7 +30,7 @@ Home
                     <img src="{{ asset("bundles/kcbbonnligawebsite/img/pokal.jpg") }}" alt="Wanderpokal" style="max-width: 100%; width: 200px" />
                 </div>
             </div>
-        </div>
+        </div>{% endif %}
     </div>
 
     <div class="row-fluid">
