@@ -20,7 +20,7 @@ Home
                 <div class="span6">
                     <div>&nbsp;</div>
                     <div>&nbsp;</div>
-                    <div>Für den Monat <strong>{{ wanderpokalMonat.monat | strftimeDate('%B %Y') }}</strong> geht der Wanderpokal ans</div>
+                    <div>Für den Monat <strong>{{ wanderpokalMonat.monat | strftimeDate('%B %Y') }}</strong> geht der Wanderpokal an die Location</div>
                     {% set besteLocation = wanderpokalMonat.raenge[0].stammlokal %}
                     <div><h3><a href="{{ locationPath(besteLocation) }}">{{ besteLocation.name }}</a></h3></div>
                     <div>Alle Details findet ihr in den <a href="{{ path('kcb_bonnliga_website_wanderpokal_index') }}">Statistiken zum Wanderpokal</a>.</div>
