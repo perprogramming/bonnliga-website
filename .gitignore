@@ -2,6 +2,7 @@ vendor
 .idea
 composer.phar
 web/bundles
+web/phpmyadmin
 app/bootstrap.php.cache
 app/cache/*
 app/logs/*
