@@ -41,7 +41,7 @@
                 {% if 'stammlokal' in columns %}<td>{% if rang.spieler.stammlokal %}{{rang.spieler.stammlokal.name}}{% endif %}</td>{% endif %}
                 {% if 'punkte' in columns %}<td>{{rang.punkte}}</td>{% endif %}
                 {% if 'teilnahmen' in columns %}<td>{{rang.teilnahmen}}</td>{% endif %}
-                {% if 'schnitt' in columns %}<td>{{ (rang.punkt / rang.teilnahmen) | number_format(2, ',', '.') }}</td>{% endif %}
+                {% if 'schnitt' in columns %}<td>{{ (rang.punkte / rang.teilnahmen) | number_format(2, ',', '.') }}</td>{% endif %}
             </tr>
         {% endfor %}
         </tbody>
