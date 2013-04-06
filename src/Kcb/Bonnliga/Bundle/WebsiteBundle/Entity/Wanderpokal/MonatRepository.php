@@ -23,7 +23,7 @@ class MonatRepository extends EntityRepository {
             WHERE
               m.monat < :aktuellerMonat
             ORDER BY m.monat DESC
-        ")->setMaxResults(1)->setParameter('aktuellerMonat', date('Y-m-01'))->getSingleResult();
+        ")->setMaxResults(1)->setParameter('aktuellerMonat', date('Y-m-01'))->getOneOrNullResult();
     }
 
 }

@@ -1,14 +1,6 @@
 imports:
     - { resource: config.yml }
 
-doctrine:
-    dbal:
-        host:     mysql5.bonnliga.de
-        dbname:   db49905_8
-        user:     db49905_8
-        password: b0nnl1g4
-        charset:  UTF8
-
 monolog:
     handlers:
         main:
