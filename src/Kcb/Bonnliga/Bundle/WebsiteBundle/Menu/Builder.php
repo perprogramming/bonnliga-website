@@ -22,6 +22,8 @@ class Builder extends ContainerAware
                                            'label' => '<i class="icon-map-marker icon-large"></i> Locations'));
         $menu->addChild('Sponsoren', array('route' => 'kcb_bonnliga_website_sponsor_index',
                                            'label' => '<i class="icon-gift icon-large"></i> Sponsoren'));
+        $menu->addChild('Historie', array('route' => 'kcb_bonnliga_website_historie_index',
+                                           'label' => '<i class="icon-time icon-large"></i> Historie'));
 
         return $menu;
     }

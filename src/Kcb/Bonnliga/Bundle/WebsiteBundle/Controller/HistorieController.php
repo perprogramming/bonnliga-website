@@ -7,9 +7,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 /**
- * @Route("/facts")
+ * @Route("/historie")
  */
-class FactController extends Controller {
+class HistorieController extends Controller {
 
     /**
      * @Route("/")

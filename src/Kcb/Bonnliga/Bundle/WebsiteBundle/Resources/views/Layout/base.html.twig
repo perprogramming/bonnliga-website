@@ -44,7 +44,7 @@
                         {{ knp_menu_render('KcbBonnligaWebsiteBundle:Builder:mainMenu', {'currentClass': 'active'}) }}
                     </div>
                     <div class="pott">
-                        {% render "KcbBonnligaWebsiteBundle:Pott:details" %}
+                        {% render(controller('KcbBonnligaWebsiteBundle:Pott:details')) %}
                     </div>
                 </div>
             </div>

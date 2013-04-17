@@ -17,7 +17,7 @@ class PottController extends Controller {
      */
     public function detailsAction() {
         // Sponsorengelder etc.
-        $sponsorenGelder = 100;
+        $sponsorenGelder = $this->container->getParameter('bonnliga.sponsorenGelder');
 
         $em = $this->getDoctrine()->getEntityManagerForClass("Kcb\Bonnliga\Bundle\WebsiteBundle\Entity\Platzierung");
 
