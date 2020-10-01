@@ -1,4 +1,4 @@
-# Website of the foosball tournament series "Bonnliga" in Bonn, Germany
+# Website of the football tournament series "Bonnliga" in Bonn, Germany
 
 ## Installation
 
